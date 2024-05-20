@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('//at.alicdn.com/t/c/font_4552300_wabd3xu7ihp.woff2?t=1716109957531') format('woff2'),
+    url('//at.alicdn.com/t/c/font_4552300_wabd3xu7ihp.woff?t=1716109957531') format('woff'),
+    url('//at.alicdn.com/t/c/font_4552300_wabd3xu7ihp.ttf?t=1716109957531') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-youjiantou:before {
+  content: "\e6b5";
+}
+
+.icon-caidan:before {
+  content: "\e60b";
+}
