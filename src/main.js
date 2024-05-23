@@ -4,10 +4,10 @@ import '@/style.css'
 import '@/static/iconfonts/index.css'
 import 'amfe-flexible';
 import router from '@/router/index.js'
-import { Swipe, SwipeItem } from 'vant';
+import { Swipe, SwipeItem, Tab, Tabs } from 'vant';
 import 'vant/lib/index.css';
 
-Vue.use(Swipe).use(SwipeItem)
+Vue.use(Swipe).use(SwipeItem).use(Tab).use(Tabs)
 
 Vue.config.productionTip = false
 

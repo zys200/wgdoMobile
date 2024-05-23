@@ -1,8 +1,9 @@
 @font-face {
   font-family: "iconfont";
-  src: url('//at.alicdn.com/t/c/font_4552300_wabd3xu7ihp.woff2?t=1716109957531') format('woff2'),
-    url('//at.alicdn.com/t/c/font_4552300_wabd3xu7ihp.woff?t=1716109957531') format('woff'),
-    url('//at.alicdn.com/t/c/font_4552300_wabd3xu7ihp.ttf?t=1716109957531') format('truetype');
+  /* Project id 4552300 */
+  src: url('//at.alicdn.com/t/c/font_4552300_lpn0unra7.woff2?t=1716378078663') format('woff2'),
+    url('//at.alicdn.com/t/c/font_4552300_lpn0unra7.woff?t=1716378078663') format('woff'),
+    url('//at.alicdn.com/t/c/font_4552300_lpn0unra7.ttf?t=1716378078663') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +12,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-weixin:before {
+  content: "\e600";
+}
+
+.icon-iconfontemail:before {
+  content: "\e608";
+}
+
+.icon-zuoji:before {
+  content: "\e683";
+}
+
+.icon-facebook-fill:before {
+  content: "\e88d";
+}
+
+.icon-weizhi:before {
+  content: "\e671";
 }
 
 .icon-youjiantou:before {

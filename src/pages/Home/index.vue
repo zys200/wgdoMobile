@@ -20,6 +20,12 @@
         <div class="five">
             <Five />
         </div>
+        <div class="six">
+            <Six />
+        </div>
+        <div class="footer">
+            <Footers />
+        </div>
     </div>
 </template>
 
@@ -30,10 +36,12 @@
     import Third from '@/pages/Home/Third/index.vue'
     import Fourth from '@/pages/Home/Fourth/index.vue'
     import Five from '@/pages/Home/Five/index.vue'
+    import Six from '@/pages/Home/Six/index.vue'
+    import Footers from '@/pages/Home/Footers/index.vue'
 
     export default {
         name: 'Home',
-        components: { HeaderText, HeaderBg, Second, Third, Fourth, Five }
+        components: { HeaderText, HeaderBg, Second, Third, Fourth, Five, Six, Footers }
     }
 </script>
 
@@ -75,6 +83,14 @@
     }
 
     .five {
+        width: 100vw;
+    }
+
+    .six {
+        width: 100vw;
+    }
+
+    .footer {
         width: 100vw;
     }
 </style>

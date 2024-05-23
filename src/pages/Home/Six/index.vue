@@ -1,0 +1,236 @@
+<template>
+    <div class="box">
+        <div class="boxa">
+            <div class="boxaTitle">
+                <TopTitle title="合作伙伴" />
+            </div>
+            <div class="dsc">作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用</div>
+            <div class="boxaLogo">
+                <LogoPic />
+            </div>
+        </div>
+        <div class="boxb">
+            <div class="boxbTitle">合作案例</div>
+            <div class="boxbLine"></div>
+            <div class="content">
+                <van-swipe class="myswipe" :autoplay="3000">
+                    <van-swipe-item class="myswipeItem">
+                        <div>
+                            <img src="" alt="">
+                            <div>世界环境日丨从源头保护</div>
+                        </div>
+                    </van-swipe-item>
+                    <van-swipe-item class="myswipeItem">
+                        <div>
+                            <img src="" alt="">
+                            <div>世界环境日丨从源头保护</div>
+                        </div>
+                    </van-swipe-item>
+                    <van-swipe-item class="myswipeItem">
+                        <div>
+                            <img src="" alt="">
+                            <div>世界环境日丨从源头保护</div>
+                        </div>
+                    </van-swipe-item>
+                </van-swipe>
+            </div>
+        </div>
+        <div class="boxc">
+            <div class="boxcTitle">组织机构</div>
+            <div class="boxcLine"></div>
+            <div class="boxcLogo">
+                <LogoPic />
+            </div>
+        </div>
+        <div class="boxd">
+            <div class="boxdTitle">企业会员</div>
+            <div class="boxdLine"></div>
+            <div class="boxdLogo">
+                <LogoPic />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    import TopTitle from '@/components/TopTitle.vue'
+    import LogoPic from '@/components/LogoPic.vue'
+
+    export default {
+        name: 'Six',
+        components: { TopTitle, LogoPic }
+    }
+</script>
+
+<style scoped>
+    .box {
+        padding-bottom: 40px;
+        width: 100%;
+        height: 2000px;
+        background: url(https://img.js.design/assets/img/653d080a48f711670ecb020f.png#5a63ef9f1eb110944c2c96c39ea84e7b), rgba(62, 73, 56, 1);
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    .boxa {
+        margin: 62px auto 0;
+        width: 335px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .boxa .dsc {
+        margin-top: 6px;
+        width: 297px;
+        height: 27px;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 13.26px;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+    }
+
+    .boxa .logopic {
+        margin-top: 12px;
+    }
+
+    .boxb {
+        margin-top: 40px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boxb .boxbTitle {
+        width: 61px;
+        height: 19px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        line-height: 18.56px;
+        color: rgba(255, 255, 255, 1);
+        text-align: center;
+    }
+
+    .boxb .boxbLine {
+        margin-top: 10px;
+        width: 20px;
+        height: 0px;
+        opacity: 0.6;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 1);
+    }
+
+    .boxb .myswipe {
+        margin-top: 20px;
+        width: 217.61px;
+        height: 151px;
+    }
+
+    .boxb .myswipeItem {
+        position: relative;
+        top: 0;
+        width: 217.61px;
+        height: 151px;
+        background: url(https://img.js.design/assets/img/656e7fa5d578efc18d814e32.png#5283dd9df8429caf09b500a3cd26e003);
+    }
+
+    .boxb .myswipeItem div {
+        position: absolute;
+        bottom: 0;
+        width: 217.61px;
+        height: 33.56px;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 33.56px;
+        color: rgba(255, 255, 255, 1);
+        text-align: center;
+    }
+
+    .myswipe :deep(.van-swipe__indicators) {
+        margin-bottom: 31px;
+    }
+
+    .myswipe :deep(.van-swipe__indicator) {
+        margin: 0 3.5px;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 1);
+    }
+
+    .myswipe :deep(.van-swipe__indicator--active) {
+        background: rgba(166, 225, 99, 1);
+    }
+
+    /* boxc */
+    .boxc {
+        margin-top: 40px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boxc .boxcTitle {
+        width: 61px;
+        height: 19px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        line-height: 18.56px;
+        color: rgba(255, 255, 255, 1);
+        text-align: center;
+    }
+
+
+    .boxc .boxcLine {
+        margin-top: 10px;
+        width: 20px;
+        height: 0px;
+        opacity: 0.6;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 1);
+    }
+
+    .boxc .boxcLogo {
+        margin-top: 20px;
+    }
+
+    /* boxd */
+    .boxd {
+        margin-top: 40px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boxd .boxdTitle {
+        width: 61px;
+        height: 19px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        line-height: 18.56px;
+        color: rgba(255, 255, 255, 1);
+        text-align: center;
+    }
+
+    .boxd .boxdLine {
+        margin-top: 10px;
+        width: 20px;
+        height: 0px;
+        opacity: 0.6;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 1);
+    }
+
+    .boxd .boxdLogo {
+        margin-top: 20px;
+    }
+</style>

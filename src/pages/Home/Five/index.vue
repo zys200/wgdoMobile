@@ -66,7 +66,7 @@
                         <img src="https://img.js.design/assets/smartFill/img334164da748e08.jpg" alt="">
                     </div>
                     <div class="boxcContentItemName">
-                        张星星
+                        张星星sdfsdf
                     </div>
                 </div>
             </div>
@@ -79,19 +79,19 @@
                     <div class="boxdConetentItemTop">
                         <img src="https://img.js.design/assets/img/6630bd5b9009830b4a8bd468.jpg" alt="">
                     </div>
-                    <div class="boxdConetentItemDsc"><span>IKEA</span></div>
+                    <div class="boxdConetentItemDsc">IKEsfsdfsdfA</div>
                 </div>
                 <div class="boxdContentItem">
                     <div class="boxdConetentItemTop">
                         <img src="https://img.js.design/assets/img/6630bd5b9009830b4a8bd468.jpg" alt="">
                     </div>
-                    <div class="boxdConetentItemDsc"><span>IKEA</span></div>
+                    <div class="boxdConetentItemDsc">IKEA</div>
                 </div>
                 <div class="boxdContentItem">
                     <div class="boxdConetentItemTop">
                         <img src="https://img.js.design/assets/img/6630bd5b9009830b4a8bd468.jpg" alt="">
                     </div>
-                    <div class="boxdConetentItemDsc"><span>IKEA</span></div>
+                    <div class="boxdConetentItemDsc">IKEA</div>
                 </div>
             </div>
         </div>
@@ -127,7 +127,7 @@
             return {
                 picList
             }
-        },
+        }
     }
 </script>
 
@@ -261,14 +261,15 @@
     }
 
     .boxc .boxcContent .boxcContentItem .boxcContentItemName {
+        min-width: 79px;
+        max-width: 79px;
         height: 19.35px;
+        line-height: 20px;
         font-size: 10px;
         font-weight: 400;
         letter-spacing: 1px;
-        line-height: 19.35px;
-        color: rgba(16, 16, 16, 1);
         text-align: center;
-        vertical-align: middle;
+        color: rgba(16, 16, 16, 1);
         background: rgba(165, 214, 63, 0.5);
     }
 
@@ -314,29 +315,23 @@
         display: block;
         width: 160px;
         height: 52px;
-        height: 100%;
         object-fit: cover;
         background-size: cover;
         background-position: center;
     }
 
     .boxd .boxdContent .boxdContentItem .boxdConetentItemDsc {
-        width: 160px;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        min-width: 160px;
+        max-width: 160px;
         height: 24px;
-        opacity: 1;
         background: rgba(62, 73, 56, 1);
-    }
-
-    .boxd .boxdContent .boxdContentItem .boxdConetentItemDsc span {
-        min-height: 82.67px;
-        height: 14.58px;
         font-size: 10px;
         font-weight: 400;
         letter-spacing: 1px;
-        line-height: 13.26px;
         color: rgba(255, 255, 255, 1);
-        text-align: center;
-        vertical-align: middle;
     }
 
     /* boxe */
@@ -357,20 +352,19 @@
     .boxe a span {
         position: relative;
         top: 0;
-        width: 88px;
+        min-width: 88px;
         height: 14px;
         opacity: 1;
         font-size: 10px;
         font-weight: 400;
         letter-spacing: 1px;
-        line-height: 27px;
+        line-height: 29px;
         color: rgba(165, 214, 63, 1);
-        text-align: left;
     }
 
     .boxe a span i {
         position: absolute;
-        top: -0.7px;
+        top: -0.34px;
         width: 4.37px;
         height: 8.57px;
         color: rgba(165, 214, 63, 1);
