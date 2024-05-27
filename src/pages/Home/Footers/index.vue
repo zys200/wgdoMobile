@@ -45,7 +45,7 @@
 <style scoped>
     .box {
         width: 100%;
-        height: 270px;
+        height: 100%;
         padding-left: 20px;
         background: rgba(166, 225, 99, 1);
         overflow: hidden;
@@ -68,7 +68,7 @@
     .email i {
         position: absolute;
         left: 3px;
-        top: 6px;
+        top: 5.5px;
         width: 19.28px;
         height: 14.02px;
         transform: scale(.8);
@@ -163,7 +163,7 @@
     /* rights */
     .rights {
         position: relative;
-        top: -40.2px;
+        top: -49.5px;
         left: 220px;
         width: 130px;
         height: 14px;
@@ -194,7 +194,7 @@
     .line {
         margin-top: 20px;
         width: 100vw;
-        height: 34px;
+        height: 50px;
         border: 1px solid rgba(105, 120, 131, 0.16);
         border-bottom: none;
         transform: translateX(-20px);

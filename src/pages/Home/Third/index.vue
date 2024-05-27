@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="boxb">
-                <Swipe :swipeStyle="swipeStyle" :swipeData="swipeData" />
+                <Swipe :swipeStyle="swipeStyle" :swipeData="thirdswipeData" />
             </div>
             <div class="boxc">
                 <div class="boxcTitle">
@@ -20,45 +20,45 @@
                     </a>
                 </div>
                 <div class="boxcContent">
-                    <div class="boxcContentItem" style="border-top: 1px dashed rgba(182, 182, 182, 1);">
-                        <div class="left">
-                            <div class="yue">11-11</div>
-                            <div class="years">2000</div>
+                    <div class="boxcContentItem" v-if="thirdBottomData.length > 0">
+                        <div class="left" style="border-top: 1px dashed rgba(182, 182, 182, 1);">
+                            <div class="yue">{{time[0]?.timer}}</div>
+                            <div class="years">{{time[0]?.year}}<span class="yearsZh">年</span></div>
                         </div>
                         <div class="right">
                             <div class="rightTitle">
-                                2018扬州峰会
+                                {{thirdBottomData[0]?.title}}
                             </div>
                             <div class="rightDsc">
-                                由世界绿色设计组织(WGDO)主办的“2018世界绿色设计论坛扬州峰会暨世界绿色设计博览会”于12月12日在扬州市召
+                                {{thirdBottomData[0]?.intro}}
                             </div>
                         </div>
                     </div>
-                    <div class="boxcContentItem">
+                    <div class="boxcContentItem" v-if="thirdBottomData.length > 1">
                         <div class="left" style="background: rgba(165, 214, 63, 0.4)">
-                            <div class="yue">11-11</div>
-                            <div class="years">2000</div>
+                            <div class="yue">{{time[1]?.timer}}</div>
+                            <div class="years">{{time[1]?.year}}<span class="yearsZh">年</span></div>
                         </div>
                         <div class="right">
                             <div class="rightTitle">
-                                2018扬州峰会
+                                {{thirdBottomData[1]?.title}}
                             </div>
                             <div class="rightDsc">
-                                由世界绿色设计组织(WGDO)主办的“2018世界绿色设计论坛扬州峰会暨世界绿色设计博览会”于12月12日在扬州市召
+                                {{thirdBottomData[1]?.intro}}
                             </div>
                         </div>
                     </div>
-                    <div class="boxcContentItem">
+                    <div class="boxcContentItem" v-if="thirdBottomData.length > 2">
                         <div class="left" style="background: rgba(165, 214, 63, 0.2)">
-                            <div class="yue">11-11</div>
-                            <div class="years">2000</div>
+                            <div class="yue">{{time[2]?.timer}}</div>
+                            <div class="years">{{time[2]?.year}}<span class="yearsZh">年</span></div>
                         </div>
                         <div class="right">
                             <div class="rightTitle">
-                                2018扬州峰会
+                                {{thirdBottomData[2]?.title}}
                             </div>
                             <div class="rightDsc">
-                                由世界绿色设计组织(WGDO)主办的“2018世界绿色设计论坛扬州峰会暨世界绿色设计博览会”于12月12日在扬州市召
+                                {{thirdBottomData[2]?.intro}}
                             </div>
                         </div>
                     </div>
@@ -72,28 +72,58 @@
     import TopTitle from '@/components/TopTitle.vue'
     import Swipe from '@/components/Swipe.vue'
     import More from '@/components/More.vue'
+    import { getHomeData } from '@/request/request.js'
 
     export default {
         name: 'Third',
         components: { TopTitle, Swipe, More },
         data() {
             const swipeStyle = {
-                width: '100%',
+                width: '335px',
                 height: '218px'
             }
-            let swipeData = [
-                {
-                    pic: 'https://img.js.design/assets/img/66272a8c5489c5903d1aa618.jpg#2c0f8b6a865bd83adb28f7c8ff763ad3'
-                },
-                {
-                    pic: 'https://img.js.design/assets/img/66272a8c5489c5903d1aa618.jpg#2c0f8b6a865bd83adb28f7c8ff763ad3'
-                }
-            ]
+            let thirdswipeData = []
+            let thirdBottomData = []
+            let time = []
             return {
                 swipeStyle,
-                swipeData
+                thirdswipeData,
+                thirdBottomData,
+                time
             }
         },
+        mounted() {
+            this.getThirdDatas()
+        },
+        methods: {
+            getThirdDatas(p = this.$store.state.lang.version) {
+                getHomeData({ 'moduleType': '3', 'status': '1', 'version': p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.thirdswipeData = res.data.rows
+                    }
+                })
+                getHomeData({ 'moduleType': '4', 'status': '1', 'version': p }).then(res => {
+                    let that = this
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.thirdBottomData = res.data.rows
+                        res.data.rows.forEach(v => {
+                            let stime = that.getTime(v.activityStartDate)
+                            that.time.push(stime)
+                        });
+                    }
+                })
+            },
+            getTime(t) {
+                const originalDate = new Date(t);
+                const year = originalDate.getFullYear();
+                const month = ('0' + (originalDate.getMonth() + 1)).slice(-2)
+                const day = ('0' + originalDate.getDate()).slice(-2)
+                return {
+                    year: year,
+                    timer: month + "-" + day,
+                };
+            }
+        }
     }
 </script>
 
@@ -184,15 +214,14 @@
     }
 
     .boxc .boxcContent .boxcContentItem .left {
-        width: 79px;
+        min-width: 79px;
         height: 106px;
         background: rgba(165, 214, 63, 0.6);
     }
 
     .boxc .boxcContent .boxcContentItem .left .yue {
         margin-top: 29px;
-        margin-left: 16px;
-        width: 50px;
+        margin-left: 14px;
         height: 24px;
         font-size: 18px;
         font-weight: 500;
@@ -204,8 +233,7 @@
 
     .boxc .boxcContent .boxcContentItem .left .years {
         margin-top: 5px;
-        margin-left: 16px;
-        width: 37px;
+        margin-left: 14px;
         height: 19px;
         opacity: 1;
         font-size: 14px;
@@ -216,13 +244,23 @@
         text-align: left;
     }
 
+    .yearsZh {
+        display: inline-block;
+        height: 19px;
+        font-size: 10px;
+        line-height: 14px;
+        transform: translate(1px, -1px);
+    }
+
     .boxc .boxcContent .boxcContentItem .right {
         padding: 0 12px;
+        width: 220px;
         border-bottom: 1px dashed rgba(182, 182, 182, 1);
     }
 
     .boxc .boxcContent .boxcContentItem .right .rightTitle {
         margin-top: 9px;
+        width: 217px;
         height: 19px;
         font-size: 14px;
         font-weight: 500;
@@ -230,6 +268,9 @@
         line-height: 18.56px;
         color: rgba(16, 16, 16, 1);
         text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .boxc .boxcContent .boxcContentItem .right .rightDsc {

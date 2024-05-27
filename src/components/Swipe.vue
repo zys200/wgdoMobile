@@ -1,8 +1,8 @@
 <template>
     <div class="box">
         <van-swipe class="my-swipe" :autoplay="3000" :style="swipeStyle" ref="swipe">
-            <van-swipe-item v-for="item in swipeData" :key="item.index">
-                <img :src="item.pic" alt="">
+            <van-swipe-item v-for="item in swipeData" :key="item.hpId">
+                <img :src=" 'http://106.3.97.14:9002' + item.cover">
             </van-swipe-item>
         </van-swipe>
     </div>
@@ -23,9 +23,9 @@
 <style scoped>
     .box {
         width: 100%;
+        height: 100%;
         background-color: hotpink;
     }
-
 
     .my-swipe :deep(.van-swipe__indicators) {
         margin-bottom: 31px;
@@ -42,11 +42,12 @@
         background: rgba(166, 225, 99, 1);
     }
 
-    img {
+    .my-swipe img {
         display: block;
         width: 100%;
         height: 100%;
         background-size: cover;
         background-position: center;
+        object-fit: cover;
     }
 </style>

@@ -4,14 +4,16 @@ import '@/style.css'
 import '@/static/iconfonts/index.css'
 import 'amfe-flexible';
 import router from '@/router/index.js'
-import { Swipe, SwipeItem, Tab, Tabs } from 'vant';
+import store from '@/store/index.js'
+import { Swipe, SwipeItem, Tab, Tabs, Form, Field, Button } from 'vant';
 import 'vant/lib/index.css';
 
-Vue.use(Swipe).use(SwipeItem).use(Tab).use(Tabs)
+Vue.use(Swipe).use(SwipeItem).use(Tab).use(Tabs).use(Form).use(Field).use(Button)
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

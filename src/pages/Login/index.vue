@@ -4,25 +4,33 @@
             <div>Hello!</div>
             <div>欢迎来到世界绿色设计组织</div>
         </div>
-        <div class="content">
-            <van-tabs v-model="active" line-width="26px" line-heigt="4px" title-active-color="rgba(54, 151, 81, 1)"
+        <div :class=" active === 0? 'content' : 'contentr' ">
+            <van-tabs v-model=" active" line-width="26px" line-heigt="4px" title-active-color="rgba(54, 151, 81, 1)"
                 title-inactive-color="rgba(255, 255, 255, 1)">
-                <van-tab title="快速登录" id="cleft">left</van-tab>
-                <van-tab title="账号登录" id="cright">right</van-tab>
+                <van-tab title="快速登录" id="cleft">
+                    <loginLeft />
+                </van-tab>
+                <van-tab title="账号登录" id="cright">
+                    <loginRight />
+                </van-tab>
             </van-tabs>
-            <div class="isRadius"></div>
         </div>
+        <div class="forget"><a href="#">忘记密码 ？</a></div>
     </div>
 </template>
 
 <script>
+    import loginLeft from '@/pages/Login/components/loginLeft.vue'
+    import loginRight from '@/pages/Login/components/loginRight.vue'
+
     export default {
         name: 'Login',
+        components: { loginLeft, loginRight },
         data() {
             return {
                 active: 0,
             }
-        },
+        }
     }
 </script>
 
@@ -65,10 +73,19 @@
 
     /* content */
     .content {
-        width: 343px;
-        height: 430px;
+        max-width: 343px;
         margin-top: -138px;
         margin: -138px auto 0;
+        background-image: url('@/static/imgs/loginLeft.png');
+        background-size: cover;
+    }
+
+    .contentr {
+        max-width: 343px;
+        margin-top: -138px;
+        margin: -138px auto 0;
+        background-image: url('@/static/imgs/loginRight.png');
+        background-size: cover;
     }
 
     /* 头部导航 */
@@ -103,20 +120,28 @@
     #cleft {
         width: 100%;
         background-color: rgba(255, 255, 255, 1);
-        border-radius: 0 20px 0 0;
     }
 
     #cright {
         width: 100%;
         background-color: rgba(255, 255, 255, 1);
-        border-radius: 20px 0 0 0;
     }
 
-    .isRadius {
-        width: 17px;
-        height: 17px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 1);
-        transform: translate(165px, -40px);
+    .forget {
+        position: fixed;
+        bottom: 10vh;
+        width: 100vw;
+        height: 14px;
+    }
+
+    .forget a {
+        display: inline-block;
+        width: 100%;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0px;
+        line-height: 14px;
+        color: rgba(165, 214, 63, 1);
+        text-align: center;
     }
 </style>

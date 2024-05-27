@@ -1,33 +1,17 @@
 <template>
     <div class="logopic">
-        <img src="https://img.js.design/assets/img/6625cdd5b2a196dc4e427a94.jpg#a9350ddbcb8ce48388d4da6f6132bc2f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cda9fa2ea2743cc6926b.jpg#1c447e89ca42cec377ebbe19f7a0a43f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cda9fa2ea2743cc6926b.jpg#1c447e89ca42cec377ebbe19f7a0a43f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cdd5b2a196dc4e427a94.jpg#a9350ddbcb8ce48388d4da6f6132bc2f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cda9fa2ea2743cc6926b.jpg#1c447e89ca42cec377ebbe19f7a0a43f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cda9fa2ea2743cc6926b.jpg#1c447e89ca42cec377ebbe19f7a0a43f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cdd5b2a196dc4e427a94.jpg#a9350ddbcb8ce48388d4da6f6132bc2f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cda9fa2ea2743cc6926b.jpg#1c447e89ca42cec377ebbe19f7a0a43f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cda9fa2ea2743cc6926b.jpg#1c447e89ca42cec377ebbe19f7a0a43f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cda9fa2ea2743cc6926b.jpg#1c447e89ca42cec377ebbe19f7a0a43f"
-            alt="">
-        <img src="https://img.js.design/assets/img/6625cdd5b2a196dc4e427a94.jpg#a9350ddbcb8ce48388d4da6f6132bc2f"
-            alt="">
+        <div v-for="item in logoPicData" :key="item.hpId">
+            <!-- <a href=""> -->
+            <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
+            <!-- </a> -->
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'LogoPic'
+        name: 'LogoPic',
+        props: ['logoPicData']
     }
 </script>
 

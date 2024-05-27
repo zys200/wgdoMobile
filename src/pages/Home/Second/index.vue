@@ -13,23 +13,13 @@
                 </div>
                 <div class="swipes">
                     <van-swipe class="myswipe" :autoplay="3000">
-                        <van-swipe-item class="swipeItem">
-                            <div class="swipeImgs"><img
-                                    src="https://img.js.design/assets/img/656d2a0fd84fbf5ada090732.png#1326725bf7d16197d8aee5544172a369"
-                                    alt=""></div>
+                        <van-swipe-item class="swipeItem" v-for="item in sedSwipeData" :key="item.hpId">
+                            <div class="swipeImgs"><img :src=" 'http://106.3.97.14:9002' + item.cover" alt=""></div>
                             <div class="line"></div>
-                            <div class="swipeTitle">全球第一枚绿色设计勋章在欧洲议会颁授</div>
+                            <div class="swipeTitle">{{item.title}}</div>
                             <div class="swipeDsc">
-                                作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用
+                                {{item.intro}}
                             </div>
-                        </van-swipe-item>
-                        <van-swipe-item class="swipeItem">
-                            <div class="swipeImgs"><img
-                                    src="https://img.js.design/assets/img/656d2a0fd84fbf5ada090732.png#1326725bf7d16197d8aee5544172a369"
-                                    alt=""></div>
-                            <div class="line"></div>
-                            <div class="swipeTitle">全球第一枚绿色设会颁授</div>
-                            <div class="swipeDsc">作为用户和产品之间的要的角色分享时机在不同的时机分析用</div>
                         </van-swipe-item>
                     </van-swipe>
                 </div>
@@ -48,21 +38,9 @@
                 </div>
                 <div class="gline"></div>
                 <div class="content">
-                    <div class="contentItem">
-                        <div class="contentItemTitle">世界环境日丨从源头保护我们的地球</div>
-                        <div class="contentItemDsc">作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用</div>
-                        <div class="contentLine"></div>
-                    </div>
-                    <div class="contentItem">
-                        <div class="contentItemTitle">世界环境日丨从源头保护我们的地球</div>
-                        <div class="contentItemDsc">作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用</div>
-                        <div class="contentLine"></div>
-                    </div>
-                    <div class="contentItem">
-                        <div class="contentItemTitle">世界环境日丨从源头保护我们的地球</div>
-                        <div class="contentItemDsc">
-                            作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用
-                        </div>
+                    <div class="contentItem" v-for="item in greenData" :key="item.hpId">
+                        <div class="contentItemTitle">{{item.title}}</div>
+                        <div class="contentItemDsc">{{item.intro}}</div>
                         <div class="contentLine"></div>
                     </div>
                 </div>
@@ -73,10 +51,36 @@
 
 <script>
     import More from '@/components/More.vue'
+    import { getHomeData } from '@/request/request.js'
 
     export default {
         name: 'Second',
-        components: { More }
+        components: { More },
+        data() {
+            let sedSwipeData = []
+            let greenData = []
+            return {
+                sedSwipeData,
+                greenData
+            }
+        },
+        mounted() {
+            this.getSecondDatas()
+        },
+        methods: {
+            getSecondDatas(p = this.$store.state.lang.version) {
+                getHomeData({ 'moduleType': '1', 'status': '1', 'version': p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.sedSwipeData = res.data.rows
+                    }
+                })
+                getHomeData({ 'moduleType': '2', 'status': '1', 'version': p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.greenData = res.data.rows.slice(0, 3)
+                    }
+                })
+            }
+        }
     }
 </script>
 
@@ -155,6 +159,7 @@
     }
 
     .container .containerTop .swipes .myswipe .swipeItem .swipeTitle {
+        width: 97%;
         height: 19px;
         font-size: 14px;
         font-weight: 500;
@@ -162,6 +167,9 @@
         line-height: 18.56px;
         color: rgba(255, 255, 255, 1);
         text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .container .containerTop .swipes .myswipe .swipeItem .swipeDsc {
@@ -181,7 +189,7 @@
     }
 
     .myswipe :deep(.van-swipe__indicators) {
-        margin-bottom: 10px;
+        margin-bottom: -5px;
     }
 
     .myswipe :deep(.van-swipe__indicator) {
@@ -201,7 +209,7 @@
     }
 
     .container .greenDes .top {
-        margin: 5px auto 0;
+        margin: 10px auto 0;
         display: flex;
         align-items: center;
         width: 335px;
@@ -249,6 +257,7 @@
 
     .container .greenDes .content .contentItem .contentItemTitle {
         margin-top: 12px;
+        width: 97%;
         height: 19px;
         font-size: 14px;
         font-weight: 500;
@@ -256,6 +265,9 @@
         line-height: 18.56px;
         color: rgba(255, 255, 255, 1);
         text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .container .greenDes .content .contentItem .contentItemDsc {

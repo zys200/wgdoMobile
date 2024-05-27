@@ -1,7 +1,13 @@
+html {
+    width: 100vw;
+    font-size: 37.5px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: MiSans;
 }
 
 a {

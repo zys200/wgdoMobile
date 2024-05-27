@@ -8,10 +8,12 @@
         </div>
         <div class="boxb">
             <div class="boxbTop">
-                <img src="" alt="">
+                <img :src=" 'http://106.3.97.14:9002' + leftImg.cover" alt="">
             </div>
             <div class="picList">
-                <img :src="item.pic" alt="" v-for="item in picList" :key="item.index">
+                <div class="picListItem" v-for="(item,index) in rightImgLists" :key="index">
+                    <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
+                </div>
             </div>
         </div>
         <div class="boxc">
@@ -21,52 +23,12 @@
             <div class="boxcDsc">2015绿色设计国际贡献大奖获奖个人</div>
             <div class="shortLine"></div>
             <div class="boxcContent">
-                <div class="boxcContentItem">
+                <div class="boxcContentItem" v-for="item in getPrice" :key="item.hpId">
                     <div class="boxcContentItemTop">
-                        <img src="https://img.js.design/assets/smartFill/img334164da748e08.jpg" alt="">
+                        <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
                     </div>
                     <div class="boxcContentItemName">
-                        张星星
-                    </div>
-                </div>
-                <div class="boxcContentItem">
-                    <div class="boxcContentItemTop">
-                        <img src="https://img.js.design/assets/smartFill/img334164da748e08.jpg" alt="">
-                    </div>
-                    <div class="boxcContentItemName">
-                        张星星
-                    </div>
-                </div>
-                <div class="boxcContentItem">
-                    <div class="boxcContentItemTop">
-                        <img src="https://img.js.design/assets/smartFill/img334164da748e08.jpg" alt="">
-                    </div>
-                    <div class="boxcContentItemName">
-                        张星星
-                    </div>
-                </div>
-                <div class="boxcContentItem">
-                    <div class="boxcContentItemTop">
-                        <img src="https://img.js.design/assets/smartFill/img334164da748e08.jpg" alt="">
-                    </div>
-                    <div class="boxcContentItemName">
-                        张星星
-                    </div>
-                </div>
-                <div class="boxcContentItem">
-                    <div class="boxcContentItemTop">
-                        <img src="https://img.js.design/assets/smartFill/img334164da748e08.jpg" alt="">
-                    </div>
-                    <div class="boxcContentItemName">
-                        张星星
-                    </div>
-                </div>
-                <div class="boxcContentItem">
-                    <div class="boxcContentItemTop">
-                        <img src="https://img.js.design/assets/smartFill/img334164da748e08.jpg" alt="">
-                    </div>
-                    <div class="boxcContentItemName">
-                        张星星sdfsdf
+                        {{item.title}}
                     </div>
                 </div>
             </div>
@@ -75,23 +37,11 @@
             <div class="boxdTitle">2015绿色设计国际贡献大奖获奖机构</div>
             <div class="shortLine"></div>
             <div class="boxdContent">
-                <div class="boxdContentItem">
+                <div class="boxdContentItem" v-for="item in awardWinningOrganization" :key="item.hpId">
                     <div class="boxdConetentItemTop">
-                        <img src="https://img.js.design/assets/img/6630bd5b9009830b4a8bd468.jpg" alt="">
+                        <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
                     </div>
-                    <div class="boxdConetentItemDsc">IKEsfsdfsdfA</div>
-                </div>
-                <div class="boxdContentItem">
-                    <div class="boxdConetentItemTop">
-                        <img src="https://img.js.design/assets/img/6630bd5b9009830b4a8bd468.jpg" alt="">
-                    </div>
-                    <div class="boxdConetentItemDsc">IKEA</div>
-                </div>
-                <div class="boxdContentItem">
-                    <div class="boxdConetentItemTop">
-                        <img src="https://img.js.design/assets/img/6630bd5b9009830b4a8bd468.jpg" alt="">
-                    </div>
-                    <div class="boxdConetentItemDsc">IKEA</div>
+                    <div class="boxdConetentItemDsc">{{item.title}}</div>
                 </div>
             </div>
         </div>
@@ -105,27 +55,41 @@
 
 <script>
     import TopTitle from '@/components/TopTitle'
+    import { getHomeData } from '@/request/request.js'
 
     export default {
         name: 'Five',
         components: { TopTitle },
         data() {
-            let picList = [
-                {
-                    pic: 'https://img.js.design/assets/img/656e79de0730cdb0e847a766.png#0f336d45cd92e89bb6e75aff28e22db1'
-                },
-                {
-                    pic: 'https://img.js.design/assets/img/656e79de0730cdb0e847a766.png#0f336d45cd92e89bb6e75aff28e22db1'
-                },
-                {
-                    pic: 'https://img.js.design/assets/img/656e79de0730cdb0e847a766.png#0f336d45cd92e89bb6e75aff28e22db1'
-                },
-                {
-                    pic: 'https://img.js.design/assets/img/656e79de0730cdb0e847a766.png#0f336d45cd92e89bb6e75aff28e22db1'
-                },
-            ]
+            let leftImg = []
+            let rightImgLists = []
+            let getPrice = []
+            let awardWinningOrganization = []
             return {
-                picList
+                leftImg,
+                rightImgLists,
+                getPrice,
+                awardWinningOrganization
+            }
+        },
+        mounted() {
+            this.getFiveDatas()
+        },
+        methods: {
+            getFiveDatas(p = this.$store.state.lang.version) {
+                getHomeData({ 'moduleType': '6', 'status': '1', 'version': p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        let [leftImg, ...rightImgLists] = res.data.rows
+                        this.leftImg = leftImg
+                        this.rightImgLists = rightImgLists
+                    }
+                })
+                getHomeData({ "moduleType": "7", "status": "1", version: p }).then(res => {
+                    this.getPrice = res.data.rows
+                })
+                getHomeData({ "moduleType": "8", "status": "1", version: p }).then(res => {
+                    this.awardWinningOrganization = res.data.rows
+                })
             }
         }
     }
@@ -178,17 +142,16 @@
         display: block;
         width: 100%;
         height: 222px;
-        background: url('https://img.js.design/assets/img/66276cca30560d8346ff0c0d.jpg#38a95656a576c8b4a776dc19d77b2802');
         background-size: cover;
         background-position: center;
     }
 
     .boxb .picList {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr
     }
 
-    .boxb .picList img {
+    .boxb .picList .picListItem img {
         display: block;
         width: 100%;
         height: 111px;
@@ -254,7 +217,7 @@
     .boxc .boxcContent .boxcContentItem .boxcContentItemTop img {
         display: block;
         width: 100%;
-        height: 100%;
+        height: 81px;
         object-fit: cover;
         background-size: cover;
         background-position: center;
@@ -265,12 +228,15 @@
         max-width: 79px;
         height: 19.35px;
         line-height: 20px;
-        font-size: 10px;
+        font-size: 7px;
         font-weight: 400;
         letter-spacing: 1px;
         text-align: center;
         color: rgba(16, 16, 16, 1);
         background: rgba(165, 214, 63, 0.5);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     /* boxd */

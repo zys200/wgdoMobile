@@ -10,10 +10,10 @@
             </div>
             <div class="swipe">
                 <van-swipe class="my-swipe" :autoplay="3000">
-                    <van-swipe-item v-for="item in swipeData" :key="item.index">
-                        <img :src="item.pic" alt="">
+                    <van-swipe-item v-for="item in fourSwipeData" :key="item.index">
+                        <img :src=" 'http://106.3.97.14:9002' + item.cover">
                         <div class="titles">{{item.title}}</div>
-                        <div class="dsc">{{item.dsc}}</div>
+                        <div class="dsc">{{item.intro}}</div>
                         <div class="more">
                             <LearnMore />
                         </div>
@@ -27,25 +27,27 @@
 <script>
     import More from '@/components/More.vue'
     import LearnMore from '@/components/LearnMore.vue'
+    import { getHomeData } from '@/request/request.js'
 
     export default {
         name: 'Fourth',
         components: { More, LearnMore },
         data() {
-            let swipeData = [
-                {
-                    pic: 'https://img.js.design/assets/img/66272a8c5489c5903d1aa618.jpg#2c0f8b6a865bd83adb28f7c8ff763ad3',
-                    title: '国家级工业设计示范基地',
-                    dsc: '园区已建立起具有市场调研、创新设计、研发中试（研发中心、中试车间）、生产制造、交易、展览、交流、培训、孵化及公共服务等综合功能为一体服务外包体系，服务范围涵盖智能制造、智慧家居、生命健康和医疗器械等新兴产业。'
-                },
-                {
-                    pic: 'https://img.js.design/assets/img/66272a8c5489c5903d1aa618.jpg#2c0f8b6a865bd83adb28f7c8ff763ad3',
-                    title: '国家级工业设计示范基地',
-                    dsc: '园区已建立起具有市场调研、创新设计、研发中试（研发中心、中试车间）、生产制造、交易、展览、交流、培训、孵化及公共服务等综合功能为一体服务外包体系，服务范围涵盖智能制造、智慧家居、生命健康和医疗器械等新兴产业。'
-                }
-            ]
+            let fourSwipeData = []
             return {
-                swipeData
+                fourSwipeData
+            }
+        },
+        mounted() {
+            this.getFourDatas()
+        },
+        methods: {
+            getFourDatas(p = this.$store.state.lang.version) {
+                getHomeData({ 'moduleType': '5', 'status': '1', 'version': p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.fourSwipeData = res.data.rows
+                    }
+                })
             }
         }
     }

@@ -6,31 +6,18 @@
             </div>
             <div class="dsc">作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用</div>
             <div class="boxaLogo">
-                <LogoPic />
+                <LogoPic :logoPicData="sixOne" />
             </div>
         </div>
         <div class="boxb">
             <div class="boxbTitle">合作案例</div>
             <div class="boxbLine"></div>
             <div class="content">
-                <van-swipe class="myswipe" :autoplay="3000">
-                    <van-swipe-item class="myswipeItem">
-                        <div>
-                            <img src="" alt="">
-                            <div>世界环境日丨从源头保护</div>
-                        </div>
-                    </van-swipe-item>
-                    <van-swipe-item class="myswipeItem">
-                        <div>
-                            <img src="" alt="">
-                            <div>世界环境日丨从源头保护</div>
-                        </div>
-                    </van-swipe-item>
-                    <van-swipe-item class="myswipeItem">
-                        <div>
-                            <img src="" alt="">
-                            <div>世界环境日丨从源头保护</div>
-                        </div>
+                <van-swipe class="myswipe" :autoplay="3000" :loop="true">
+                    <van-swipe-item class="myswipeItem" v-for="item in sixTwo" :key="item.hpId"
+                        style="width: 217.61px; height: 151px;">
+                        <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
+                        <div class="myswipeItemDsc">{{item.title}}</div>
                     </van-swipe-item>
                 </van-swipe>
             </div>
@@ -39,14 +26,14 @@
             <div class="boxcTitle">组织机构</div>
             <div class="boxcLine"></div>
             <div class="boxcLogo">
-                <LogoPic />
+                <LogoPic :logoPicData="sixThree" />
             </div>
         </div>
         <div class="boxd">
             <div class="boxdTitle">企业会员</div>
             <div class="boxdLine"></div>
             <div class="boxdLogo">
-                <LogoPic />
+                <LogoPic :logoPicData="sixFour" />
             </div>
         </div>
     </div>
@@ -55,10 +42,53 @@
 <script>
     import TopTitle from '@/components/TopTitle.vue'
     import LogoPic from '@/components/LogoPic.vue'
+    import { getHomeData } from '@/request/request.js'
 
     export default {
         name: 'Six',
-        components: { TopTitle, LogoPic }
+        components: { TopTitle, LogoPic },
+        data() {
+            let sixOne = []
+            let sixTwo = []
+            let sixTwoLength = 0
+            let sixThree = []
+            let sixFour = []
+            return {
+                sixOne,
+                sixTwo,
+                sixTwoLength,
+                sixThree,
+                sixFour
+            }
+        },
+        mounted() {
+            this.getSixData()
+        },
+        methods: {
+            getSixData(p = this.$store.state.lang.version) {
+                getHomeData({ "moduleType": "9", "status": "1", version: p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.sixOne = res.data.rows
+                    }
+                })
+                getHomeData({ "moduleType": "10", "status": "1", version: p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.sixTwo = res.data.rows
+                        this.sixTwoLength = res.data.rows.length
+                    }
+                })
+                getHomeData({ "moduleType": "11", "status": "1", version: p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.sixThree = res.data.rows
+                    }
+                })
+                getHomeData({ "moduleType": "12", "status": "1", version: p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.sixFour = res.data.rows
+                    }
+                })
+            }
+        }
     }
 </script>
 
@@ -66,7 +96,7 @@
     .box {
         padding-bottom: 40px;
         width: 100%;
-        height: 2000px;
+        height: auto;
         background: url(https://img.js.design/assets/img/653d080a48f711670ecb020f.png#5a63ef9f1eb110944c2c96c39ea84e7b), rgba(62, 73, 56, 1);
         object-fit: cover;
         overflow: hidden;
@@ -97,6 +127,7 @@
         margin-top: 12px;
     }
 
+    /* boxb */
     .boxb {
         margin-top: 40px;
         width: 100vw;
@@ -125,21 +156,38 @@
         border: 1px solid rgba(255, 255, 255, 1);
     }
 
-    .boxb .myswipe {
+    .boxb .content {}
+
+    .boxb .content .myswipe {
+        position: relative;
         margin-top: 20px;
         width: 217.61px;
+        width: 100vw;
         height: 151px;
     }
 
-    .boxb .myswipeItem {
+    .boxb .content .myswipe .myswipeItem {
         position: relative;
         top: 0;
         width: 217.61px;
         height: 151px;
-        background: url(https://img.js.design/assets/img/656e7fa5d578efc18d814e32.png#5283dd9df8429caf09b500a3cd26e003);
+        margin: 0 5px;
     }
 
-    .boxb .myswipeItem div {
+    .boxb .content .myswipe .myswipeItem:last-child {
+        width: calc(100% - calc(217.61px *4))
+    }
+
+    .boxb .content .myswipe .myswipeItem img {
+        display: block;
+        width: 217.61px;
+        height: 33.56px;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+    }
+
+    .boxb .content .myswipe .myswipeItem .myswipeItemDsc {
         position: absolute;
         bottom: 0;
         width: 217.61px;
@@ -152,8 +200,19 @@
         text-align: center;
     }
 
+    .myswipe :deep(.van-swipe-item) {
+        width: 217.61px;
+        height: 33.56px;
+    }
+
     .myswipe :deep(.van-swipe__indicators) {
-        margin-bottom: 31px;
+        border: 10px solid hotpink;
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        bottom: -55px;
+        display: flex;
+        justify-content: center;
     }
 
     .myswipe :deep(.van-swipe__indicator) {

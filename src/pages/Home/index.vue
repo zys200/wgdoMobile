@@ -48,6 +48,7 @@
 <style scoped>
     .box {
         width: 100vw;
+        height: auto;
     }
 
     .header {
