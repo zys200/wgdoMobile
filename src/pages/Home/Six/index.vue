@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="boxb">
-            <div class="boxbTitle">合作案例</div>
+            <div class="boxbTitle">{{$store.state.lang.homeTitle[9].classifyName}}</div>
             <div class="boxbLine"></div>
             <div class="content">
                 <van-swipe class="myswipe" :autoplay="3000" :loop="true">
@@ -23,14 +23,14 @@
             </div>
         </div>
         <div class="boxc">
-            <div class="boxcTitle">组织机构</div>
+            <div class="boxcTitle">{{$store.state.lang.homeTitle[11].classifyName}}</div>
             <div class="boxcLine"></div>
             <div class="boxcLogo">
                 <LogoPic :logoPicData="sixThree" />
             </div>
         </div>
         <div class="boxd">
-            <div class="boxdTitle">企业会员</div>
+            <div class="boxdTitle">{{$store.state.lang.homeTitle[12].classifyName}}</div>
             <div class="boxdLine"></div>
             <div class="boxdLogo">
                 <LogoPic :logoPicData="sixFour" />
@@ -42,7 +42,7 @@
 <script>
     import TopTitle from '@/components/TopTitle.vue'
     import LogoPic from '@/components/LogoPic.vue'
-    import { getHomeData } from '@/request/request.js'
+    import { getHomeData } from '@/api/request.js'
 
     export default {
         name: 'Six',
@@ -87,6 +87,13 @@
                         this.sixFour = res.data.rows
                     }
                 })
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.getSixData(this.$store.state.lang.version)
+                }
             }
         }
     }
@@ -236,7 +243,6 @@
     }
 
     .boxc .boxcTitle {
-        width: 61px;
         height: 19px;
         font-size: 14px;
         font-weight: 600;
@@ -270,7 +276,6 @@
     }
 
     .boxd .boxdTitle {
-        width: 61px;
         height: 19px;
         font-size: 14px;
         font-weight: 600;

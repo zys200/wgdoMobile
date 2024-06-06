@@ -20,7 +20,7 @@
 </template>
 
 <script>
-    import { getHomeData } from '@/request/request.js'
+    import { getHomeData } from '@/api/request.js'
 
     export default {
         name: "HeaderBg",

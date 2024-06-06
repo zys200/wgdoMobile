@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="content">
-            <!-- <router-view></router-view> -->
-            <TopTitle title="hhhh" />
+            <Home v-if="$route.path === '/'" />
+            <router-view v-else></router-view>
         </div>
         <div class="footer">
             <Footers />
@@ -23,10 +23,11 @@
     import HeaderBg from '@/components/Header/HeaderBg.vue'
     import Footers from '@/components/Footers/index.vue'
     import TopTitle from '@/components/TopTitle.vue'
+    import Home from '@/pages/Home/index.vue'
 
     export default {
         name: 'Layout',
-        components: { HeaderText, HeaderBg, Footers, TopTitle }
+        components: { HeaderText, HeaderBg, Home, Footers, TopTitle },
     }
 </script>
 
@@ -56,12 +57,7 @@
         width: 100vw;
     }
 
-    .content {
-        /* display: flex;
-        justify-content: center;
-        align-items: center; */
-        height: 100px;
-    }
+    .content {}
 
     /* footer */
     .footer {

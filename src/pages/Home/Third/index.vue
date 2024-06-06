@@ -14,7 +14,8 @@
             </div>
             <div class="boxc">
                 <div class="boxcTitle">
-                    <div class="boxctitle">活动预告</div>
+                    <div :class="$store.state.lang.isEn === 'en' ? 'boxctitleEn' : 'boxctitle'">
+                        {{$store.state.lang.homeTitle[4].classifyName}}</div>
                     <a href="">
                         <More />
                     </a>
@@ -72,7 +73,7 @@
     import TopTitle from '@/components/TopTitle.vue'
     import Swipe from '@/components/Swipe.vue'
     import More from '@/components/More.vue'
-    import { getHomeData } from '@/request/request.js'
+    import { getHomeData } from '@/api/request.js'
 
     export default {
         name: 'Third',
@@ -122,6 +123,13 @@
                     year: year,
                     timer: month + "-" + day,
                 };
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.getThirdDatas(this.$store.state.lang.version)
+                }
             }
         }
     }
@@ -191,6 +199,16 @@
     .boxc .boxcTitle .boxctitle {
         height: 22px;
         font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        line-height: 21.22px;
+        color: rgba(16, 16, 16, 1);
+        text-align: left;
+    }
+
+    .boxctitleEn {
+        height: 22px;
+        font-size: 12px;
         font-weight: 600;
         letter-spacing: 1px;
         line-height: 21.22px;
@@ -282,8 +300,8 @@
         letter-spacing: 1px;
         line-height: 15.91px;
         color: rgba(16, 16, 16, 0.8);
+        word-break: break-all;
         text-align: justify;
-        vertical-align: top;
         display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;

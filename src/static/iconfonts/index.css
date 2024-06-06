@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont";
-  src: url('//at.alicdn.com/t/c/font_4552300_q3p9zcruhnb.woff2?t=1716435485124') format('woff2'),
-    url('//at.alicdn.com/t/c/font_4552300_q3p9zcruhnb.woff?t=1716435485124') format('woff'),
-    url('//at.alicdn.com/t/c/font_4552300_q3p9zcruhnb.ttf?t=1716435485124') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4552300_7dkhovldsgw.woff2?t=1717672360897') format('woff2'),
+    url('//at.alicdn.com/t/c/font_4552300_7dkhovldsgw.woff?t=1717672360897') format('woff'),
+    url('//at.alicdn.com/t/c/font_4552300_7dkhovldsgw.ttf?t=1717672360897') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xiazai:before {
+  content: "\e68c";
+}
+
+.icon-liebiao:before {
+  content: "\e607";
+}
+
+.icon-zuojiantou:before {
+  content: "\e629";
 }
 
 .icon-xianshimima:before {

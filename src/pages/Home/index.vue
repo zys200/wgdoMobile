@@ -24,10 +24,37 @@
     import Fourth from '@/pages/Home/Fourth/index.vue'
     import Five from '@/pages/Home/Five/index.vue'
     import Six from '@/pages/Home/Six/index.vue'
+    import { getTitle } from '@/api/request.js'
 
     export default {
         name: 'Home',
-        components: { Second, Third, Fourth, Five, Six }
+        components: { Second, Third, Fourth, Five, Six },
+        mounted() {
+            if (this.$store.state.lang.isEn === 'en') {
+                this.getAllTitle('143')
+            } else {
+                this.getAllTitle('1')
+            }
+        },
+        methods: {
+            getAllTitle(par) {
+                getTitle({ "parentId": par }).then(res => {
+                    let titles = res.data.rows[0].children
+                    this.$store.commit('setHomeTitle', titles)
+                })
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    if (this.$store.state.lang.isEn === 'en') {
+                        this.getAllTitle('143')
+                    } else {
+                        this.getAllTitle('1')
+                    }
+                }
+            }
+        }
     }
 </script>
 

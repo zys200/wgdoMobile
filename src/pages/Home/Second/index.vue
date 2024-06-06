@@ -6,7 +6,7 @@
                     <span>Organizational dynamics</span>
                 </div>
                 <div class="titletwo">
-                    <span>组织动态</span>
+                    <span>{{$store.state.lang.homeTitle[1].classifyName}}</span>
                     <a href="">
                         <More />
                     </a>
@@ -17,9 +17,7 @@
                             <div class="swipeImgs"><img :src=" 'http://106.3.97.14:9002' + item.cover" alt=""></div>
                             <div class="line"></div>
                             <div class="swipeTitle">{{item.title}}</div>
-                            <div class="swipeDsc">
-                                {{item.intro}}
-                            </div>
+                            <div class="swipeDsc">{{item.intro}} </div>
                         </van-swipe-item>
                     </van-swipe>
                 </div>
@@ -29,7 +27,7 @@
                     <div class="gimg">
                         <img src="@/static/imgs/greenDes.png" alt="">
                     </div>
-                    <div class="gtitle">绿色设计观点</div>
+                    <div class="gtitle">{{$store.state.lang.homeTitle[2].classifyName}}</div>
                     <div class="gmore">
                         <a href="">
                             <More />
@@ -51,7 +49,8 @@
 
 <script>
     import More from '@/components/More.vue'
-    import { getHomeData } from '@/request/request.js'
+    import { getHomeData } from '@/api/request.js'
+    import { funs } from '@/utils/index.js'
 
     export default {
         name: 'Second',
@@ -79,6 +78,13 @@
                         this.greenData = res.data.rows.slice(0, 3)
                     }
                 })
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.getSecondDatas(this.$store.state.lang.version)
+                }
             }
         }
     }
@@ -180,7 +186,7 @@
         letter-spacing: 1px;
         line-height: 16px;
         color: rgba(255, 255, 255, 0.8);
-        text-align: left;
+        text-align: justify;
         display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -278,7 +284,8 @@
         letter-spacing: 1px;
         line-height: 15.91px;
         color: rgba(255, 255, 255, 0.8);
-        text-align: left;
+        word-break: break-all;
+        text-align: justify;
         display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;

@@ -5,15 +5,21 @@ import '@/static/iconfonts/index.css'
 import 'amfe-flexible';
 import router from '@/router/index.js'
 import store from '@/store/index.js'
-import { Swipe, SwipeItem, Tab, Tabs, Form, Field, Button, Popup } from 'vant';
+import { Swipe, SwipeItem, Tab, Tabs, Form, Field, Button, Checkbox, CheckboxGroup } from 'vant';
 import 'vant/lib/index.css';
+import i18n from '@/lang/index.js';
+import { Breadcrumb, BreadcrumbItem } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import { vfmPlugin } from 'vue-final-modal'
 
-Vue.use(Swipe).use(SwipeItem).use(Tab).use(Tabs).use(Form).use(Field).use(Button).use(Popup)
+Vue.use(Swipe).use(SwipeItem).use(Tab).use(Tabs).use(Form).use(Field).use(Button)
+Vue.use(Breadcrumb).use(BreadcrumbItem).use(vfmPlugin).use(Checkbox).use(CheckboxGroup)
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App),
 }).$mount('#app')

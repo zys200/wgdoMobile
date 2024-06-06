@@ -2,7 +2,7 @@
     <div class="box">
         <div class="boxa">
             <div class="boxaTitle">
-                <TopTitle title="品牌项目" />
+                <TopTitle :title="$store.state.lang.homeTitle[6].classifyName" />
             </div>
             <div class="boxaDsc">作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用</div>
         </div>
@@ -20,12 +20,12 @@
             <div class="boxcTitle">
                 <TopTitle title="获奖名单" />
             </div>
-            <div class="boxcDsc">2015绿色设计国际贡献大奖获奖个人</div>
+            <div class="boxcDsc">{{$store.state.lang.homeTitle[7].classifyName}}</div>
             <div class="shortLine"></div>
             <div class="boxcContent">
                 <div class="boxcContentItem" v-for="item in getPrice" :key="item.hpId">
                     <div class="boxcContentItemTop">
-                        <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
+                        <img :src=" 'http://106.3.97.14:9002' + item.cover">
                     </div>
                     <div class="boxcContentItemName">
                         {{item.title}}
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="boxd">
-            <div class="boxdTitle">2015绿色设计国际贡献大奖获奖机构</div>
+            <div class="boxdTitle">{{$store.state.lang.homeTitle[8].classifyName}}</div>
             <div class="shortLine"></div>
             <div class="boxdContent">
                 <div class="boxdContentItem" v-for="item in awardWinningOrganization" :key="item.hpId">
@@ -55,7 +55,7 @@
 
 <script>
     import TopTitle from '@/components/TopTitle'
-    import { getHomeData } from '@/request/request.js'
+    import { getHomeData } from '@/api/request.js'
 
     export default {
         name: 'Five',
@@ -90,6 +90,13 @@
                 getHomeData({ "moduleType": "8", "status": "1", version: p }).then(res => {
                     this.awardWinningOrganization = res.data.rows
                 })
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.getFiveDatas(this.$store.state.lang.version)
+                }
             }
         }
     }
@@ -174,9 +181,8 @@
     }
 
     .boxc .boxcDsc {
-        margin-top: 6px;
-        max-width: 190px;
-        height: 38px;
+        margin-top: 20px;
+        max-width: 90%;
         font-size: 14px;
         font-weight: 600;
         letter-spacing: 1px;
@@ -248,8 +254,7 @@
     }
 
     .boxd .boxdTitle {
-        max-width: 190px;
-        height: 38px;
+        max-width: 90%;
         font-size: 14px;
         font-weight: 600;
         letter-spacing: 1px;
@@ -287,6 +292,7 @@
     }
 
     .boxd .boxdContent .boxdContentItem .boxdConetentItemDsc {
+        padding: 0 5px;
         display: table-cell;
         text-align: center;
         vertical-align: middle;
@@ -298,6 +304,9 @@
         font-weight: 400;
         letter-spacing: 1px;
         color: rgba(255, 255, 255, 1);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     /* boxe */

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="title">World Green Design Park</div>
             <div class="titletwo">
-                <span>世界绿色设计园</span>
+                <span>{{$store.state.lang.homeTitle[5].classifyName}}</span>
                 <a href="">
                     <More />
                 </a>
@@ -27,7 +27,7 @@
 <script>
     import More from '@/components/More.vue'
     import LearnMore from '@/components/LearnMore.vue'
-    import { getHomeData } from '@/request/request.js'
+    import { getHomeData } from '@/api/request.js'
 
     export default {
         name: 'Fourth',
@@ -48,6 +48,13 @@
                         this.fourSwipeData = res.data.rows
                     }
                 })
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.getFourDatas(this.$store.state.lang.version)
+                }
             }
         }
     }
@@ -122,6 +129,9 @@
         letter-spacing: 1px;
         line-height: 18.56px;
         color: rgba(255, 255, 255, 1);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .swipe .dsc {
@@ -132,6 +142,7 @@
         letter-spacing: 1px;
         line-height: 15.91px;
         color: rgba(255, 255, 255, 0.8);
+        word-break: break-all;
         text-align: justify;
         text-indent: 1rem;
         display: -webkit-box;

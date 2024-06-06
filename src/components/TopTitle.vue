@@ -15,17 +15,16 @@
 
 <style scoped>
     .topTitle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         position: relative;
-        min-width: 88px;
+        text-align: center;
+        line-height: 22px;
     }
 
     .small {
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: 2px;
+        transform: translateX(-50%);
         width: 8px;
         height: 8px;
         opacity: 1;
@@ -35,8 +34,9 @@
 
     .big {
         position: absolute;
-        left: 1px;
-        bottom: 0;
+        left: 8px;
+        bottom: 2px;
+        transform: translateX(-50%);
         width: 22px;
         height: 22px;
         opacity: 0.3;
@@ -45,10 +45,10 @@
     }
 
     .text {
-        position: absolute;
-        left: 13px;
-        bottom: -2.4px;
+        padding-left: 10px;
+        display: inline-block;
         height: 22px;
+        line-height: 22px;
         font-size: 16px;
         font-weight: 700;
         letter-spacing: 1px;

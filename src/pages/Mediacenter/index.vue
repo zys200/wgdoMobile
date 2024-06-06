@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="mediacenter">
         <div class="bread">
             <Breadcrumb :urlData="urlData" />
         </div>
@@ -18,15 +18,14 @@
 </template>
 
 <script>
-    import { getTitle } from '@/api/request.js'
-    import Headers from '@/pages/About/index.vue'
     import Breadcrumb from '@/components/Breadcrumb.vue'
     import OrderTitle from '@/components/OrderTitle.vue'
     import Modal from '@/components/Modal.vue'
+    import { getTitle } from '@/api/request.js'
 
     export default {
-        name: 'About',
-        components: { Headers, Breadcrumb, OrderTitle, Modal },
+        name: 'Mediacenter',
+        components: { Breadcrumb, OrderTitle, Modal },
         data() {
             let urlData = []
             let titleData = []
@@ -41,26 +40,27 @@
                 title
             }
         },
-        created() {
+        mounted() {
             if (this.$store.state.lang.isEn === 'en') {
-                this.getAboutData('144')
+                this.getMediaCenterData('146')
             } else {
-                this.getAboutData('2')
+                this.getMediaCenterData('4')
             }
         },
         methods: {
-            getAboutData(par) {
+            getMediaCenterData(par) {
                 getTitle({ 'parentId': par }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.titleData = res.data.rows[0]
+                        let categoryData = this.titleData.children
+                        let Mapping = ['dynamic', 'video', 'report']
                         this.categoryData = this.titleData.children
-                        let Mapping = ['introduce', 'architecture', 'character', 'connection']
                         this.categoryData.forEach((v, index) => {
                             v.urls = Mapping[index]
                         })
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/about/introduce', name: '关于我们' },
+                            { path: '/mediacenter/dynamic', name: '媒体中心' },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
                         this.title = this.urlData[1].name
@@ -79,7 +79,7 @@
                     this.titleData.children.forEach((v, index) => {
                         if (index === newVal) {
                             this.urlData.push(
-                                { path: '/about/introduce', name: '关于我们' },
+                                { path: '/mediacenter/dynamic', name: '媒体中心' },
                                 { path: v.urls, name: v.classifyName }
                             )
                         }
@@ -90,27 +90,24 @@
             '$store.state.lang.langs': {
                 handler() {
                     if (this.$store.state.lang.isEn === 'en') {
-                        this.getAboutData('144')
+                        this.getMediaCenterData('146')
                     } else {
-                        this.getAboutData('2')
+                        this.getMediaCenterData('4')
                     }
                 }
             }
-        },
-        // beforeDestroy() {
-        //     console.log('about被销毁了!!!');
-        // },
+        }
     }
 </script>
 
 <style scoped>
-    .about {
+    .mediacenter {
         width: 100vw;
         background: rgba(242, 241, 221, 1);
     }
 
     /* container */
-    .container .topTitle {}
+    .mediacenter .topTitle {}
 
-    .container .toListUse {}
+    .mediacenter .toListUse {}
 </style>

@@ -1,9 +1,9 @@
 <template>
-    <div class="box">
+    <div class="breadcrumb">
         <a href="/"><img src="@/static/imgs/home.png"></a>
         <el-breadcrumb class="ebc" separator-class="el-icon-arrow-left">
             <el-breadcrumb-item v-for="item in urlData" :to="{ path: item.path }">
-                <i class="iconfont icon-zuojiantou" id="lef"></i>
+                <i class="icon-zuojiantou" id="lef"></i>
                 {{ item.name }}
             </el-breadcrumb-item>
         </el-breadcrumb>
@@ -21,61 +21,64 @@
 </script>
 
 <style scoped>
-    .box {
-        width: 100%;
+    .breadcrumb {
         display: flex;
         align-items: center;
-        height: 19px;
+        height: 15px;
+        line-height: 15px;
+        padding: 14px 0 22px 20px;
     }
 
-    .box img {
+    .breadcrumb img {
         display: block;
-        margin: 0 5px;
-        width: 13px;
-        height: 13px;
+        margin: 0 2.5px 0 0;
+        width: 9px;
+        height: 10px;
         background-size: cover;
         background-position: center;
-        transform: translateY(-.6px);
     }
 
     #lef {
         display: inline-block;
-        margin-right: 5px;
-        width: 6.33px;
-        height: 11.33px;
+        margin: 0 5px;
+        width: 4.75px;
+        height: 8.5px;
         color: rgba(150, 150, 150, 1);
+        font-family: iconfont;
+        font-style: normal;
     }
 
     .el-breadcrumb__item {
         margin-left: -5px;
-        width: auto;
-        height: 19px;
-        font-size: 14px;
+        height: 15px;
+        font-size: 10px;
         font-weight: 400;
         letter-spacing: 1px;
-        line-height: 18.56px;
+        line-height: 15px;
         color: rgba(150, 150, 150, 1);
         text-align: center;
     }
 
     :deep(.el-breadcrumb__inner) {
-        width: 100%;
-        height: 14.48px;
+        height: 10px;
         font-size: 10.67px;
         font-weight: 400;
         letter-spacing: 0.76px;
-        line-height: 14.14px;
+        line-height: 10px;
         color: rgba(150, 150, 150, 1);
         text-align: left;
     }
 
+    :deep(.el-breadcrumb__item:last-child .el-breadcrumb__inner) {
+        margin-left: -9px;
+    }
+
     :deep(.is-link) {
-        width: 100%;
-        height: 19px;
-        font-size: 14px;
+        height: 15px;
+        font-size: 10px;
         font-weight: 400;
         letter-spacing: 1px;
-        line-height: 18.56px;
+        line-height: 15px;
         color: rgba(150, 150, 150, 1);
         text-align: left;
     }
