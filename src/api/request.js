@@ -10,7 +10,6 @@ export const getHomeData = async function (params) {
     })
 }
 
-
 //次级
 //获取关于我们页面
 export const getAboutContent = async function (params) {
@@ -53,6 +52,24 @@ export const getWelfareproject = async function (params) {
     return await requestInstance({
         url: '/content/benefit/list?pageNum=1&pageSize=10',
         method: 'GET',
+        params
+    })
+}
+
+//获取国际绿奖
+export const getGreenaward = async function (params) {
+    return await requestInstance({
+        url: '/content/greenaward/list?pageNum=1&pageSize=10',
+        method: 'GET',
+        params
+    })
+}
+
+//获取绿研究院
+export const getGreenResearchInstitute = function (params) {
+    return requestInstance({
+        url: '/content/greeninstitute/list?pageNum=1&pageSize=10',
+        mehtod: 'GET',
         params
     })
 }

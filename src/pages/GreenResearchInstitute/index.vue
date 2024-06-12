@@ -1,5 +1,5 @@
 <template>
-    <div class="welfareproject">
+    <div class="greenresearchinstitute">
         <div class="bread">
             <Breadcrumb :urlData="urlData" />
         </div>
@@ -8,7 +8,7 @@
                 <OrderTitle :title="title" />
             </div>
             <div class="toListUse">
-                <newModal :categoryData="categoryData" @gindex="gindex" />
+                <Modal :categoryData="categoryData" @gindex="gindex" />
             </div>
             <div class="content">
                 <router-view></router-view>
@@ -20,12 +20,12 @@
 <script>
     import Breadcrumb from '@/components/Breadcrumb.vue'
     import OrderTitle from '@/components/OrderTitle.vue'
-    import newModal from '@/components/newModal.vue'
+    import Modal from '@/components/Modal.vue'
     import { getTitle } from '@/api/request.js'
 
     export default {
-        name: 'Mediacenter',
-        components: { Breadcrumb, OrderTitle, newModal },
+        name: 'Conference',
+        components: { Breadcrumb, OrderTitle, Modal },
         data() {
             let urlData = []
             let titleData = []
@@ -42,37 +42,29 @@
         },
         mounted() {
             if (this.$store.state.lang.isEn === 'en') {
-                this.getMediaCenterData('148')
+                this.getConferenceData('150')
             } else {
-                this.getMediaCenterData('6')
+                this.getConferenceData('8')
             }
         },
         methods: {
-            getMediaCenterData(par) {
-                getTitle({ 'parentId': par }).then(res => {
+            getConferenceData(par) {
+                getTitle({ "parentId": par }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.titleData = res.data.rows[0]
                         let categoryData = this.titleData.children
-                        let Mapping = ['greenleaf', 'thegreenribbon']
+                        let Mapping = ['organization', 'branch', 'brand', 'greendesigntraining', 'policy']
                         this.categoryData = this.titleData.children
                         this.categoryData.forEach((v, index) => {
                             v.urls = Mapping[index]
                         })
-                        this.childrenUrl()
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/welfareproject/greenleaf', name: '公益项目' },
+                            { path: '/greenresearchinstitute/organization', name: 'WGDO绿研院' },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
                         this.title = this.urlData[1].name
-                        sessionStorage.setItem('welfareData', JSON.stringify(this.categoryData))
                     }
-                })
-            },
-            childrenUrl() {
-                this.categoryData[1].children.forEach((v, index) => {
-                    let Mapping = ['epidemic', 'submit', 'lists', 'donate', 'news', 'propagate', 'cooperation', 'connection']
-                    v.urls = Mapping[index]
                 })
             },
             gindex(gindex) {
@@ -86,7 +78,7 @@
                     this.titleData.children.forEach((v, index) => {
                         if (index === newVal) {
                             this.urlData.push(
-                                { path: '/welfareproject/greenleaf', name: '公益项目' },
+                                { path: '/greenresearchinstitute/organization', name: 'WGDO绿研院' },
                                 { path: v.urls, name: v.classifyName }
                             )
                         }
@@ -97,9 +89,9 @@
             '$store.state.lang.langs': {
                 handler() {
                     if (this.$store.state.lang.isEn === 'en') {
-                        this.getMediaCenterData('148')
+                        this.getConferenceData('150')
                     } else {
-                        this.getMediaCenterData('6')
+                        this.getConferenceData('8')
                     }
                 }
             }
@@ -108,7 +100,7 @@
 </script>
 
 <style scoped>
-    .welfareproject {
+    .greenresearchinstitute {
         width: 100vw;
         background: rgba(242, 241, 221, 1);
     }

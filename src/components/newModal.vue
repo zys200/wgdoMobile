@@ -1,26 +1,38 @@
 <template>
-    <div class="modal">
+    <div class="newmodal">
         <div class="toList" @click="showCatalogue">
-            <div class="toListA"><i class="icon-liebiao"></i></div>
+            <div class="toListA"> <i class="icon-liebiao"></i></div>
         </div>
         <vue-final-modal class="catalogueDetModal" v-model="isShow" @click.native="getIndex">
-            <router-link :to="i.urls" v-for="(i,index) in categoryData" :key="i.classifyId">
-                {{i.classifyName}}
-            </router-link>
+            <template>
+                <div v-for="(i,index) in categoryData" :key="i.classifyId">
+                    <van-collapse v-if="$route.meta.isShow" v-model="activeNames" accordion>
+                        <router-link :to="i.urls">
+                            <van-collapse-item :title="i.classifyName" :name="i.classifyName">
+                                <router-link :to="t.urls" v-for="t in i.children" :key="t.classifyId">
+                                    {{t.classifyName}}
+                                </router-link>
+                            </van-collapse-item>
+                        </router-link>
+                    </van-collapse>
+                    <template v-else>
+                        <router-link :to="i.urls">{{i.classifyName}}</router-link>
+                    </template>
+                </div>
+            </template>
         </vue-final-modal>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'Modal',
+        name: 'newmodal',
         props: ['categoryData'],
         data() {
             let isShow = false
-            let greenShow = false
             return {
                 isShow,
-                greenShow
+                activeNames: ['1'],
             }
         },
         mounted() {
@@ -48,7 +60,7 @@
             },
             getItemNum() {
                 let catalogueDetModal = document.getElementsByClassName("catalogueDetModal")[0]
-                let aCount = document.querySelectorAll('.modal .catalogueDetModal a')
+                let aCount = document.querySelectorAll('.newmodal .catalogueDetModal a')
                 let catalogueDetModalHeight = 57 * aCount.length
                 catalogueDetModal.style.height = catalogueDetModalHeight + 'px'
             },
@@ -65,14 +77,14 @@
 
 <style scoped>
     /* toList */
-    .modal {
+    .newmodal {
         width: 100vw;
         position: fixed;
         top: 468px;
         left: 325px;
     }
 
-    .modal .toList {
+    .newmodal .toList {
         width: 50px;
         height: 50px;
         opacity: 0.3;
@@ -81,7 +93,7 @@
         overflow: hidden;
     }
 
-    .modal .toList .toListA {
+    .newmodal .toList .toListA {
         margin: 2px;
         width: 46px;
         height: 46px;
@@ -92,14 +104,14 @@
         align-items: center;
     }
 
-    .modal .toList .toListA i {
+    .newmodal .toList .toListA i {
         font-style: normal;
         font-family: iconfont;
         color: rgba(165, 214, 63, 1);
     }
 
     /* catalogueDetModal */
-    .modal .catalogueDetModal {
+    .newmodal .catalogueDetModal {
         position: fixed;
         top: 310px;
         left: 195px;
@@ -111,11 +123,11 @@
         border-radius: 5px;
     }
 
-    .modal .catalogueDetModal a {
+    .newmodal .catalogueDetModal a {
         position: relative;
     }
 
-    .modal .catalogueDetModal a i {
+    .newmodal .catalogueDetModal a i {
         display: inline-block;
         position: absolute;
         top: 1px;
@@ -125,23 +137,23 @@
     }
 
     /* 模态框最外层样式 */
-    .modal :deep(.vfm__container) {
+    .newmodal :deep(.vfm__container) {
         width: 209px;
         border-radius: 5px;
     }
 
     /* 最外层背景 */
-    .modal :deep(.vfm__overlay) {
+    .newmodal :deep(.vfm__overlay) {
         border-radius: 5px;
         background: rgba(255, 255, 255, 1);
     }
 
     /* 整体高度 */
-    .catalogueDet :deep(.vfm--inset) {
+    .newmodal .catalogueDet :deep(.vfm--inset) {
         background-color: rgba(255, 255, 255, 1);
     }
 
-    .modal .catalogueDetModal a {
+    .newmodal .catalogueDetModal a {
         display: inline-block;
         width: 129px;
         max-height: 57px;
@@ -154,16 +166,16 @@
         border-bottom: 1px solid rgba(219, 219, 219, 1);
     }
 
-    .modal .catalogueDetModal a:first-child {
+    .newmodal .catalogueDetModal a:first-child {
         border-radius: 5px 5px 0 0;
     }
 
-    .modal .catalogueDetModal a:last-child {
+    .newmodal .catalogueDetModal a:last-child {
         border-radius: 0 0 5px 5px;
         border: none;
     }
 
-    .modal .catalogueDetModal a.router-link-exact-active {
+    .newmodal .catalogueDetModal a.router-link-exact-active {
         color: rgba(165, 214, 63, 1);
     }
 </style>

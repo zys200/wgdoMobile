@@ -17,7 +17,8 @@ const state = {
         langs: '中文',
         homeTitle: []
     },
-    isMore: false
+    isMore: false,
+    urlsData: []
 }
 
 const action = {}
@@ -51,6 +52,10 @@ const mutations = {
     },
     changeIsMore(state) {
         state.isMore = !state.isMore
+    },
+    upUrlsData(state, datas) {
+        state.urlsData = datas
+        state.urlsData = JSON.parse(JSON.stringify(state.urlsData))
     }
 }
 

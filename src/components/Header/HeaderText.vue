@@ -22,8 +22,8 @@
             <router-link to="/mediacenter/dynamic">媒体中心</router-link>
             <router-link to="/learning/designreport">学术研究</router-link>
             <router-link to="/welfareproject/greenleaf">公益项目</router-link>
-            <router-link to="#">国际绿奖</router-link>
-            <router-link to="#">WGDO绿研究院</router-link>
+            <router-link to="/greenaward/contribution">国际绿奖</router-link>
+            <router-link to="/greenresearchinstitute/organization">WGDO绿研究院</router-link>
             <router-link to="#">绿叶标</router-link>
         </vue-final-modal>
     </div>

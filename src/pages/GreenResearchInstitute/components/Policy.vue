@@ -1,0 +1,62 @@
+<template>
+    <div class="policy">
+        <div class="policyItem" v-for="i in organizationDatas" :key="i.greeninstituteId">
+            <span v-html="i.contentDetails"></span>
+        </div>
+    </div>
+</template>
+
+<script>
+    import { getGreenResearchInstitute } from '@/api/request.js'
+
+    export default {
+        name: 'Organization',
+        data() {
+            let organizationDatas = []
+            return {
+                organizationDatas
+            }
+        },
+        mounted() {
+            this.getGreenResearchInstituteData()
+        },
+        methods: {
+            getGreenResearchInstituteData(p = this.$store.state.lang.version) {
+                getGreenResearchInstitute({ 'moduleType': '5', 'status': '1', 'version': p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.organizationDatas = res.data.rows
+                    }
+                })
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.getGreenResearchInstituteData()
+                }
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    .policy {
+        padding: 0 20px;
+        overflow: hidden;
+    }
+
+    .policyItem {
+        margin-bottom: 30px;
+        width: 335px;
+    }
+
+    .policyItem span {
+        width: 335px;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0px;
+        line-height: 15.91px;
+        color: rgba(51, 51, 51, 1);
+        text-align: justify;
+    }
+</style>

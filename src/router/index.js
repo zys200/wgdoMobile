@@ -129,10 +129,105 @@ const routes = [
                         path: 'thegreenribbon',
                         name: '绿丝带',
                         component: () => import('@/pages/Welfareproject/TheGreenRibbon/index.vue'),
+                        meta: {
+                            isShow: true
+                        },
                         children: [
-
+                            {
+                                path: 'donate',
+                                name: '捐赠公示',
+                                component: () => import('@/pages/Welfareproject/TheGreenRibbon/Donate/index.vue'),
+                                meta: {
+                                    isShow: true
+                                },
+                                children: [
+                                    {
+                                        path: 'records',
+                                        name: '绿丝带物资到货记录',
+                                        component: () => import('@/pages/Welfareproject/TheGreenRibbon/Donate/Records.vue')
+                                    },
+                                    {
+                                        path: 'honorroll',
+                                        name: '绿丝带行动捐赠光荣榜',
+                                        component: () => import('@/pages/Welfareproject/TheGreenRibbon/Donate/Honorroll.vue')
+                                    }
+                                ]
+                            },
+                            {
+                                path: 'epidemic',
+                                name: '抗疫宣传',
+                                component: () => import('@/pages/Welfareproject/TheGreenRibbon/Epidemic/index.vue'),
+                                children: [
+                                    {
+                                        path: 'actions',
+                                        name: '中欧抗疫绿丝带行动',
+                                        component: () => import('@/pages/Welfareproject/TheGreenRibbon/Epidemic/Actions.vue')
+                                    }
+                                ]
+                            }
                         ]
+                    }
+                ]
+            },
+            {
+                path: 'greenaward',
+                name: '国际绿奖',
+                component: () => import('@/pages/Greenaward/index.vue'),
+                children: [
+                    {
+                        path: 'price',
+                        name: '绿色设计国际大奖',
+                        component: () => import('@/pages/Greenaward/Price/index.vue'),
                     },
+                    {
+                        path: 'contribution',
+                        name: '绿色设计国际贡献奖',
+                        component: () => import('@/pages/Greenaward/contribution/index.vue'),
+                        children: [
+                            {
+                                path: 'rule',
+                                name: '评定规则',
+                                component: () => import('@/pages/Greenaward/contribution/components/Rule.vue')
+                            },
+                            {
+                                path: 'personage',
+                                name: '个人获奖名单',
+                                component: () => import('@/pages/Greenaward/contribution/components/Personage.vue')
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                path: 'greenresearchinstitute',
+                name: 'WGDO绿研院',
+                component: () => import('@/pages/GreenResearchInstitute/index.vue'),
+                children: [
+                    {
+                        path: 'organization',
+                        name: '机构简介',
+                        component: () => import('@/pages/GreenResearchInstitute/components/Organization.vue')
+                    },
+                    {
+                        path: 'branch',
+                        name: '分支拓建',
+                        component: () => import('@/pages/GreenResearchInstitute/components/Branch.vue')
+                    },
+                    {
+                        path: 'brand',
+                        name: '品牌服务',
+                        component: () => import('@/pages/GreenResearchInstitute/components/Brand.vue')
+                    },
+                    {
+                        path: 'greendesigntraining',
+                        name: '绿色设计培训',
+                        component: () => import('@/pages/GreenResearchInstitute/components/Greendesigntraining.vue')
+                    },
+                    {
+                        path: 'policy',
+                        name: '绿色政策',
+                        component: () => import('@/pages/GreenResearchInstitute/components/Policy.vue')
+                    }
                 ]
             }
         ]
