@@ -55,15 +55,13 @@
                         let categoryData = this.titleData.children
                         let Mapping = ['foretell', 'proceed', 'review']
                         this.categoryData = this.titleData.children
-                        this.categoryData.forEach((v, index) => {
-                            v.urls = Mapping[index]
-                        })
+                        this.categoryData.forEach((v, index) => { v.urls = Mapping[index] })
+                        this.title = this.titleData.classifyName
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/conference/foretell', name: '会议活动' },
+                            { path: '/conference/foretell', name: this.title },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
-                        this.title = this.urlData[1].name
                         // sessionStorage.setItem('chirdData', JSON.stringify(this.categoryData))
                     }
                 })

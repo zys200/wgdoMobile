@@ -1,6 +1,6 @@
 <template>
     <div class="donate">
-        <Single :singles="wflfareData" />
+        <Single :singles="wflfareData" v-if="this.$route.path === '/welfareproject/thegreenribbon/donate' " />
         <router-view></router-view>
     </div>
 </template>
@@ -26,6 +26,8 @@
                 getWelfareproject({ 'moduleType': '2', 'status': '1', 'version': p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.wflfareData = res.data.rows
+                        let Mapping = ['records', 'honorroll']
+                        this.wflfareData.forEach((v, index) => { v.urls = Mapping[index] })
                     }
                 })
             }

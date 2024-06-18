@@ -58,12 +58,12 @@
                         this.categoryData.forEach((v, index) => {
                             v.urls = Mapping[index]
                         })
+                        this.title = this.titleData.classifyName
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/greenresearchinstitute/organization', name: 'WGDO绿研院' },
+                            { path: '/greenresearchinstitute/organization', name: this.title },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
-                        this.title = this.urlData[1].name
                     }
                 })
             },

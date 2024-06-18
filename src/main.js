@@ -5,7 +5,11 @@ import '@/static/iconfonts/index.css'
 import 'amfe-flexible';
 import router from '@/router/index.js'
 import store from '@/store/index.js'
-import { Swipe, SwipeItem, Tab, Tabs, Form, Field, Button, Checkbox, CheckboxGroup, Collapse, CollapseItem } from 'vant';
+import {
+  Swipe, SwipeItem, Tab, Tabs,
+  Form, Field, Button, Checkbox, CheckboxGroup,
+  Collapse, CollapseItem
+} from 'vant';
 import 'vant/lib/index.css';
 import i18n from '@/lang/index.js';
 import { Breadcrumb, BreadcrumbItem } from 'element-ui';

@@ -1,6 +1,7 @@
 <template>
     <div class="actions">
         <!-- <VisitTitle :visitTitle="wflfareData" /> -->
+        <h2>无数据</h2>
     </div>
 </template>
 

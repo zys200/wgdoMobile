@@ -36,7 +36,7 @@
                 getAboutContent({ 'moduleType': '4', 'status': '1', 'version': p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.aboutDatas = res.data.rows
-                        console.log(res.data.rows, 'content');
+                        // console.log(res.data.rows, 'content');
                     }
                 })
             },
@@ -97,11 +97,13 @@
     }
 
     .toconnection .inps input {
+        display: block;
         margin: auto;
         width: 100%;
-        height: 100%;
+        height: 25px;
         outline: none;
         border: none;
+        font-size: 12px;
     }
 
     .toconnection .btn {

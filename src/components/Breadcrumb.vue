@@ -2,7 +2,7 @@
     <div class="breadcrumb">
         <a href="/"><img src="@/static/imgs/home.png"></a>
         <el-breadcrumb class="ebc" separator-class="el-icon-arrow-left">
-            <el-breadcrumb-item v-for="item in $store.state.urlsData" :to="{ path: item.path }">
+            <el-breadcrumb-item v-for="item in urlData" :to="{ name: item.path }">
                 <i class="icon-zuojiantou" id="lef"></i>
                 {{ item.name }}
             </el-breadcrumb-item>
@@ -14,12 +14,10 @@
     export default {
         name: 'Breadcrumb',
         props: ['urlData'],
-        watch: {
-            'urlData': {
-                handler() {
-                    this.$store.commit('upUrlsData', this.urlData)
-                }
-            }
+        data() { return { newUrlData: [] } },
+        mounted() {
+            // sessionStorage.setItem('urlData', JSON.stringify(this.urldata))
+            // this.newUrlData = JSON.parse(sessionStorage.getItem('urlData'))
         }
     }
 </script>

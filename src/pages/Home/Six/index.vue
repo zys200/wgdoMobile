@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="boxb">
-            <div class="boxbTitle">{{$store.state.lang.homeTitle[9].classifyName}}</div>
+            <div class="boxbTitle">{{$store.state.lang.homeTitle[9]?.classifyName}}</div>
             <div class="boxbLine"></div>
             <div class="content">
                 <van-swipe class="myswipe" :autoplay="3000" :loop="true">
@@ -23,14 +23,14 @@
             </div>
         </div>
         <div class="boxc">
-            <div class="boxcTitle">{{$store.state.lang.homeTitle[11].classifyName}}</div>
+            <div class="boxcTitle">{{$store.state.lang.homeTitle[11]?.classifyName}}</div>
             <div class="boxcLine"></div>
             <div class="boxcLogo">
                 <LogoPic :logoPicData="sixThree" />
             </div>
         </div>
         <div class="boxd">
-            <div class="boxdTitle">{{$store.state.lang.homeTitle[12].classifyName}}</div>
+            <div class="boxdTitle">{{$store.state.lang.homeTitle[12]?.classifyName}}</div>
             <div class="boxdLine"></div>
             <div class="boxdLogo">
                 <LogoPic :logoPicData="sixFour" />

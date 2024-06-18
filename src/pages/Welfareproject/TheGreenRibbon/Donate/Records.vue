@@ -32,7 +32,8 @@
                 getWelfareproject({ 'moduleType': '2', 'status': '1', 'version': p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.wflfareData = res.data.rows[0]
-                        console.log(res.data.rows);
+                        // console.log(res.data.rows, '到货记录');
+                        this.wflfareData.urls = 'records'
                     }
                 })
             }

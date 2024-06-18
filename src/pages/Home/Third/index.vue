@@ -10,12 +10,13 @@
                 </div>
             </div>
             <div class="boxb">
-                <Swipe :swipeStyle="swipeStyle" :swipeData="thirdswipeData" />
+                <!-- :swipeStyle="swipeStyle" -->
+                <Swipe :swipeData="thirdswipeData" />
             </div>
             <div class="boxc">
                 <div class="boxcTitle">
                     <div :class="$store.state.lang.isEn === 'en' ? 'boxctitleEn' : 'boxctitle'">
-                        {{$store.state.lang.homeTitle[4].classifyName}}</div>
+                        {{$store.state.lang.homeTitle[4]?.classifyName}}</div>
                     <a href="">
                         <More />
                     </a>
@@ -79,10 +80,7 @@
         name: 'Third',
         components: { TopTitle, Swipe, More },
         data() {
-            const swipeStyle = {
-                width: '335px',
-                height: '218px'
-            }
+            const swipeStyle = { width: '335px', height: '218px' }
             let thirdswipeData = []
             let thirdBottomData = []
             let time = []
@@ -173,7 +171,24 @@
     /* boxb */
     .container .boxb {
         margin-top: 12px;
+        width: 100%;
+        height: 218px;
+    }
 
+    .container .boxb :deep(.my-swipe) {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container .boxb :deep(.van-swipe-item) {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container img {
+        object-fit: cover;
+        background-size: cover;
+        background-position: center;
     }
 
     .container .boxb :deep(.van-swipe__indicators) {

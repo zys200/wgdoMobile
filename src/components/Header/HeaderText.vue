@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="headerText">
-            <div ref="changeLangue" :class="$store.state.lang.isEn === 'en' ? 'catalogueEn' : 'catalogue' " is-link
+            <div ref="changeLangue" :class=" $store.state.lang.isEn === 'en' ? 'catalogueEn' : 'catalogue' "
                 @click="showCatalogue">
                 <i class="iconfont icon-caidan"></i>
                 <span>{{$t('headertext.catalogue')}}</span>
@@ -42,7 +42,6 @@
             }
         },
         mounted() {
-            // this.getItemNum()
             this.$store.commit('upCurrentLang')
             this.setLanguageStyles()
         },
@@ -66,13 +65,6 @@
                     e.stopPropagation();
                 }
             },
-            // getItemNum() {
-            //     let catalogueDet = document.getElementsByClassName("catalogueDet")[0]
-            //     let aCount = document.querySelectorAll('.box .catalogueDet a')
-            //     let catalogueDetHeight = 57 * aCount.length
-            //     console.log(catalogueDetHeight);
-            //     catalogueDet.style.height = catalogueDetHeight + 'px'
-            // }
             changeLang() {
                 this.$store.commit('changeLang')
             },
@@ -110,7 +102,7 @@
         position: relative;
         top: 0;
         padding-left: 15px;
-        width: 95px;
+        width: 105px;
         height: 23px;
         text-align: center;
         font-size: 14px;

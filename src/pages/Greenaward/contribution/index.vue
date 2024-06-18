@@ -1,7 +1,7 @@
 <template>
     <div class="contribution">
-        <div v-html="contributionData.contentDetails"></div>
-        <router-view></router-view>
+        <div v-html="contributionData.contentDetails" v-if="this.$route.path === '/greenaward/contribution' "></div>
+        <router-view v-else></router-view>
     </div>
 </template>
 
@@ -12,9 +12,7 @@
         name: 'Contribution',
         data() {
             let contributionData = []
-            return {
-                contributionData
-            }
+            return { contributionData }
         },
         mounted() {
             this.getContributionData()
@@ -27,7 +25,6 @@
             }
         },
         watch: {
-
             '$store.state.lang.langs': {
                 handler() {
                     this.getContributionData()

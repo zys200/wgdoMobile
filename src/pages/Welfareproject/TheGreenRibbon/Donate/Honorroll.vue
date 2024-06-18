@@ -14,27 +14,22 @@
         components: { VisitTitle },
         data() {
             let wflfareData = []
-            return {
-                wflfareData
-            }
+            return { wflfareData }
         },
-        mounted() {
-            this.getwflfareDataData()
-        },
+        mounted() { this.getwflfareDataData() },
         methods: {
             getwflfareDataData(p = this.$store.state.lang.version) {
                 getWelfareproject({ 'moduleType': '2', 'status': '1', 'version': p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.wflfareData = res.data.rows[1]
+                        this.wflfareData.urls = 'honorroll'
                     }
                 })
             }
         },
         watch: {
             '$store.state.lang.isEn': {
-                handler() {
-                    this.getwflfareDataData()
-                }
+                handler() { this.getwflfareDataData() }
             }
         }
     }

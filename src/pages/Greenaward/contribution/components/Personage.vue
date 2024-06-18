@@ -1,6 +1,6 @@
 <template>
     <div class="personage">
-        personage(无数据)
+        <div v-html="contributionData.contentDetails"></div>
     </div>
 </template>
 
@@ -26,7 +26,6 @@
             }
         },
         watch: {
-
             '$store.state.lang.langs': {
                 handler() {
                     this.getContributionData()

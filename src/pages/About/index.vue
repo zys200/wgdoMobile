@@ -58,19 +58,18 @@
                         this.categoryData.forEach((v, index) => {
                             v.urls = Mapping[index]
                         })
+                        this.title = this.titleData.classifyName
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/about/introduce', name: '关于我们' },
+                            { path: 'introduce', name: this.title },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
-                        this.title = this.urlData[1].name
-                        sessionStorage.setItem('chirdData', JSON.stringify(this.categoryData))
+                        this.title = this.titleData.classifyName
+                        console.log(this.urlData, 'about');
                     }
                 })
             },
-            gindex(gindex) {
-                this.gindexs = gindex
-            }
+            gindex(gindex) { this.gindexs = gindex }
         },
         watch: {
             gindexs: {
@@ -96,10 +95,7 @@
                     }
                 }
             }
-        },
-        // beforeDestroy() {
-        //     console.log('about被销毁了!!!');
-        // },
+        }
     }
 </script>
 

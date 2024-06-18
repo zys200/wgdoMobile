@@ -99,6 +99,7 @@
     }
 
     .bottoms .title {
+        max-width: 300px;
         height: 19px;
         font-size: 14px;
         font-weight: 500;
@@ -106,6 +107,9 @@
         line-height: 18.56px;
         color: rgba(51, 51, 51, 1);
         text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .bottoms .dsc {

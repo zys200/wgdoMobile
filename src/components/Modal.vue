@@ -1,13 +1,15 @@
 <template>
     <div class="modal">
+        <div class="catalogueDetModal" v-show="isShow" @click="getIndex">
+            <div class="catalogueDetModalItem">
+                <router-link :to="i.urls" v-for="(i,index) in categoryData" :key="i.classifyId">
+                    {{i.classifyName}}
+                </router-link>
+            </div>
+        </div>
         <div class="toList" @click="showCatalogue">
             <div class="toListA"><i class="icon-liebiao"></i></div>
         </div>
-        <vue-final-modal class="catalogueDetModal" v-model="isShow" @click.native="getIndex">
-            <router-link :to="i.urls" v-for="(i,index) in categoryData" :key="i.classifyId">
-                {{i.classifyName}}
-            </router-link>
-        </vue-final-modal>
     </div>
 </template>
 
@@ -17,14 +19,22 @@
         props: ['categoryData'],
         data() {
             let isShow = false
-            let greenShow = false
             return {
-                isShow,
-                greenShow
+                isShow
             }
         },
         mounted() {
-            this.getItemNum()
+            window.addEventListener('scroll', function () {
+                var modal = document.getElementsByClassName('modal')[0];
+                if (modal) {
+                    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrollTop > 100) {
+                        modal.style.top = '70px';
+                    } else {
+                        modal.style.top = '468px';
+                    }
+                }
+            })
         },
         methods: {
             showCatalogue() {
@@ -46,12 +56,6 @@
                     e.stopPropagation();
                 }
             },
-            getItemNum() {
-                let catalogueDetModal = document.getElementsByClassName("catalogueDetModal")[0]
-                let aCount = document.querySelectorAll('.modal .catalogueDetModal a')
-                let catalogueDetModalHeight = 57 * aCount.length
-                catalogueDetModal.style.height = catalogueDetModalHeight + 'px'
-            },
             getIndex() {
                 const indexs = Array.from(event.target.parentNode.children).indexOf(event.target);
                 this.$emit('gindex', indexs)
@@ -66,16 +70,20 @@
 <style scoped>
     /* toList */
     .modal {
-        width: 100vw;
+        width: 179px;
         position: fixed;
+        z-index: 2000;
         top: 468px;
-        left: 325px;
+        left: calc(100vw - 179px);
+        display: flex;
+        justify-content: flex-end;
+        border-radius: 5px;
     }
 
     .modal .toList {
         width: 50px;
         height: 50px;
-        opacity: 0.3;
+        opacity: 0.7;
         border-radius: 50px;
         background: rgba(204, 204, 204, 1);
         overflow: hidden;
@@ -100,51 +108,24 @@
 
     /* catalogueDetModal */
     .modal .catalogueDetModal {
-        position: fixed;
-        top: 310px;
-        left: 195px;
-        bottom: 0;
-        display: flex;
-        flex-direction: column;
         width: 129px;
         background-color: rgba(255, 255, 255, 1);
         border-radius: 5px;
     }
 
-    .modal .catalogueDetModal a {
+    .modal .catalogueDetModalItem {
+        width: 129px;
+        border-bottom: 1px solid rgba(150, 150, 150, .7);
+    }
+
+    .modal .catalogueDetModal .catalogueDetModalItem a {
         position: relative;
     }
 
-    .modal .catalogueDetModal a i {
-        display: inline-block;
-        position: absolute;
-        top: 1px;
-        right: 20px;
-        width: 4px;
-        height: 9px;
-    }
-
-    /* 模态框最外层样式 */
-    .modal :deep(.vfm__container) {
-        width: 209px;
-        border-radius: 5px;
-    }
-
-    /* 最外层背景 */
-    .modal :deep(.vfm__overlay) {
-        border-radius: 5px;
-        background: rgba(255, 255, 255, 1);
-    }
-
-    /* 整体高度 */
-    .catalogueDet :deep(.vfm--inset) {
-        background-color: rgba(255, 255, 255, 1);
-    }
-
     .modal .catalogueDetModal a {
         display: inline-block;
         width: 129px;
-        max-height: 57px;
+        height: 57px;
         font-size: 12px;
         font-weight: 700;
         letter-spacing: 1px;
@@ -166,4 +147,21 @@
     .modal .catalogueDetModal a.router-link-exact-active {
         color: rgba(165, 214, 63, 1);
     }
+
+    /* 模态框最外层样式 */
+    /* .modal :deep(.vfm__container) {
+        width: 209px;
+        border-radius: 5px;
+    } */
+
+    /* 最外层背景 */
+    /* .modal :deep(.vfm__overlay) {
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 1);
+    } */
+
+    /* 整体高度 */
+    /* .catalogueDet :deep(.vfm--inset) {
+        background-color: rgba(255, 255, 255, 1);
+    } */
 </style>

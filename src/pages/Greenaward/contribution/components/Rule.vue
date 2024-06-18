@@ -17,6 +17,7 @@
         },
         mounted() {
             this.getContributionData()
+
         },
         methods: {
             getContributionData(p = this.$store.state.lang.version) {
@@ -26,7 +27,6 @@
             }
         },
         watch: {
-
             '$store.state.lang.langs': {
                 handler() {
                     this.getContributionData()

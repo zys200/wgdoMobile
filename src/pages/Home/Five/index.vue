@@ -2,7 +2,7 @@
     <div class="box">
         <div class="boxa">
             <div class="boxaTitle">
-                <TopTitle :title="$store.state.lang.homeTitle[6].classifyName" />
+                <TopTitle :title="$store.state.lang.homeTitle[6]?.classifyName" />
             </div>
             <div class="boxaDsc">作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用</div>
         </div>
@@ -20,7 +20,7 @@
             <div class="boxcTitle">
                 <TopTitle title="获奖名单" />
             </div>
-            <div class="boxcDsc">{{$store.state.lang.homeTitle[7].classifyName}}</div>
+            <div class="boxcDsc">{{$store.state.lang.homeTitle[7]?.classifyName}}</div>
             <div class="shortLine"></div>
             <div class="boxcContent">
                 <div class="boxcContentItem" v-for="item in getPrice" :key="item.hpId">
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="boxd">
-            <div class="boxdTitle">{{$store.state.lang.homeTitle[8].classifyName}}</div>
+            <div class="boxdTitle">{{$store.state.lang.homeTitle[8]?.classifyName}}</div>
             <div class="shortLine"></div>
             <div class="boxdContent">
                 <div class="boxdContentItem" v-for="item in awardWinningOrganization" :key="item.hpId">

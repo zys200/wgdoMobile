@@ -6,7 +6,10 @@
         <vue-final-modal class="catalogueDetModal" v-model="isShow" @click.native="getIndex">
             <template>
                 <div v-for="(i,index) in categoryData" :key="i.classifyId">
-                    <van-collapse v-if="$route.meta.isShow" v-model="activeNames" accordion>
+                    <template v-if="i.children === null">
+                        <router-link :to="i.urls">{{i.classifyName}}</router-link>
+                    </template>
+                    <van-collapse v-else v-model="activeNames" accordion>
                         <router-link :to="i.urls">
                             <van-collapse-item :title="i.classifyName" :name="i.classifyName">
                                 <router-link :to="t.urls" v-for="t in i.children" :key="t.classifyId">
@@ -15,9 +18,6 @@
                             </van-collapse-item>
                         </router-link>
                     </van-collapse>
-                    <template v-else>
-                        <router-link :to="i.urls">{{i.classifyName}}</router-link>
-                    </template>
                 </div>
             </template>
         </vue-final-modal>

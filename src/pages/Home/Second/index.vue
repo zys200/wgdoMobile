@@ -6,7 +6,7 @@
                     <span>Organizational dynamics</span>
                 </div>
                 <div class="titletwo">
-                    <span>{{$store.state.lang.homeTitle[1].classifyName}}</span>
+                    <span>{{$store.state.lang.homeTitle[1]?.classifyName}}</span>
                     <a href="">
                         <More />
                     </a>
@@ -27,7 +27,7 @@
                     <div class="gimg">
                         <img src="@/static/imgs/greenDes.png" alt="">
                     </div>
-                    <div class="gtitle">{{$store.state.lang.homeTitle[2].classifyName}}</div>
+                    <div class="gtitle">{{$store.state.lang.homeTitle[2]?.classifyName}}</div>
                     <div class="gmore">
                         <a href="">
                             <More />

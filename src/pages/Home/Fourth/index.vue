@@ -3,7 +3,7 @@
         <div class="container">
             <div class="title">World Green Design Park</div>
             <div class="titletwo">
-                <span>{{$store.state.lang.homeTitle[5].classifyName}}</span>
+                <span>{{$store.state.lang.homeTitle[5]?.classifyName}}</span>
                 <a href="">
                     <More />
                 </a>

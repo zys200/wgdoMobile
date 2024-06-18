@@ -6,10 +6,7 @@ import i18n from '@/lang/index.js'
 Vue.use(Vuex)
 
 const state = {
-    login: {
-        username: '',
-        password: ''
-    },
+    login: { username: '', password: '' },
     lang: {
         isEn: 'en',
         version: '2',
@@ -18,7 +15,6 @@ const state = {
         homeTitle: []
     },
     isMore: false,
-    urlsData: []
 }
 
 const action = {}
@@ -52,10 +48,6 @@ const mutations = {
     },
     changeIsMore(state) {
         state.isMore = !state.isMore
-    },
-    upUrlsData(state, datas) {
-        state.urlsData = datas
-        state.urlsData = JSON.parse(JSON.stringify(state.urlsData))
     }
 }
 
@@ -69,7 +61,7 @@ const store = new Vuex.Store({
             key: "langs",
             reducer(state) {
                 return state.lang.isEn;
-            },
+            }
         })
     ]
 })

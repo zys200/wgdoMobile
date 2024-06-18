@@ -58,19 +58,17 @@
                         this.categoryData.forEach((v, index) => {
                             v.urls = Mapping[index]
                         })
+                        this.title = this.titleData.classifyName
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/mediacenter/dynamic', name: '媒体中心' },
+                            { path: '/mediacenter/dynamic', name: this.title },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
-                        this.title = this.urlData[1].name
-                        sessionStorage.setItem('chirdData', JSON.stringify(this.categoryData))
+                        // sessionStorage.setItem('chirdData', JSON.stringify(this.categoryData))
                     }
                 })
             },
-            gindex(gindex) {
-                this.gindexs = gindex
-            }
+            gindex(gindex) { this.gindexs = gindex }
         },
         watch: {
             gindexs: {
