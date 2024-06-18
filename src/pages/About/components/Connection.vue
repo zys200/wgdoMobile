@@ -1,7 +1,13 @@
 <template>
     <div class="connection">
         <div class="topData" v-for="i in  aboutDatas" :key="i.aboutusId">
-            <span v-html="i.contentDetails"></span>
+            <span style="font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0px;
+            line-height: 15.91px;
+            color: rgba(51, 51, 51, 1);
+            text-align: left;
+            vertical-align: top;" v-html="i.contentDetails"></span>
         </div>
         <div class="toconnection">
             <div class="title">欢迎给我们留言</div>
