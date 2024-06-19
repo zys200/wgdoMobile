@@ -274,7 +274,25 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: () => import('@/pages/Login/index.vue')
-    }
+    },
+    {
+        path: '/details',
+        name: 'Details',
+        component: () => import('@/components/Details.vue'),
+        meta: {
+            isAuth: false,
+            toTop: true
+        }
+    },
+    {
+        path: '/det',
+        name: 'Det',
+        component: () => import('@/components/Det.vue'),
+        meta: {
+            isAuth: false,
+            toTop: true
+        }
+    },
 ]
 
 const router = new vueRouter({

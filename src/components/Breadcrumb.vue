@@ -1,6 +1,6 @@
 <template>
     <div class="breadcrumb">
-        <a href="/"><img src="../static/imgs/home.png"></a>
+        <a href="/"><img src="@/static/imgs/home.png"></a>
         <el-breadcrumb class="ebc" separator-class="el-icon-arrow-left">
             <el-breadcrumb-item v-for="item in urlData" :to="{ name: item.path }">
                 <i class="icon-zuojiantou" id="lef"></i>
