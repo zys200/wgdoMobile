@@ -91,7 +91,7 @@
 
     .headerText {
         display: grid;
-        grid-template-columns: 1.5fr 4fr auto 1.5fr;
+        grid-template-columns: 1.2fr 3.0fr .7fr .8fr;
         align-items: center;
         margin-top: 52px;
         width: 100%;
@@ -110,6 +110,7 @@
         letter-spacing: 0px;
         line-height: 22.4px;
         color: rgba(255, 255, 255, 1);
+        /* border: 1px solid green; */
     }
 
     .catalogueEn {
@@ -143,6 +144,7 @@
         justify-self: center;
         width: 145px;
         height: 35px;
+        /* border: 1px solid hotpink; */
     }
 
     .lang {

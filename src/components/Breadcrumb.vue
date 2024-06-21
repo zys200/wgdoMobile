@@ -15,10 +15,7 @@
         name: 'Breadcrumb',
         props: ['urlData'],
         data() { return { newUrlData: [] } },
-        mounted() {
-            // sessionStorage.setItem('urlData', JSON.stringify(this.urldata))
-            // this.newUrlData = JSON.parse(sessionStorage.getItem('urlData'))
-        }
+        mounted() { }
     }
 </script>
 

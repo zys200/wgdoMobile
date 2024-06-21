@@ -101,6 +101,10 @@
     }
 
     .modal .toList .toListA i {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        font-size: 20px;
         font-style: normal;
         font-family: iconfont;
         color: rgba(165, 214, 63, 1);

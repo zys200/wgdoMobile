@@ -1,15 +1,22 @@
 <template>
     <div class="multilayermodal">
+        <!-- 整个 -->
         <div class="showbar" v-show="isShow">
+            <!-- 每一行 -->
             <div class="showbarItem" v-for="(i,index) in categoryData" :key="i.classifyId" @click="getIndex(index)">
                 <div class="duoceng" v-if="i.children !== null">
                     <div class="duocengItem">
+                        <!-- 多层Item -->
                         <div class="isduocengItem">
                             <router-link :to="{ name: i.urls}">{{i.classifyName}}</router-link>
-                            <i class="iconfont icon-zuojiantou showmore" @click="showMore(index)"
-                                v-if="i.children.length !== 1"></i>
+                            <div class="isduocengItemI">
+                                <i class="iconfont icon-zuojiantou" @click="showMore(index)" id="showm"
+                                    v-if="i.children.length !== 1 && $route.path === '/greenaward/price'"
+                                    :class="{ 'rotate': showMoreIconRotate }"></i>
+                            </div>
                         </div>
-                        <div class="shows" v-show="greenShow">
+                        <!-- 多层每一行 -->
+                        <div class="shows" v-show="greenShow && fcurrentShow === currentShow">
                             <router-link v-for="(t,tindex) in i.children" :key="t.classifyId" :to="{ name: t.urls}"
                                 @click.native="handleClick(tindex)">
                                 {{t.classifyName}}
@@ -17,11 +24,9 @@
                         </div>
                     </div>
                 </div>
-                <router-link v-else :to="i.urls" class="putong" @click="getIndex($event,index)">
-                    {{i.classifyName}}
-                </router-link>
             </div>
         </div>
+        <!-- 右边圆圈 -->
         <div class="toList" @click="showCatalogue">
             <div class="toListA"><i class="icon-liebiao"></i></div>
         </div>
@@ -35,9 +40,14 @@
         data() {
             let isShow = false
             let greenShow = false
+            let fcurrentShow = -1
+            let currentShow = -2
             return {
                 isShow,
-                greenShow
+                greenShow,
+                fcurrentShow,
+                currentShow,
+                showMoreIconRotate: false
             }
         },
         mounted() {
@@ -66,39 +76,63 @@
                     }, 0);
                 }
             },
+            // closeModal(e) {
+            //     let showmore = document.getElementsByClassName('showmore')[0]
+            //     if (this.isShow && (this.$el.contains(e.target) || !this.$el.contains(e.target)) && !this.$el.contains(showmore)) {
+            //         this.isShow = false;
+            //         document.removeEventListener('click', this.closeModal)
+            //     } else {
+            //         e.stopPropagation();
+            //         showmore.style.transform = 'rotate(0deg)'
+            //     }
+            // },
             closeModal(e) {
-                let showmore = document.getElementsByClassName('showmore')[0]
-                if (this.isShow && (this.$el.contains(e.target) || !this.$el.contains(e.target)) && !this.$el.contains(showmore)) {
+                let showmore = document.getElementById('showm')[0];
+                if (this.isShow && !this.$el.contains(e.target) && !showmore.contains(e.target)) {
                     this.isShow = false;
-                    document.removeEventListener('click', this.closeModal)
+                    document.removeEventListener('click', this.closeModal);
                 } else {
                     e.stopPropagation();
-                    showmore.style.transform = 'rotate(0deg)'
+                    showmore.style.transform = 'rotate(0deg)';
                 }
             },
-            getIndex(index) { this.$emit('gindex', index) },
-            showMore(index, e) {
+            getIndex(index) {
+                this.$emit('gindex', index)
+                // console.log(index, 's');
+                this.fcurrentShow = index
+            },
+            showMore(index) {
+                // console.log(index, 'f');
+                this.currentShow = index;
                 this.greenShow = !this.greenShow
-                if (this.greenShow) {
-                    let showmore = document.getElementsByClassName('showmore')[index]
-                    if (showmore) {
-                        showmore.style.transform = 'rotate(-90deg)'
+                this.$nextTick(() => {
+                    let showmore = document.getElementById('showm');
+                    if (this.greenShow) {
+                        if (this.greenShow) {
+                            showmore.style.transform = 'translateX(-10px) rotate(-90deg)';
+                            // showmore.style.transform = 'rotate(-90deg)';
+                        } else {
+                            showmore.style.transform = 'rotate(0deg)';
+                        }
+                    } else {
+                        showmore.style.transform = 'rotate(0deg)';
                     }
-                } else {
-                    let showmore = document.getElementsByClassName('showmore')[index]
-                    if (showmore) {
-                        showmore.style.transform = 'rotate(0deg)'
-                    }
-                }
+                })
             }
         },
-        beforeDestroy() {
+        beforeRouteLeave(to, from, next) {
             document.removeEventListener('click', this.closeModal);
-        }
+            next();
+        },
+        watch: { '$route.path': { handler() { this.isShow = false } } }
     }
 </script>
 
 <style scoped>
+    .rotate {
+        transform: rotate(-90deg)
+    }
+
     /* toList */
     .multilayermodal {
         width: 179px;
@@ -121,6 +155,7 @@
     }
 
     .multilayermodal .toList .toListA {
+        padding: 4px;
         margin: 2px;
         width: 46px;
         height: 46px;
@@ -132,6 +167,10 @@
     }
 
     .multilayermodal .toList .toListA i {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        font-size: 20px;
         font-style: normal;
         font-family: iconfont;
         color: rgba(165, 214, 63, 1);
@@ -179,13 +218,23 @@
         text-align: center;
     }
 
-    .multilayermodal .showbar .showbarItem .duoceng .duocengItem i {
-        margin: 0 3px;
+    .multilayermodal .showbar .showbarItem .duoceng .duocengItem .isduocengItemI {
+        flex: 1;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #cff;
+    }
+
+    .multilayermodal .showbar .showbarItem .duoceng .duocengItem .isduocengItemI i {
+        /* margin: 0 3px; */
         flex: 1;
         display: block;
         width: 13.93px;
         height: 18.57px;
         color: rgba(150, 150, 150, 1);
+        transform: translateX(-10px);
+        background-color: #4e9ca8;
     }
 
     .multilayermodal .showbar .showbarItem .duoceng .duocengItem a:last-child {
@@ -198,6 +247,7 @@
         display: flex;
         flex-direction: column;
         width: 129px;
+        background-color: #4e9ca8;
     }
 
     .shows a {

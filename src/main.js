@@ -12,13 +12,16 @@ import {
 } from 'vant';
 import 'vant/lib/index.css';
 import i18n from '@/lang/index.js';
-import { Breadcrumb, BreadcrumbItem } from 'element-ui';
+import {
+  Breadcrumb, BreadcrumbItem, Submenu,
+  Col, Menu, MenuItem, MenuItemGroup
+} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { vfmPlugin } from 'vue-final-modal'
 
 Vue.use(Swipe).use(SwipeItem).use(Tab).use(Tabs).use(Form).use(Field).use(Button)
 Vue.use(Breadcrumb).use(BreadcrumbItem).use(vfmPlugin).use(Checkbox).use(CheckboxGroup)
-Vue.use(Collapse).use(CollapseItem)
+Vue.use(Collapse).use(CollapseItem).use(Submenu).use(Col).use(Menu).use(MenuItem).use(MenuItemGroup)
 
 Vue.config.productionTip = false
 

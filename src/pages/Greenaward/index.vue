@@ -8,7 +8,7 @@
                 <OrderTitle :title="title" />
             </div>
             <div class="toListUse">
-                <MultilayerModal :categoryData="categoryData" @gindex="gindex" @gindexChild="gindexChild" />
+                <newMultilayerModal :categoryData="categoryData" @gindex="gindex" @gindexChild="gindexChild" />
             </div>
             <div class="content">
                 <router-view></router-view>
@@ -20,12 +20,12 @@
 <script>
     import Breadcrumb from '@/components/Breadcrumb.vue'
     import OrderTitle from '@/components/OrderTitle.vue'
-    import MultilayerModal from '@/components/MultilayerModal.vue'
+    import newMultilayerModal from '@/components/newMultilayerModal.vue'
     import { getTitle } from '@/api/request.js'
 
     export default {
         name: 'Greenaward',
-        components: { Breadcrumb, OrderTitle, MultilayerModal },
+        components: { Breadcrumb, OrderTitle, newMultilayerModal },
         data() {
             let urlData = []
             let titleData = []
