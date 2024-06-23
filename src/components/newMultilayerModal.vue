@@ -4,16 +4,18 @@
             <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                 active-text-color="#a6e163ff">
                 <div v-for="(i,index) in categoryData" :key="i.classifyId">
-                    <el-submenu index="1" v-if="i.children.length !== 1 && i.children !== null">
-                        <div v-for="t in i.children" :key="">
+                    <el-submenu :index="String(index)" v-if="i.children?.length !== 1 && i.children !== null">
+                        <div v-for="(t,tt) in i.children" :key="t.classifyId">
                             <!-- 一级 -->
-                            <template slot="title">
-                                <span><router-link to="#">{{i.classifyName}}</router-link></span>
+                            <template slot="i.classifyName">
+                                <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
                             </template>
                             <!-- 二级 -->
-                            <el-menu-item-group title="分组2">
-                                <el-menu-item index="1-3">选项3</el-menu-item>
-                            </el-menu-item-group>
+                            <!-- <el-menu-item-group title="分组2"> -->
+                            <el-menu-item index="1">
+                                <router-link :to="{ name: t.urls }">{{t.classifyName}}</router-link>
+                            </el-menu-item>
+                            <!-- </el-menu-item-group> -->
                             <!-- 二级下拉 -->
                             <!-- <el-submenu index="1-4">
                                 <template slot="title">选项4</template>
@@ -21,8 +23,12 @@
                             </el-submenu> -->
                         </div>
                     </el-submenu>
-                    <el-menu-item index="2" v-else>
-                        <span slot="title"><router-link to="">{{i.classifyName}}</router-link></span>
+                    <el-menu-item index="1" v-else>
+                        <span :slot="i.classifyName">
+                            <router-link :to="{ name: i.urls }">
+                                {{i.classifyName}}
+                            </router-link>
+                        </span>
                     </el-menu-item>
                 </div>
             </el-menu>
@@ -38,11 +44,7 @@
     export default {
         name: 'newMultilayerModal',
         props: ['categoryData'],
-        data() {
-            return {
-                isShow: false
-            }
-        },
+        data() { return { isShow: false } },
         mounted() {
             window.addEventListener('scroll', function () {
                 var modal = document.getElementsByClassName('newMultilayerModal')[0];
@@ -70,12 +72,8 @@
                 }
             },
             //折叠
-            handleOpen(index) {
-                console.log(index)
-            },
-            handleClose(index) {
-                console.log(index)
-            }
+            handleOpen(index) { console.log(index) },
+            handleClose(index) { console.log(index) }
         },
         beforeRouteLeave(to, from, next) {
             document.removeEventListener('click', this.closeModal);

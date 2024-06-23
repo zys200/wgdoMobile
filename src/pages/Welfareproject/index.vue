@@ -8,7 +8,7 @@
                 <OrderTitle :title="title" />
             </div>
             <div class="toListUse">
-                <MultilayerModal :categoryData="categoryData" @gindex="gindex" @gindexChild="gindexChild" />
+                <newMultilayerModal :categoryData="categoryData" @gindex="gindex" @gindexChild="gindexChild" />
             </div>
             <div class="content">
                 <router-view></router-view>
@@ -20,12 +20,12 @@
 <script>
     import Breadcrumb from '@/components/Breadcrumb.vue'
     import OrderTitle from '@/components/OrderTitle.vue'
-    import MultilayerModal from '@/components/MultilayerModal.vue'
+    import newMultilayerModal from '@/components/newMultilayerModal.vue'
     import { getTitle } from '@/api/request.js'
 
     export default {
         name: 'Mediacenter',
-        components: { Breadcrumb, OrderTitle, MultilayerModal },
+        components: { Breadcrumb, OrderTitle, newMultilayerModal },
         data() {
             let urlData = []
             let titleData = []
@@ -34,6 +34,7 @@
             let categoryData = []
             let breadData = []
             let title = ''
+            let names = []
             return {
                 urlData,
                 titleData,
@@ -41,7 +42,8 @@
                 ggindex,
                 categoryData,
                 breadData,
-                title
+                title,
+                names
             }
         },
         mounted() {
@@ -65,7 +67,7 @@
                         this.breadData = this.titleData[0].children
                         let Mapping = ['greenleaf', 'thegreenribbon']
                         this.categoryData.forEach((v, index) => { v.urls = Mapping[index] })
-                        this.childrenUrl()
+                        this.addUrls(this.categoryData)
                         //面包屑地址名称
                         this.urlData.push({
                             path: '/welfareproject/greenleaf',
@@ -73,9 +75,7 @@
                         })
                         this.titleData[0].children.forEach((v, index) => {
                             if (index === 0) {
-                                this.urlData.push(
-                                    { path: v.urls, name: v.classifyName }
-                                )
+                                this.urlData.push({ path: v.urls, name: v.classifyName })
                             }
                         })
                         if (this.$route.matched.length > 3) {
@@ -92,18 +92,34 @@
                     let newPath = baseUrl + (entry.urls ? `/${entry.urls}` : '');
                     if (entry.children && entry.children.length > 0) {
                         processEntry(entry.children[gindex], newPath);
-                    } else {
-                        result.push({ name: entry.classifyName, path: newPath });
-                    }
+                    } else { result.push({ name: entry.classifyName, path: newPath }) }
                 }
                 processEntry(data1[gindex], baseAddress);
                 return result;
             },
-            childrenUrl() {
+            // childrenUrl() {
+            //     this.categoryData[1].children.forEach((v, index) => {
+            //         let Mapping = ['epidemic', 'submit', 'lists', 'donate', 'news', 'propagate', 'cooperation', 'connection']
+            //         v.urls = Mapping[index]
+            //     })
+            // },
+            addUrls(data) {
                 this.categoryData[1].children.forEach((v, index) => {
-                    let Mapping = ['epidemic', 'submit', 'lists', 'donate', 'news', 'propagate', 'cooperation', 'connection']
-                    v.urls = Mapping[index]
+                    if (index === 0) {
+                        v.urls = 'rule'
+                    } else {
+                        v.urls = 'personage'
+                    }
                 })
+                this.categoryData = data
+                this.breadData[1].children.forEach((v, index) => {
+                    if (index === 0) {
+                        v.urls = 'rule'
+                    } else {
+                        v.urls = 'personage'
+                    }
+                })
+                this.categoryData = data
             },
             gindex(gindex) { this.gindexs = gindex },
             gindexChild(ggindex) { this.ggindex = ggindex }
