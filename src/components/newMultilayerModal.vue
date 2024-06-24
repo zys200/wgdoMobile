@@ -1,39 +1,65 @@
-<template>
+<!-- <template>
     <div class="newMultilayerModal">
         <div class="lefts" v-show="isShow">
-            <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-                active-text-color="#a6e163ff">
+            <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" active-text-color="#a6e163ff"
+                :unique-opened="true">
                 <div v-for="(i,index) in categoryData" :key="i.classifyId">
-                    <el-submenu :index="String(index)" v-if="i.children?.length !== 1 && i.children !== null">
-                        <div v-for="(t,tt) in i.children" :key="t.classifyId">
-                            <!-- 一级 -->
-                            <template slot="i.classifyName">
-                                <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
-                            </template>
-                            <!-- 二级 -->
-                            <!-- <el-menu-item-group title="分组2"> -->
-                            <el-menu-item index="1">
+                    <el-submenu index="0" v-if="i.children?.length !== 1 && i.children !== null">
+                        <template v-slot:title>
+                            <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
+                        </template>
+                        <div v-for="(t, tt) in i.children" :key="t.classifyId">
+                            <el-menu-item :index="`1-${tt}`">
                                 <router-link :to="{ name: t.urls }">{{t.classifyName}}</router-link>
                             </el-menu-item>
-                            <!-- </el-menu-item-group> -->
-                            <!-- 二级下拉 -->
-                            <!-- <el-submenu index="1-4">
+                        </div>
+                        <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
+                        <el-menu-item :index="` 1 - ${tt} `">
+                            <router-link :to="{ name: t.urls }">{{t.classifyName}}</router-link>
+                        </el-menu-item>
+                        <el-submenu index="1-4">
                                 <template slot="title">选项4</template>
                                 <el-menu-item index="1-4-1">选项1</el-menu-item>
-                            </el-submenu> -->
-                        </div>
+                            </el-submenu>
                     </el-submenu>
                     <el-menu-item index="1" v-else>
-                        <span :slot="i.classifyName">
-                            <router-link :to="{ name: i.urls }">
-                                {{i.classifyName}}
-                            </router-link>
+                        <span>
+                            <router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link>
                         </span>
                     </el-menu-item>
                 </div>
             </el-menu>
         </div>
-        <!-- 右边圆圈 -->
+        <div class="toList" @click="showCatalogue">
+            <div class="toListA"><i class="icon-liebiao"></i></div>
+        </div>
+    </div>
+</template> -->
+
+<template>
+    <div class="newMultilayerModal">
+        <div class="lefts" v-show="isShow">
+            <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" active-text-color="#a6e163ff"
+                :unique-opened="true">
+                <template v-for="(i, index) in categoryData">
+                    <el-submenu v-if="i.children && i.children.length > 1" :index="`${index}`" :key="i.classifyId">
+                        <template v-slot:title>
+                            <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
+                        </template>
+                        <div v-for="(t, tt) in i.children" :key="t.classifyId">
+                            <el-menu-item :index="`1 - ${tt}`">
+                                <!-- @click="handleSubcategoryClick(i.classifyId, t.classifyId)" -->
+                                <router-link :to="{ name: t.urls }">{{t.classifyName}}</router-link>
+                            </el-menu-item>
+                        </div>
+                    </el-submenu>
+                    <el-menu-item v-else :index="`${index}`" :key="i.classifyId">
+                        <router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link>
+                    </el-menu-item>
+                </template>
+            </el-menu>
+        </div>
+        <!-- Right circle -->
         <div class="toList" @click="showCatalogue">
             <div class="toListA"><i class="icon-liebiao"></i></div>
         </div>
@@ -44,7 +70,12 @@
     export default {
         name: 'newMultilayerModal',
         props: ['categoryData'],
-        data() { return { isShow: false } },
+        data() {
+            return {
+                isShow: false,
+                catedata: []
+            }
+        },
         mounted() {
             window.addEventListener('scroll', function () {
                 var modal = document.getElementsByClassName('newMultilayerModal')[0];
@@ -57,7 +88,8 @@
                     }
                 }
             })
-            console.log(this.categoryData, 'categoryData');
+            this.catedata = this.categoryData
+            console.log(this.catedata, 'categoryData');
         },
         methods: {
             showCatalogue() {
@@ -66,14 +98,26 @@
                     document.removeEventListener('click', this.closeModal);
                 } else {
                     this.isShow = true;
-                    setTimeout(() => {
-                        document.addEventListener('click', this.closeModal);
-                    }, 0);
+                    setTimeout(() => { document.addEventListener('click', this.closeModal) }, 0);
                 }
             },
             //折叠
             handleOpen(index) { console.log(index) },
-            handleClose(index) { console.log(index) }
+            handleClose(index) { console.log(index) },
+            //点击确定二级分类的item
+            handleSubcategoryClick(firstCategoryId, secondCategoryId) {
+                if (Array.isArray(this.catedata)) {
+                    this.catedata.forEach(v => {
+                        if (firstCategoryId === v.classifyId) {
+                            this.catedata.children.forEach(i => {
+                                if (secondCategoryId === i.classifyId) {
+                                    console.log(i)
+                                }
+                            })
+                        }
+                    })
+                }
+            }
         },
         beforeRouteLeave(to, from, next) {
             document.removeEventListener('click', this.closeModal);

@@ -14,8 +14,19 @@
     export default {
         name: 'Breadcrumb',
         props: ['urlData'],
-        data() { return { newUrlData: [] } },
-        mounted() { }
+        data() { return { currentNums: -1 } },
+        mounted() {
+            this.currentNums = this.$route.path.matched?.length
+        },
+        watch: {
+            "$route.path.matched.length": {
+                handler() {
+                    if (this.$route.path.matched?.length < this.currentNums) {
+                        this.urlData.pop()
+                    }
+                }
+            }
+        }
     }
 </script>
 

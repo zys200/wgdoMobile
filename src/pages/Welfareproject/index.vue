@@ -106,17 +106,17 @@
             addUrls(data) {
                 this.categoryData[1].children.forEach((v, index) => {
                     if (index === 0) {
-                        v.urls = 'rule'
+                        v.urls = 'greenleaf'
                     } else {
-                        v.urls = 'personage'
+                        v.urls = 'thegreenribbon'
                     }
                 })
                 this.categoryData = data
                 this.breadData[1].children.forEach((v, index) => {
                     if (index === 0) {
-                        v.urls = 'rule'
+                        v.urls = 'greenleaf'
                     } else {
-                        v.urls = 'personage'
+                        v.urls = 'thegreenribbon'
                     }
                 })
                 this.categoryData = data
