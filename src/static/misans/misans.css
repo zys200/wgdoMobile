@@ -1,0 +1,20 @@
+/* src/static/misans/misans.css */
+@font-face {
+    font-family: 'Misans-Regular';
+    src: url('./fonts/MiSans-Regular.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Misans-Bold';
+    src: url('./fonts/MiSans-Bold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Misans-Medium';
+    src: url('./fonts/MiSans-Medium.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Misans-Semibold';
+    src: url('./fonts/MiSans-Semibold.otf') format('truetype');
+}

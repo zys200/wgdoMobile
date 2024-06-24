@@ -2,5 +2,8 @@
     "headertext": {
         "catalogue": "目录",
         "login": "登录"
+    },
+    "second": {
+      "more": "查看更多"
     }
 }

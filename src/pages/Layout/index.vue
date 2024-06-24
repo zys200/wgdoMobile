@@ -48,7 +48,7 @@
         position: absolute;
         top: 0;
         width: 100%;
-        height: 95px;
+        height: 60px;
         z-index: 200;
         background: rgba(0, 0, 0, .5);
     }
