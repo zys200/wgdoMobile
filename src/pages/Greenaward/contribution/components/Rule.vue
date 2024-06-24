@@ -1,6 +1,10 @@
 <template>
     <div class="rule">
-        <div v-html="contributionData.contentDetails"></div>
+        <div style="font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0px;
+        line-height: 15.91px;
+        color: rgba(51, 51, 51, 1);padding:0px 22px;" v-html="contributionData.contentDetails"></div>
     </div>
 </template>
 

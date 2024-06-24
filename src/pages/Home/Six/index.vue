@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="boxb">
-            <div class="boxbTitle">{{$store.state.lang.homeTitle[9]?.classifyName}}</div>
+            <div class="boxbTitle">{{$store.state.lang.homeTitle[10]?.classifyName}}</div>
             <div class="boxbLine"></div>
             <div class="content">
                 <van-swipe class="myswipe" :autoplay="3000" :loop="true">
@@ -188,7 +188,6 @@
     .boxb .content .myswipe .myswipeItem img {
         display: block;
         width: 217.61px;
-        height: 33.56px;
         background-size: cover;
         background-position: center;
         object-fit: cover;
