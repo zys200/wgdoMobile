@@ -93,7 +93,8 @@
         display: grid;
         grid-template-columns: 1.2fr 3.0fr .7fr .8fr;
         align-items: center;
-        margin: 10px 0;
+        /* margin: 10px 0; */
+        padding-top: 18px;
         width: 100%;
         height: 35px;
     }
@@ -208,7 +209,7 @@
 
     /* catalogueDet */
     .box .catalogueDet {
-        margin-top: 95px;
+        margin-top: 60px;
         display: flex;
         flex-direction: column;
         width: 209px;

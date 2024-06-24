@@ -93,7 +93,7 @@
 
 <style scoped>
     .newMultilayerModal {
-        min-width: 179px;
+        width: 179px;
         position: fixed;
         z-index: 2000;
         top: 468px;
@@ -105,11 +105,11 @@
 
     /* lefts */
     .lefts {
-        min-width: 129px;
+        width: 129px;
     }
 
     .lefts .el-menu-vertical-demo {
-        min-width: 129px;
+        width: 129px;
         border-radius: 5px;
     }
 
