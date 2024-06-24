@@ -93,7 +93,7 @@
         display: grid;
         grid-template-columns: 1.2fr 3.0fr .7fr .8fr;
         align-items: center;
-        margin-top: 52px;
+        margin: 10px 0;
         width: 100%;
         height: 35px;
     }

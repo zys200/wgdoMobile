@@ -1,7 +1,7 @@
 <template>
     <div class="more">
         <a href="">
-            <span>查看更多</span>
+            <span>{{ $t('second.more') }}</span>
             <i class="iconfont icon-youjiantou"></i>
         </a>
     </div>
@@ -22,7 +22,6 @@
     .more a {
         display: flex;
         align-items: center;
-        position: relative;
         top: 0;
     }
 
@@ -37,11 +36,11 @@
     }
 
     .more a i {
-        position: absolute;
         top: -1.2px;
         left: 38px;
         width: 3px;
         height: 4px;
         color: rgba(166, 225, 99, 1);
+        line-height: 4px;
     }
 </style>

@@ -18,6 +18,7 @@ import {
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { vfmPlugin } from 'vue-final-modal'
+import '@/static/misans/misans.css'
 
 Vue.use(Swipe).use(SwipeItem).use(Tab).use(Tabs).use(Form).use(Field).use(Button)
 Vue.use(Breadcrumb).use(BreadcrumbItem).use(vfmPlugin).use(Checkbox).use(CheckboxGroup)
