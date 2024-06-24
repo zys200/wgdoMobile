@@ -1,41 +1,3 @@
-<!-- <template>
-    <div class="newMultilayerModal">
-        <div class="lefts" v-show="isShow">
-            <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" active-text-color="#a6e163ff"
-                :unique-opened="true">
-                <div v-for="(i,index) in categoryData" :key="i.classifyId">
-                    <el-submenu index="0" v-if="i.children?.length !== 1 && i.children !== null">
-                        <template v-slot:title>
-                            <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
-                        </template>
-                        <div v-for="(t, tt) in i.children" :key="t.classifyId">
-                            <el-menu-item :index="`1-${tt}`">
-                                <router-link :to="{ name: t.urls }">{{t.classifyName}}</router-link>
-                            </el-menu-item>
-                        </div>
-                        <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
-                        <el-menu-item :index="` 1 - ${tt} `">
-                            <router-link :to="{ name: t.urls }">{{t.classifyName}}</router-link>
-                        </el-menu-item>
-                        <el-submenu index="1-4">
-                                <template slot="title">选项4</template>
-                                <el-menu-item index="1-4-1">选项1</el-menu-item>
-                            </el-submenu>
-                    </el-submenu>
-                    <el-menu-item index="1" v-else>
-                        <span>
-                            <router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link>
-                        </span>
-                    </el-menu-item>
-                </div>
-            </el-menu>
-        </div>
-        <div class="toList" @click="showCatalogue">
-            <div class="toListA"><i class="icon-liebiao"></i></div>
-        </div>
-    </div>
-</template> -->
-
 <template>
     <div class="newMultilayerModal">
         <div class="lefts" v-show="isShow">
@@ -47,8 +9,8 @@
                             <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
                         </template>
                         <div v-for="(t, tt) in i.children" :key="t.classifyId">
-                            <el-menu-item :index="`1 - ${tt}`">
-                                <!-- @click="handleSubcategoryClick(i.classifyId, t.classifyId)" -->
+                            <el-menu-item :index="`1 - ${tt}`"
+                                @click="handleSubcategoryClick(i.classifyId, t.classifyId)">
                                 <router-link :to="{ name: t.urls }">{{t.classifyName}}</router-link>
                             </el-menu-item>
                         </div>
@@ -70,13 +32,12 @@
     export default {
         name: 'newMultilayerModal',
         props: ['categoryData'],
-        data() {
-            return {
-                isShow: false,
-                catedata: []
-            }
-        },
+        data() { return { isShow: false } },
         mounted() {
+            console.log(this.categoryData, 'sdf');
+            if (this.categoryData.length !== 0) {
+                sessionStorage.setItem('localcategorydata', JSON.stringify(this.categoryData))
+            }
             window.addEventListener('scroll', function () {
                 var modal = document.getElementsByClassName('newMultilayerModal')[0];
                 if (modal) {
@@ -88,8 +49,6 @@
                     }
                 }
             })
-            this.catedata = this.categoryData
-            console.log(this.catedata, 'categoryData');
         },
         methods: {
             showCatalogue() {
@@ -97,26 +56,31 @@
                     this.isShow = false;
                     document.removeEventListener('click', this.closeModal);
                 } else {
-                    this.isShow = true;
-                    setTimeout(() => { document.addEventListener('click', this.closeModal) }, 0);
+                    this.isShow = true
+                    setTimeout(() => { document.addEventListener('click', this.closeModal) }, 0)
                 }
             },
             //折叠
             handleOpen(index) { console.log(index) },
             handleClose(index) { console.log(index) },
-            //点击确定二级分类的item
+            //点击确定二级分类的res
             handleSubcategoryClick(firstCategoryId, secondCategoryId) {
-                if (Array.isArray(this.catedata)) {
-                    this.catedata.forEach(v => {
-                        if (firstCategoryId === v.classifyId) {
-                            this.catedata.children.forEach(i => {
-                                if (secondCategoryId === i.classifyId) {
-                                    console.log(i)
+                let localcategorydata = JSON.parse(sessionStorage.getItem('localcategorydata'))
+                localcategorydata.forEach(v => {
+                    if (firstCategoryId === v.classifyId) {
+                        v.children.forEach((i, ii) => {
+                            if (secondCategoryId === i.classifyId) {
+                                if (ii === 0) {
+                                    console.log('xh')
+                                    sessionStorage.setItem('ruleDatas', JSON.stringify(i))
+                                } else {
+                                    console.log('xhisdf')
+                                    sessionStorage.setItem('personageDatas', JSON.stringify(i))
                                 }
-                            })
-                        }
-                    })
-                }
+                            }
+                        })
+                    }
+                })
             }
         },
         beforeRouteLeave(to, from, next) {
@@ -129,7 +93,7 @@
 
 <style scoped>
     .newMultilayerModal {
-        width: 179px;
+        min-width: 179px;
         position: fixed;
         z-index: 2000;
         top: 468px;
@@ -141,11 +105,11 @@
 
     /* lefts */
     .lefts {
-        width: 129px;
+        min-width: 129px;
     }
 
     .lefts .el-menu-vertical-demo {
-        width: 129px;
+        min-width: 129px;
         border-radius: 5px;
     }
 

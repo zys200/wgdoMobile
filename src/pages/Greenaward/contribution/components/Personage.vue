@@ -10,13 +10,15 @@
     export default {
         name: 'Contribution',
         data() {
-            let contributionData = []
+            let contributionData = {}
             return {
-                contributionData
+                contributionData,
+                personageDatas: null
             }
         },
         mounted() {
             this.getContributionData()
+            this.personageDatas = JSON.parse(sessionStorage.getItem('personageDatas'))
         },
         methods: {
             getContributionData(p = this.$store.state.lang.version) {
@@ -26,10 +28,15 @@
             }
         },
         watch: {
-            '$store.state.lang.langs': {
-                handler() {
-                    this.getContributionData()
-                }
+            '$store.state.lang.langs': { handler() { this.getContributionData() } },
+            'personageDatas': {
+                handler(newVal) {
+                    console.log(newVal);
+                    this.contributionData = newVal
+                    console.log('personageDatas 变化了：');
+                    // this.getContributionData(this.$store.state.lang.version) // 手动获取最新数据
+                },
+                deep: true
             }
         }
     }
