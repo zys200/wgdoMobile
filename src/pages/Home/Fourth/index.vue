@@ -11,7 +11,7 @@
             <div class="swipe">
                 <van-swipe class="my-swipe" :autoplay="3000">
                     <van-swipe-item v-for="item in fourSwipeData" :key="item.index">
-                        <img :src=" 'http://106.3.97.14:9002' + item.cover">
+                        <img :src=" 'http://106.3.97.14:9005' + item.cover">
                         <div class="titles">{{item.title}}</div>
                         <div class="dsc">{{item.intro}}</div>
                         <div class="more">

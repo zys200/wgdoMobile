@@ -8,11 +8,11 @@
         </div>
         <div class="boxb">
             <div class="boxbTop">
-                <img :src=" 'http://106.3.97.14:9002' + leftImg.cover" alt="">
+                <img :src=" 'http://106.3.97.14:9005' + leftImg.cover" alt="">
             </div>
             <div class="picList">
                 <div class="picListItem" v-for="(item,index) in rightImgLists" :key="index">
-                    <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
+                    <img :src=" 'http://106.3.97.14:9005' + item.cover" alt="">
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="boxcContent">
                 <div class="boxcContentItem" v-for="item in getPrice" :key="item.hpId">
                     <div class="boxcContentItemTop">
-                        <img :src=" 'http://106.3.97.14:9002' + item.cover">
+                        <img :src=" 'http://106.3.97.14:9005' + item.cover">
                     </div>
                     <div class="boxcContentItemName">
                         {{item.title}}
@@ -39,7 +39,7 @@
             <div class="boxdContent">
                 <div class="boxdContentItem" v-for="item in awardWinningOrganization" :key="item.hpId">
                     <div class="boxdConetentItemTop">
-                        <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
+                        <img :src=" 'http://106.3.97.14:9005' + item.cover" alt="">
                     </div>
                     <div class="boxdConetentItemDsc">{{item.title}}</div>
                 </div>

@@ -2,7 +2,7 @@
     <div class="logopic">
         <div v-for="item in logoPicData" :key="item.hpId">
             <!-- <a href=""> -->
-            <img :src=" 'http://106.3.97.14:9002' + item.cover" alt="">
+            <img :src=" 'http://106.3.97.14:9005' + item.cover" alt="">
             <!-- </a> -->
         </div>
     </div>

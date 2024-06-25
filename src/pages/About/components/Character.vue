@@ -3,7 +3,7 @@
         <!-- <a href=""> -->
         <div class="characterItem" v-for="i in aboutDatas" :key="i.aboutusId">
             <div class="pic">
-                <img :src="'http://106.3.97.14:9002/'  + i.figureHeadportrait" alt="">
+                <img :src="'http://106.3.97.14:9005/'  + i.figureHeadportrait" alt="">
             </div>
             <div class="right">
                 <div class="title">{{i.figureName}}</div>

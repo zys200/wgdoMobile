@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 const requestInstacne = axios.create({
-    // baseURL: 'http://106.3.97.14:9002/prod-api',
-    baseURL: 'http://www.wgdo.net/prod-api',
-    timeout: 8000,
+    baseURL: 'http://106.3.97.14:9005/prod-api',
+    // baseURL: 'http://www.wgdo.net/prod-api',
+    timeout: 20000,
     headers: {
         'Content-Type': 'application/json'
     }

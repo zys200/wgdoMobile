@@ -2,7 +2,7 @@
     <div class="box">
         <van-swipe class="my-swipe" :autoplay="3000" :style="swipeStyle" ref="swipe">
             <van-swipe-item v-for="item in swipeData" :key="item.hpId">
-                <img :src=" 'http://106.3.97.14:9002' + item.cover ">
+                <img :src=" 'http://106.3.97.14:9005' + item.cover ">
             </van-swipe-item>
         </van-swipe>
     </div>

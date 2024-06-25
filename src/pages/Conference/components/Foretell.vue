@@ -2,7 +2,7 @@
     <div class="foretell">
         <div class="foretellItem" v-for="i in conferenceDatas" :key="i.conferenceId">
             <div class="topPic">
-                <img :src="'http://106.3.97.14:9002/' + i.cover " alt="">
+                <img :src="'http://106.3.97.14:9005/' + i.cover " alt="">
             </div>
             <div class="bottoms">
                 <div class="title">{{i.title}}</div>

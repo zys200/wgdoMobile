@@ -2,7 +2,7 @@
     <div class="greendesigntraining">
         <div class="greendesigntrainingItem" v-for="i in organizationDatas" :key="i.greeninstituteId">
             <div class="pic">
-                <img :src="'http://106.3.97.14:9002/' + i.cover" alt="">
+                <img :src="'http://106.3.97.14:9005/' + i.cover" alt="">
                 <div class="bottoms">
                     <div class="title">{{ i.title }}</div>
                     <div class="dsc">{{ i.intro }}</div>
