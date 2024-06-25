@@ -34,7 +34,7 @@
         props: ['categoryData'],
         data() { return { isShow: false } },
         mounted() {
-            console.log(this.categoryData, 'sdf');
+            // console.log(this.categoryData, 'sdf');
             if (this.categoryData.length !== 0) {
                 sessionStorage.setItem('localcategorydata', JSON.stringify(this.categoryData))
             }

@@ -267,32 +267,47 @@ const routes = [
                         component: () => import('@/pages/GreenResearchInstitute/components/Policy.vue')
                     }
                 ]
-            }
+            },
+            {
+                path: '/details',
+                name: 'Details',
+                component: () => import('@/components/Details.vue'),
+                meta: {
+                    isAuth: false,
+                    toTop: true
+                }
+            },
+            {
+                path: '/det',
+                name: 'Det',
+                component: () => import('@/components/Det.vue'),
+                meta: {
+                    isAuth: false,
+                    toTop: true
+                }
+            },
+            {
+                path: '/greendet',
+                name: 'Greendet',
+                component: () => import('@/components/Greendet.vue'),
+                meta: {
+                    isAuth: false,
+                    toTop: true
+                }
+            },
+            // {
+            //     path: '/sedmore',
+            //     name: 'SedMore',
+            //     component: () => import('@/pages/Home/Second/components/MoreDet.vue'),
+            //     meta: { toTop: true }
+            // }
         ]
     },
     {
         path: '/login',
         name: 'Login',
         component: () => import('@/pages/Login/index.vue')
-    },
-    {
-        path: '/details',
-        name: 'Details',
-        component: () => import('@/components/Details.vue'),
-        meta: {
-            isAuth: false,
-            toTop: true
-        }
-    },
-    {
-        path: '/det',
-        name: 'Det',
-        component: () => import('@/components/Det.vue'),
-        meta: {
-            isAuth: false,
-            toTop: true
-        }
-    },
+    }
 ]
 
 const router = new vueRouter({

@@ -35,9 +35,9 @@
             '$store.state.lang.langs': { handler() { this.getContributionData() } },
             'personageDatas': {
                 handler(newVal) {
-                    console.log(newVal);
-                    this.contributionData = newVal
-                    console.log('personageDatas 变化了：');
+                    this.$set(this, 'contributionData', newVal)
+                    console.log(newVal, 'hshdh');
+                    console.log(this.personageDatas, 'curr');
                     // this.getContributionData(this.$store.state.lang.version) // 手动获取最新数据
                 },
                 deep: true

@@ -1,6 +1,5 @@
 <template>
     <div class="box">
-        <Headers />
         <div class="content">
             <Breadcrumb class="mianbai" :urlData="urlDatas" />
             <div class="cont" v-for="(item,index) in detData" :key="item.index">
@@ -12,22 +11,17 @@
                 <div class="dsc" v-html="item.contentDetails"></div>
             </div>
         </div>
-        <div class="footer">
-            <Footers />
-        </div>
     </div>
 </template>
 
 <script>
-    // import Headers from '@/components/Header'
-    // import Footers from '@/components/Footer/index.vue'
     import Breadcrumb from '@/components/Breadcrumb.vue'
-    // import { getContentList } from '@/api/requests.js'
+    import { getHomeData } from '@/api/request.js'
     import funs from '@/utils/index.js'
 
     export default {
         name: 'Details',
-        components: { Headers, Breadcrumb, Footers },
+        components: { Breadcrumb },
         data() {
             let detData = []
             let urlDatas = []
@@ -88,14 +82,14 @@
                 let that = this
                 switch (type || that.types) {
                     case 'fourAll':
-                        getContentList({ "moduleType": "5", "status": "1", version: p }).then(res => {
+                        getHomeData({ "moduleType": "5", "status": "1", version: p }).then(res => {
                             if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                                 that.detData = res.data.rows
                             }
                         })
                         return;
                     case 'fourList':
-                        getContentList({ "moduleType": "5", "status": "1", version: p, currentIndex }).then(res => {
+                        getHomeData({ "moduleType": "5", "status": "1", version: p, currentIndex }).then(res => {
                             if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                                 res.data.rows.forEach((v, index) => {
                                     if (index === currentIndex) {
@@ -107,7 +101,7 @@
                         })
                         return;
                     case 'fiveAll':
-                        getContentList({ "moduleType": "6", "status": "1", version: p }).then(res => {
+                        getHomeData({ "moduleType": "5", "status": "1", version: p }).then(res => {
                             if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                                 let [leftImg, ...rightImgLists] = res.data.rows
                                 that.detData = []
@@ -116,7 +110,7 @@
                         })
                         return;
                     case 'fiveList':
-                        getContentList({ "moduleType": "6", "status": "1", version: p, currentIndex }).then(res => {
+                        getHomeData({ "moduleType": "6", "status": "1", version: p, currentIndex }).then(res => {
                             if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                                 let [leftImg, ...rightImgLists] = res.data.rows
                                 that.detData = []
@@ -208,11 +202,11 @@
 <style scoped>
     .box {
         width: 100vw;
+        height: auto;
     }
 
     .content {
         width: 100vw;
-        padding: 30px 16vw 120px;
         background: rgba(242, 241, 221, 1);
     }
 
@@ -220,27 +214,29 @@
         width: 100%;
     }
 
+    .cont {
+        padding: 7px 16px 12px;
+    }
+
     .cont .title {
-        margin-top: 30px;
-        height: 24px;
-        font-size: 24px;
+        /* height: 24px; */
+        font-size: 16px;
         font-weight: 700;
         letter-spacing: 0.76px;
         line-height: 20.21px;
         color: rgba(51, 51, 51, 1);
-        text-align: left;
-        vertical-align: top;
+        text-align: center;
     }
 
     .cont .lines {
-        margin-top: 20px;
-        margin-bottom: 30px;
+        margin-top: 12px;
+        margin-bottom: 20px;
     }
 
     .cont .lines .line {
         width: 100%;
         height: 0px;
-        border: 1px solid rgba(161, 161, 161, 1);
+        border: .6px solid rgba(161, 161, 161, 1);
     }
 
     .cont .lines .line:first-child {

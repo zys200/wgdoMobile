@@ -8,11 +8,13 @@
         </div>
         <div class="boxb">
             <div class="boxbTop">
-                <img :src=" 'http://www.wgdo.net' + leftImg.cover" alt="">
+                <router-link :to="detailsRoute">
+                    <img :src=" 'http://www.wgdo.net' + leftImg.cover" alt="">
+                </router-link>
             </div>
             <div class="picList">
                 <div class="picListItem" v-for="(item,index) in rightImgLists" :key="index">
-                    <img :src=" 'http://www.wgdo.net' + item.cover" alt="">
+                    <img :src=" 'http://www.wgdo.net' + item.cover" alt="" @click="getIndex(index)">
                 </div>
             </div>
         </div>
@@ -90,6 +92,33 @@
                 getHomeData({ "moduleType": "8", "status": "1", version: p }).then(res => {
                     this.awardWinningOrganization = res.data.rows
                 })
+            },
+            getIndex(i) {
+                this.$router.push({
+                    path: '/details',
+                    name: 'Details',
+                    params: {
+                        datas: this.rightImgLists,
+                        fromPath: this.$route.path,
+                        fromName: this.$route.name,
+                        types: 'fiveList',
+                        orders: Number(i)
+                    }
+                })
+            }
+        },
+        computed: {
+            detailsRoute() {
+                return {
+                    path: '/details',
+                    name: 'Details',
+                    params: {
+                        datas: this.leftImg,
+                        fromPath: this.$route.path,
+                        fromName: this.$route.name,
+                        types: 'fiveAll'
+                    }
+                }
             }
         },
         watch: {

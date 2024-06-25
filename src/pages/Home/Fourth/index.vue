@@ -4,17 +4,17 @@
             <div class="title">World Green Design Park</div>
             <div class="titletwo">
                 <span>{{$store.state.lang.homeTitle[5]?.classifyName}}</span>
-                <a href="">
+                <router-link :to="detailsRouteALL">
                     <More />
-                </a>
+                </router-link>
             </div>
             <div class="swipe">
                 <van-swipe class="my-swipe" :autoplay="3000">
-                    <van-swipe-item v-for="item in fourSwipeData" :key="item.index">
+                    <van-swipe-item v-for="(item,index) in fourSwipeData" :key="item.index">
                         <img :src=" 'http://www.wgdo.net' + item.cover">
                         <div class="titles">{{item.title}}</div>
                         <div class="dsc">{{item.intro}}</div>
-                        <div class="more">
+                        <div class="more" @click="detailsRoute(index)">
                             <LearnMore />
                         </div>
                     </van-swipe-item>
@@ -34,9 +34,7 @@
         components: { More, LearnMore },
         data() {
             let fourSwipeData = []
-            return {
-                fourSwipeData
-            }
+            return { fourSwipeData }
         },
         mounted() {
             this.getFourDatas()
@@ -48,6 +46,33 @@
                         this.fourSwipeData = res.data.rows
                     }
                 })
+            },
+            detailsRoute(i) {
+                this.$router.push({
+                    path: '/details',
+                    name: 'Details',
+                    params: {
+                        datas: this.topDatas,
+                        fromPath: this.$route.path,
+                        fromName: this.$route.name,
+                        types: 'fourList',
+                        orders: Number(i)
+                    }
+                })
+            }
+        },
+        computed: {
+            detailsRouteALL() {
+                return {
+                    path: '/details',
+                    name: 'Details',
+                    params: {
+                        datas: this.fourSwipeData,
+                        fromPath: this.$route.path,
+                        fromName: this.$route.name,
+                        types: 'fourAll',
+                    }
+                }
             }
         },
         watch: {
