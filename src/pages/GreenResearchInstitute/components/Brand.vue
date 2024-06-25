@@ -53,7 +53,7 @@
     .brandItem span {
         width: 335px;
         font-size: 12px;
-        font-weight: 600;
+        font-weight: 400;
         letter-spacing: 0px;
         line-height: 15.91px;
         color: rgba(51, 51, 51, 1);

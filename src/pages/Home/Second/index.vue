@@ -14,7 +14,7 @@
                 <div class="swipes">
                     <van-swipe class="myswipe" :autoplay="3000">
                         <van-swipe-item class="swipeItem" v-for="item in sedSwipeData" :key="item.hpId">
-                            <div class="swipeImgs"><img :src="'http://106.3.97.14:9005' + item.cover" alt=""></div>
+                            <div class="swipeImgs"><img :src="'http://www.wgdo.net' + item.cover" alt=""></div>
                             <div class="line"></div>
                             <div class="swipeTitle">{{ item.title }}</div>
                             <div class="swipeDsc">{{ item.intro }} </div>

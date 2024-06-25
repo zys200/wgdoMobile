@@ -2,7 +2,7 @@
     <div class="video">
         <div class="videoItem" v-for="i in mediacenterDatas" :key="i.mediacenterId">
             <div class="topPic">
-                <img :src="'http://106.3.97.14:9005/' + i.cover " alt="">
+                <img :src="'http://www.wgdo.net/' + i.cover " alt="">
             </div>
             <div class="bottoms">
                 <div class="title">{{i.title}}</div>

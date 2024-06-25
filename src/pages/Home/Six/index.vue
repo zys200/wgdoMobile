@@ -16,7 +16,7 @@
                 <van-swipe class="myswipe" :autoplay="3000" :loop="true">
                     <van-swipe-item class="myswipeItem" v-for="item in sixTwo" :key="item.hpId"
                         style="width: 217.61px; height: 151px;">
-                        <img :src=" 'http://106.3.97.14:9005' + item.cover" alt="">
+                        <img :src=" 'http://www.wgdo.net' + item.cover" alt="">
                         <div class="myswipeItemDsc">{{item.title}}</div>
                     </van-swipe-item>
                 </van-swipe>

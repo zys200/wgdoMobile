@@ -2,7 +2,7 @@
     <div class="organization">
         <div class="organizationItem" v-for="i in organizationDatas" :key="i.greeninstituteId">
             <div class="pic">
-                <img :src=" 'http://106.3.97.14:9005/' + i.cover " alt="">
+                <img :src=" 'http://www.wgdo.net/' + i.cover " alt="">
             </div>
             <div class="bottoms">
                 <div class="title">{{i.title}}</div>

@@ -2,7 +2,7 @@
     <div class="designreport">
         <div class="designreportContent">
             <div class="designreportItem" v-for="i in designreportData" :key="i.academicId">
-                <img :src=" 'http://106.3.97.14:9005/' + i.cover" alt="">
+                <img :src=" 'http://www.wgdo.net/' + i.cover" alt="">
                 <div class="dsc">
                     <span>{{i.title}}</span>
                 </div>

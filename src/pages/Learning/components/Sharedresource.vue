@@ -44,7 +44,7 @@ export default {
             this.designreportData.forEach(v => {
                 // let urls
                 if (i === v.academicId) {
-                    let url = 'http://106.3.97.14:9005/prod-api' + v.gxfileList[0].url
+                    let url = 'http://www.wgdo.net/prod-api' + v.gxfileList[0].url
                     // console.log(urls);
                     let link = document.createElement('a');
                     link.href = url;
