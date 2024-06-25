@@ -3,10 +3,10 @@
         <div class="container">
             <div class="boxa">
                 <div class="title">
-                    <TopTitle title="会议活动" />
+                    <TopTitle :title="pageTitle" />
                 </div>
                 <div class="boxaDsc">
-                    作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用
+                    {{ $t('third.dsc') }}
                 </div>
             </div>
             <div class="boxb">
@@ -90,7 +90,8 @@ export default {
             swipeStyle,
             thirdswipeData,
             thirdBottomData,
-            time
+            time,
+            pageTitle: '会议活动'
         }
     },
     mounted() {
@@ -129,6 +130,7 @@ export default {
         '$store.state.lang.isEn': {
             handler() {
                 this.getThirdDatas(this.$store.state.lang.version)
+                this.pageTitle = this.$store.state.lang.isEn === 'en' ? 'Conferenc Activity' : '会议活动';
             }
         }
     }
@@ -161,8 +163,7 @@ export default {
 .container .boxa .boxaDsc {
     margin-top: 6px;
     max-width: 297px;
-    height: 27px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
     letter-spacing: 1px;
     line-height: 13.26px;
@@ -289,7 +290,7 @@ export default {
 
 .boxc .boxcContent .boxcContentItem .right {
     padding: 0 12px;
-    width: 220px;
+    width: 75%;
     border-bottom: 1px dashed rgba(182, 182, 182, 1);
 }
 

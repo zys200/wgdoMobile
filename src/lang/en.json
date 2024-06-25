@@ -1,9 +1,36 @@
 {
-    "headertext": {
-        "catalogue": "Catalogue",
-        "login": "Login"
-    },
-    "second": {
-      "more": "More"
-    }
+  "headertext": {
+    "catalogue": "Catalogue",
+    "login": "Login",
+    "Aboutus": "About us",
+    "Conferenceactivity": "Conferenc Activity",
+    "Mediacenter": "Media center",
+    "Academicresearch": "Academic research",
+    "Publicwelfareproject": "Public welfare project",
+    "InternationalGreenAward": "International Green Award",
+    "WGDOGreenResearchInstitute": "WGDO Green Research Institute",
+    "Greenleaflabel": "Green leaf label"
+  },
+  "second": {
+    "more": "More"
+  },
+  "third": {
+    "dsc": "As a bridge between users and products, social sharing plays an important role in the development process of products. The timing of sharing is analyzed at different times",
+    "title": "会议活动"
+  },
+  "four": {
+    "greendesign": "World Green Design Park",
+    "tomore": "Learn more"
+  },
+  "five": {
+    "dsc": "As a bridge between users and products, social sharing plays an important role in the development process of products. The timing of sharing is analyzed at different times",
+    "seehistory": "View awards over the years"
+  },
+  "six": {
+    "dsc": "As a bridge between users and products, social sharing plays an important role in the development process of products. The timing of sharing is analyzed at different times"
+  },
+  "footer": {
+    "dizhi": "Room 1601, Xingchuang Building, Daxing District, Beijing",
+    "jing": "Beijing ICP for 13011399-1"
+  }
 }

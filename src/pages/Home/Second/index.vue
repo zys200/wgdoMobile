@@ -24,10 +24,13 @@
             </div>
             <div class="greenDes">
                 <div class="top">
-                    <div class="gimg">
-                        <img src="@/static/imgs/greenDes.png" alt="">
+                    <div style="display: flex;">
+                        <div class="gimg">
+                            <img src="@/static/imgs/greenDes.png" alt="">
+                        </div>
+                        <div class="gtitle">{{ $store.state.lang.homeTitle[2]?.classifyName }}</div>
+
                     </div>
-                    <div class="gtitle">{{ $store.state.lang.homeTitle[2]?.classifyName }}</div>
                     <div class="gmore">
                         <a href="">
                             <More />
@@ -119,6 +122,7 @@ export default {
     margin-top: 4px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 22px;
 }
 
@@ -138,7 +142,6 @@ export default {
 .container .containerTop .swipes {
     margin-top: 20px;
     width: 100%;
-    height: 280px;
 }
 
 .container .containerTop .swipes .myswipe {
@@ -153,7 +156,10 @@ export default {
 
 .container .containerTop .swipes .myswipe .swipeItem .swipeImgs img {
     display: block;
-    width: 335px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-size: cover;
 }
 
 .container .containerTop .swipes .myswipe .swipeItem .line {
@@ -220,6 +226,7 @@ export default {
     align-items: center;
     width: 335px;
     height: 20px;
+    justify-content: space-between;
 }
 
 .container .greenDes .top .gimg {
