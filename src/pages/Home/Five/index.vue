@@ -20,7 +20,7 @@
         </div>
         <div class="boxc">
             <div class="boxcTitle">
-                <TopTitle :title="pageTitle" />
+                <TopTitle :title="$t('five.huojiangmingdan')" />
             </div>
             <div class="boxcDsc">{{ $store.state.lang.homeTitle[7]?.classifyName }}</div>
             <div class="shortLine"></div>
