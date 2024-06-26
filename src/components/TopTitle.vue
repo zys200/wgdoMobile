@@ -53,6 +53,7 @@ export default {
     font-weight: 700;
     letter-spacing: 1px;
     color: rgba(51, 51, 51, 1);
+    /*color: rgba(255, 255, 255, 1);*/
     position: relative;
     z-index: 999;
 }

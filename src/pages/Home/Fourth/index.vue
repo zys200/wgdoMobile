@@ -112,6 +112,7 @@
     .box .container .titletwo {
         display: flex;
         align-items: center;
+        justify-content: space-between;
     }
 
     .box .container .titletwo span {

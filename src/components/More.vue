@@ -15,8 +15,9 @@
 
 <style scoped>
     .more {
-        width: 50px;
+        /*width: 50px;*/
         height: 14px;
+        margin-right: 8px;
     }
 
     .more a {

@@ -173,6 +173,7 @@
         display: flex;
         align-items: center;
         height: 22px;
+        justify-content: space-between;
     }
 
     .container .containerTop .titletwo span {
@@ -191,12 +192,10 @@
     .container .containerTop .swipes {
         margin-top: 20px;
         width: 100%;
-        height: 280px;
     }
 
     .container .containerTop .swipes .myswipe {
         width: 100%;
-        height: 100%;
     }
 
     .container .containerTop .swipes .myswipe .swipeItem {
@@ -206,8 +205,8 @@
 
     .container .containerTop .swipes .myswipe .swipeItem .swipeImgs img {
         display: block;
-        width: 335px;
-        max-height: 183px !important;
+        width: 100%;
+        height: 100%;
     }
 
     .container .containerTop .swipes .myswipe .swipeItem .line {
@@ -274,6 +273,7 @@
         align-items: center;
         width: 335px;
         height: 20px;
+        justify-content: space-between;
     }
 
     .container .greenDes .top .gimg {

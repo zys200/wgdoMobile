@@ -210,14 +210,12 @@ export default {
 
 /* catalogueDet */
 .box .catalogueDet {
-    margin-top: 22px;
+    margin-top: -24px;
     margin-left: -14px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 139px;
-    height: 45%;
-    background: rgba(255, 255, 255, 1);
     border-radius: 5px;
     scale: 0.8;
 }
@@ -230,7 +228,7 @@ export default {
 /* 最外层背景 */
 .box :deep(.vfm__overlay) {
     border-radius: 5px;
-    background: rgba(255, 255, 255, 1);
+    background:transparent;
 }
 
 /* 整体高度 */
@@ -245,6 +243,8 @@ export default {
     text-align: center;
     color: rgba(150, 150, 150, 1);
     border-bottom: 1px solid rgba(219, 219, 219, 1);
+    background: rgba(255, 255, 255, 1);
+
     justify-content: center;
     align-items: center;
     padding: 15px 0;

@@ -33,5 +33,10 @@
   "footer": {
     "dizhi": "Room 1601, Xingchuang Building, Daxing District, Beijing",
     "jing": "Beijing ICP for 13011399-1"
+  },
+  "login": {
+    "welcome": "Welcome to the World Green Design Organization",
+    "forget":"Forgot password",
+    "sign": "Sign in"
   }
 }

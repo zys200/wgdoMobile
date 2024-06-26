@@ -18,7 +18,7 @@
                     <div :class="$store.state.lang.isEn === 'en' ? 'boxctitleEn' : 'boxctitle'">
                         {{ $store.state.lang.homeTitle[4]?.classifyName }}</div>
                     <a href="">
-                        <More />
+                        <More style="margin-right: 6px;"/>
                     </a>
                 </div>
                 <div class="boxcContent">
