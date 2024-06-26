@@ -1,5 +1,6 @@
 <template>
     <div class="epidemic">
+        <div>epidemic</div>
         <Single :singles="wflfareData" />
         <router-view />
     </div>

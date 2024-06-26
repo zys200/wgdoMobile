@@ -1,5 +1,6 @@
 <template>
     <div class="donate">
+        <div>donate</div>
         <Single :singles="wflfareData" v-if="this.$route.path === '/welfareproject/thegreenribbon/donate' " />
         <router-view></router-view>
     </div>

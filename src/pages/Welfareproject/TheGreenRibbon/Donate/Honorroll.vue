@@ -1,5 +1,6 @@
 <template>
     <div class="honorroll">
+        <div>honorroll</div>
         <VisitTitle :visitTitle="wflfareData" />
         <div class="pic" v-html="wflfareData.contentDetails"></div>
     </div>

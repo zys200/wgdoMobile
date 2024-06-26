@@ -22,7 +22,7 @@
         methods: {
             getThegreenribbonData(p = this.$store.state.lang.version) {
                 getWelfareproject({ 'moduleType': '2', "status": '1', 'version': p }).then(res => {
-                    console.log(res.data.rows);
+                    console.log(res.data.rows), 'lvye';
                 })
             }
         }

@@ -2,21 +2,23 @@
     <div class="newMultilayerModal">
         <div class="lefts" v-show="isShow">
             <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" active-text-color="#a6e163ff"
-                :unique-opened="true">
+                :unique-opened="true" :router="true">
                 <template v-for="(i, index) in categoryData">
-                    <el-submenu v-if="i.children && i.children.length > 1" :index="`${index}`" :key="i.classifyId">
+                    <el-submenu v-if="i.children && i.children.length > 1" :index="i.urls" :key="i.classifyId">
                         <template v-slot:title>
-                            <span><router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link></span>
+                            <!-- <router-link :to="{ name: i.urls }"></router-link> -->
+                            <span>{{i.classifyName}}</span>
                         </template>
-                        <div v-for="(t, tt) in i.children" :key="t.classifyId">
-                            <el-menu-item :index="`1 - ${tt}`"
+                        <el-menu-item-group>
+                            <el-menu-item v-for="(t, tt) in i.children" :key="t.classifyId"
                                 @click="handleSubcategoryClick(i.classifyId, t.classifyId)">
-                                <router-link :to="{ name: t.urls }">{{t.classifyName}}</router-link>
+                                {{t.classifyName}}
                             </el-menu-item>
-                        </div>
+                        </el-menu-item-group>
                     </el-submenu>
-                    <el-menu-item v-else :index="`${index}`" :key="i.classifyId">
-                        <router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link>
+                    <el-menu-item v-else :index="i.urls" :key="i.classifyId">
+                        <!-- <router-link :to="{ name: i.urls }"></router-link> -->
+                        {{i.classifyName}}
                     </el-menu-item>
                 </template>
             </el-menu>
@@ -66,15 +68,9 @@
                 let localcategorydata = JSON.parse(sessionStorage.getItem('localcategorydata'))
                 localcategorydata.forEach(v => {
                     if (firstCategoryId === v.classifyId) {
-                        v.children.forEach((i, ii) => {
-                            if (secondCategoryId === i.classifyId) {
-                                if (ii === 0) {
-                                    console.log('xh')
-                                    sessionStorage.setItem('ruleDatas', JSON.stringify(i))
-                                } else {
-                                    console.log('xhisdf')
-                                    sessionStorage.setItem('personageDatas', JSON.stringify(i))
-                                }
+                        v.children.forEach((k, kk) => {
+                            if (secondCategoryId === k.classifyId) {
+                                this.$router.push({ name: k.urls });
                             }
                         })
                     }
@@ -82,8 +78,8 @@
             }
         },
         beforeRouteLeave(to, from, next) {
-            document.removeEventListener('click', this.closeModal);
-            next();
+            document.removeEventListener('click', this.closeModal)
+            next()
         },
         watch: { '$route.path': { handler() { this.isShow = false } } }
     }
@@ -114,7 +110,7 @@
 
     /* lefts */
     .lefts {
-        width: 129px;
+        width: 129px
     }
 
     .lefts .el-menu-vertical-demo {

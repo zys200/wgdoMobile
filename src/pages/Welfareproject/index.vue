@@ -57,9 +57,8 @@
             getMediaCenterData(par) {
                 getTitle({ 'parentId': par }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                        console.log(res.data.rows, '公益');
+                        // console.log(res.data.rows, '公益');
                         this.urlData = []
-                        //res.data
                         this.titleData = res.data.rows
                         this.title = this.titleData[0].classifyName
                         this.categoryData = this.titleData[0].children
@@ -97,12 +96,12 @@
                 processEntry(data1[gindex], baseAddress);
                 return result;
             },
-            // childrenUrl() {
-            //     this.categoryData[1].children.forEach((v, index) => {
-            //         let Mapping = ['epidemic', 'submit', 'lists', 'donate', 'news', 'propagate', 'cooperation', 'connection']
-            //         v.urls = Mapping[index]
-            //     })
-            // },
+            childrenUrl() {
+                this.categoryData[1].children.forEach((v, index) => {
+                    let Mapping = ['epidemic', 'submit', 'lists', 'donate', 'news', 'propagate', 'cooperation', 'connection']
+                    v.urls = Mapping[index]
+                })
+            },
             addUrls(data) {
                 this.categoryData[1].children.forEach((v, index) => {
                     if (index === 0) {
@@ -120,6 +119,7 @@
                     }
                 })
                 this.categoryData = data
+                this.childrenUrl()
             },
             gindex(gindex) { this.gindexs = gindex },
             gindexChild(ggindex) { this.ggindex = ggindex }

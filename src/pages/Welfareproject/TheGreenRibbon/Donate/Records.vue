@@ -1,5 +1,6 @@
 <template>
     <div class="records">
+        <div>records</div>
         <div class="title">{{wflfareData.title}}</div>
         <div class="dsc">
             <span>浏览次数：{{wflfareData.clickVolume}} </span>

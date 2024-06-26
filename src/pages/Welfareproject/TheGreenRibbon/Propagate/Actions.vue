@@ -1,5 +1,6 @@
 <template>
     <div class="actions">
+        <div>actions</div>
         <!-- <VisitTitle :visitTitle="wflfareData" /> -->
         <h2>无数据</h2>
     </div>
@@ -12,16 +13,8 @@
     export default {
         name: 'Actions',
         components: { VisitTitle },
-        data() {
-            let wflfareData = []
-            return {
-                wflfareData
-            }
-        },
-        mounted() {
-            this.getwflfareDataData()
-            console.log('ok');
-        },
+        data() { return { wflfareData: [] } },
+        mounted() { this.getwflfareDataData() },
         methods: {
             getwflfareDataData(p = this.$store.state.lang.version) {
                 getWelfareproject({ 'moduleType': '5', 'status': '1', 'version': p }).then(res => {

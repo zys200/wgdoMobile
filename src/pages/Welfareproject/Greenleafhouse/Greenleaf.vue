@@ -1,5 +1,6 @@
 <template>
     <div class="greenleaf">
+        <div>greenleaf</div>
         <div v-for="i in welfareproject" :key="i.benefitId">
             <span style="font-size: 12px;
             font-weight: 400;
@@ -13,56 +14,56 @@
 </template>
 
 <script>
-import { getWelfareproject } from '@/api/request.js'
+    import { getWelfareproject } from '@/api/request.js'
 
-export default {
-    name: 'Greenleaf',
-    data() {
-        let welfareproject = []
-        return {
-            welfareproject
-        }
-    },
-    mounted() {
-        this.getWelfareprojectData()
-        this.addImageStyles()
-    },
-    methods: {
-        getWelfareprojectData(p = this.$store.state.lang.version) {
-            getWelfareproject({ 'moduleType': '1', 'status': '1', 'version': p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.welfareproject = res.data.rows
-                }
-            })
+    export default {
+        name: 'Greenleaf',
+        data() {
+            let welfareproject = []
+            return {
+                welfareproject
+            }
         },
-        addImageStyles() {
-            const style = document.createElement('style');
-            style.type = 'text/css';
-            style.innerHTML = `
+        mounted() {
+            this.getWelfareprojectData()
+            this.addImageStyles()
+        },
+        methods: {
+            getWelfareprojectData(p = this.$store.state.lang.version) {
+                getWelfareproject({ 'moduleType': '1', 'status': '1', 'version': p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.welfareproject = res.data.rows
+                    }
+                })
+            },
+            addImageStyles() {
+                const style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = `
                 .content img {
                     width: 100%;
                 }
             `;
-            document.head.appendChild(style);
-        }
-    },
-    watch: {
-        '$store.state.lang.isEn': {
-            handler() {
-                this.getWelfareprojectData()
+                document.head.appendChild(style);
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.getWelfareprojectData()
+                }
             }
         }
     }
-}
 </script>
 
 <style scoped>
-.greenleaf {
-    padding: 0 20px;
-    overflow: hidden;
-}
+    .greenleaf {
+        padding: 0 20px;
+        overflow: hidden;
+    }
 
-.greenleaf span {
-    margin-bottom: 20px;
-}
+    .greenleaf span {
+        margin-bottom: 20px;
+    }
 </style>
