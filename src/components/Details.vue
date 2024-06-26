@@ -223,7 +223,7 @@
         font-size: 16px;
         font-weight: 700;
         letter-spacing: 0.76px;
-        line-height: 20.21px;
+        line-height: 24px;
         color: rgba(51, 51, 51, 1);
         text-align: center;
     }

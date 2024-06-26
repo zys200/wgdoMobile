@@ -11,85 +11,88 @@
 </template>
 
 <script>
-export default {
-    name: 'Breadcrumb',
-    props: ['urlData'],
-    data() { return { newUrlData: [] } },
-    mounted() {
-        // sessionStorage.setItem('urlData', JSON.stringify(this.urldata))
-        // this.newUrlData = JSON.parse(sessionStorage.getItem('urlData')) || [];
+    export default {
+        name: 'Breadcrumb',
+        props: ['urlData'],
+        data() { return { newUrlData: [] } },
+        mounted() {
+            // sessionStorage.setItem('urlData', JSON.stringify(this.urldata))
+            // this.newUrlData = JSON.parse(sessionStorage.getItem('urlData')) || [];
+        }
     }
-}
 </script>
 
 <style scoped>
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    height: 15px;
-    line-height: 15px;
-    padding: 14px 0 22px 20px;
-}
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        height: 15px;
+        line-height: 15px;
+        padding: 14px 0 22px 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
-.breadcrumb img {
-    display: block;
-    margin: 0 2.5px 0 0;
-    width: 9px;
-    height: 10px;
-    background-size: cover;
-    background-position: center;
-}
+    .breadcrumb img {
+        display: block;
+        margin: 0 2.5px 0 0;
+        width: 9px;
+        height: 10px;
+        background-size: cover;
+        background-position: center;
+    }
 
-#lef {
-    display: inline-block;
-    margin: 0 5px;
-    width: 4.75px;
-    height: 8.5px;
-    color: rgba(150, 150, 150, 1);
-    font-family: iconfont;
-    font-style: normal;
-}
+    #lef {
+        display: inline-block;
+        margin: 0 5px;
+        width: 4.75px;
+        height: 8.5px;
+        color: rgba(150, 150, 150, 1);
+        font-family: iconfont;
+        font-style: normal;
+    }
 
-.el-breadcrumb__item {
-    margin-left: -5px;
-    height: 15px;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    line-height: 15px;
-    color: rgba(150, 150, 150, 1);
-    text-align: center;
-}
+    .el-breadcrumb__item {
+        margin-left: -5px;
+        height: 15px;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 15px;
+        color: rgba(150, 150, 150, 1);
+        text-align: center;
+        white-space: nowrap;
+    }
 
-:deep(.el-breadcrumb__inner) {
-    height: 10px;
-    font-size: 10.67px;
-    font-weight: 400;
-    letter-spacing: 0.76px;
-    line-height: 10px;
-    color: rgba(150, 150, 150, 1);
-    text-align: left;
-}
+    :deep(.el-breadcrumb__inner) {
+        height: 10px;
+        font-size: 10.67px;
+        font-weight: 400;
+        letter-spacing: 0.76px;
+        line-height: 10px;
+        color: rgba(150, 150, 150, 1);
+        text-align: left;
+    }
 
-:deep(.el-breadcrumb__item:last-child .el-breadcrumb__inner) {
-    margin-left: -9px;
-}
+    :deep(.el-breadcrumb__item:last-child .el-breadcrumb__inner) {
+        margin-left: -9px;
+    }
 
-:deep(.is-link) {
-    height: 15px;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    line-height: 15px;
-    color: rgba(150, 150, 150, 1);
-    text-align: left;
-}
+    :deep(.is-link) {
+        height: 15px;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 15px;
+        color: rgba(150, 150, 150, 1);
+        text-align: left;
+    }
 
-:deep(.is-link:hover) {
-    color: rgba(150, 150, 150, 1);
-}
+    :deep(.is-link:hover) {
+        color: rgba(150, 150, 150, 1);
+    }
 
-:deep(.el-icon-arrow-left:before) {
-    display: none;
-}
+    :deep(.el-icon-arrow-left:before) {
+        display: none;
+    }
 </style>

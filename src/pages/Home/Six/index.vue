@@ -173,53 +173,9 @@
         border: 1px solid rgba(255, 255, 255, 1);
     }
 
-    /* .boxb .content {}
-
-    .boxb .content .myswipe {
-        position: relative;
-        margin-top: 20px;
-        width: 217.61px;
-        width: 100vw;
-        height: 151px;
-    }
-
-    .boxb .content .myswipe .myswipeItem {
-        position: relative;
-        top: 0;
-        width: 217.61px;
-        height: 151px;
-        margin: 0 5px;
-    }
-
-    .boxb .content .myswipe .myswipeItem:last-child {
-        width: calc(100% - calc(217.61px *4))
-    }
-
-    .boxb .content .myswipe .myswipeItem img {
-        display: block;
-        width: 217.61px;
-        background-size: cover;
-        background-position: center;
-        object-fit: cover;
-    }
-
-    .boxb .content .myswipe .myswipeItem .myswipeItemDsc {
-        position: absolute;
-        bottom: 0;
-        width: 217.61px;
-        height: 33.56px;
-        font-size: 12px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        line-height: 33.56px;
-        color: rgba(255, 255, 255, 1);
-        text-align: center;
-    } */
-
     .boxb .content {
         margin-top: 15px;
         width: 100vw;
-        height: 199px;
         overflow: hidden;
     }
 
@@ -227,13 +183,14 @@
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
-        width: calc(285.04px * 5);
+        width: calc(200px * 5);
+        height: 115px;
     }
 
     .boxb .content .boxbContentItem {
         position: relative;
-        width: 305.04px;
-        height: 198.11px;
+        width: 200px;
+        height: 115px;
         margin: 0 5px;
     }
 
@@ -250,9 +207,9 @@
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 45.42px;
-        font-size: 12px;
-        line-height: 45.42px;
+        height: 26px;
+        font-size: 9px;
+        line-height: 26px;
         text-align: center;
         color: rgba(255, 255, 255, 1);
         background: rgba(44, 43, 44, 0.7);

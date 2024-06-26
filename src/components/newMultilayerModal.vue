@@ -21,7 +21,6 @@
                 </template>
             </el-menu>
         </div>
-        <!-- Right circle -->
         <div class="toList" @click="showCatalogue">
             <div class="toListA"><i class="icon-liebiao"></i></div>
         </div>
@@ -34,7 +33,6 @@
         props: ['categoryData'],
         data() { return { isShow: false } },
         mounted() {
-            // console.log(this.categoryData, 'sdf');
             if (this.categoryData.length !== 0) {
                 sessionStorage.setItem('localcategorydata', JSON.stringify(this.categoryData))
             }
@@ -92,6 +90,17 @@
 </script>
 
 <style scoped>
+    a {
+        width: 39.62px;
+        height: 12.19px;
+        font-size: 9.14px;
+        font-weight: 400;
+        letter-spacing: 0.76px;
+        line-height: 12.12px;
+        color: rgba(150, 150, 150, 1);
+        text-align: center;
+    }
+
     .newMultilayerModal {
         width: 179px;
         position: fixed;

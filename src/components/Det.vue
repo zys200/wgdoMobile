@@ -123,12 +123,14 @@
     .cont .title {
         padding: 0 10vw;
         width: 100%;
+        height: auto;
         font-size: 16px;
         font-weight: 700;
         letter-spacing: 0.36px;
-        line-height: 7.72px;
+        line-height: 24px;
         color: rgba(51, 51, 51, 1);
         text-align: center;
+        text-wrap: wrap;
     }
 
     .cont .titleEN {
