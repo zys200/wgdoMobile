@@ -1,9 +1,36 @@
 {
-    "headertext": {
-        "catalogue": "目录",
-        "login": "登录"
-    },
-    "second": {
-      "more": "查看更多"
-    }
+  "headertext": {
+    "catalogue": "目录",
+    "login": "登录",
+    "Aboutus": "关于我们",
+    "Conferenceactivity": "会议活动",
+    "Mediacenter": "媒体中心",
+    "Academicresearch": "学术研究",
+    "Publicwelfareproject": "公益项目",
+    "InternationalGreenAward": "国际绿奖",
+    "WGDOGreenResearchInstitute": "WGDO绿研院",
+    "Greenleaflabel": "绿叶标"
+  },
+  "second": {
+    "more": "查看更多"
+  },
+  "third": {
+    "dsc": "作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用",
+    "title": "会议活动"
+  },
+  "four": {
+    "greendesign": "世界绿色设计园",
+    "tomore": "了解详情"
+  },
+  "five": {
+    "dsc": "作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用",
+    "seehistory": "查看历年获奖信息"
+  },
+  "six": {
+    "dsc": "作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用"
+  },
+  "footer": {
+    "dizhi": "北京市大兴区兴创大厦1601室",
+    "jing": "京ICP备13011399号-1"
+  }
 }

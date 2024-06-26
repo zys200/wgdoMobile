@@ -4,7 +4,7 @@
             <div class="boxaTitle">
                 <TopTitle :title="$store.state.lang.homeTitle[6]?.classifyName" />
             </div>
-            <div class="boxaDsc">作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用</div>
+            <div class="boxaDsc">{{ $t('five.dsc') }}</div>
         </div>
         <div class="boxb">
             <div class="boxbTop">
@@ -20,36 +20,36 @@
         </div>
         <div class="boxc">
             <div class="boxcTitle">
-                <TopTitle title="获奖名单" />
+                <TopTitle :title="pageTitle" />
             </div>
-            <div class="boxcDsc">{{$store.state.lang.homeTitle[7]?.classifyName}}</div>
+            <div class="boxcDsc">{{ $store.state.lang.homeTitle[7]?.classifyName }}</div>
             <div class="shortLine"></div>
             <div class="boxcContent">
                 <div class="boxcContentItem" v-for="item in getPrice" :key="item.hpId">
                     <div class="boxcContentItemTop">
-                        <img :src=" 'http://www.wgdo.net' + item.cover">
+                        <img :src="'http://www.wgdo.net' + item.cover">
                     </div>
                     <div class="boxcContentItemName">
-                        {{item.title}}
+                        {{ item.title }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="boxd">
-            <div class="boxdTitle">{{$store.state.lang.homeTitle[8]?.classifyName}}</div>
+            <div class="boxdTitle">{{ $store.state.lang.homeTitle[8]?.classifyName }}</div>
             <div class="shortLine"></div>
             <div class="boxdContent">
                 <div class="boxdContentItem" v-for="item in awardWinningOrganization" :key="item.hpId">
                     <div class="boxdConetentItemTop">
-                        <img :src=" 'http://www.wgdo.net' + item.cover" alt="">
+                        <img :src="'http://www.wgdo.net' + item.cover" alt="">
                     </div>
-                    <div class="boxdConetentItemDsc">{{item.title}}</div>
+                    <div class="boxdConetentItemDsc">{{ item.title }}</div>
                 </div>
             </div>
         </div>
         <div class="boxe">
             <a href="">
-                <span>查看历年获奖信息<i class="iconfont icon-youjiantou"></i></span>
+                <span>{{ $t('five.seehistory') }}<i class="iconfont icon-youjiantou"></i></span>
             </a>
         </div>
     </div>
@@ -71,7 +71,8 @@
                 leftImg,
                 rightImgLists,
                 getPrice,
-                awardWinningOrganization
+                awardWinningOrganization,
+                pageTitle: 'sgd'
             }
         },
         mounted() {
@@ -155,8 +156,7 @@
     .box .boxa .boxaDsc {
         margin-top: 6px;
         width: 275px;
-        height: 27px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 400;
         letter-spacing: 1px;
         line-height: 13.26px;
@@ -268,7 +268,8 @@
         letter-spacing: 1px;
         text-align: center;
         color: rgba(16, 16, 16, 1);
-        background: rgba(165, 214, 63, 0.5);
+        /* background: rgba(165, 214, 63, 0.5);*/
+        background: rgba(255, 255, 255, 1);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -328,11 +329,13 @@
         min-width: 160px;
         max-width: 160px;
         height: 24px;
-        background: rgba(62, 73, 56, 1);
         font-size: 10px;
         font-weight: 400;
         letter-spacing: 1px;
-        color: rgba(255, 255, 255, 1);
+        /*background: rgba(62, 73, 56, 1);
+        color: rgba(255, 255, 255, 1);*/
+        color: rgba(16, 16, 16, 1);
+        background: rgba(255, 255, 255, 1);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -341,7 +344,7 @@
     /* boxe */
     .boxe {
         margin: 10px auto 0;
-        width: 120px;
+        width: 190px;
         height: 28px;
         border-radius: 50px;
         border: 1px solid rgba(165, 214, 63, 1);
@@ -356,7 +359,6 @@
     .boxe a span {
         position: relative;
         top: 0;
-        min-width: 88px;
         height: 14px;
         opacity: 1;
         font-size: 10px;

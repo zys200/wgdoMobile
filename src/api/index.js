@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const requestInstacne = axios.create({
     baseURL: 'http://www.wgdo.net/prod-api',
-    timeout: 20000,
+    timeout: 200000,
     headers: {
         'Content-Type': 'application/json'
     }

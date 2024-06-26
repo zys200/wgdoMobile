@@ -2,35 +2,36 @@
     <div class="box">
         <div class="boxa">
             <div class="boxaTitle">
-                <TopTitle title="合作伙伴" />
+                <TopTitle :title="pagetitle" />
             </div>
-            <div class="dsc">作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用</div>
+            <div class="dsc">{{ $t('six.dsc') }}</div>
             <div class="boxaLogo">
                 <LogoPic :logoPicData="sixOne" />
             </div>
         </div>
         <div class="boxb">
-            <div class="boxbTitle">{{$store.state.lang.homeTitle[10]?.classifyName}}</div>
+            <div class="boxbTitle">{{ $store.state.lang.homeTitle[10]?.classifyName }}</div>
             <div class="boxbLine"></div>
             <div class="content">
-                <van-swipe class="myswipe" :autoplay="3000" :loop="true">
-                    <van-swipe-item class="myswipeItem" v-for="item in sixTwo" :key="item.hpId"
-                        style="width: 217.61px; height: 151px;">
-                        <img :src=" 'http://www.wgdo.net' + item.cover" alt="">
-                        <div class="myswipeItemDsc">{{item.title}}</div>
-                    </van-swipe-item>
-                </van-swipe>
+                <vue-seamless-scroll :data="sixTwo" :class-option="classOption">
+                    <ul class="ul-item">
+                        <li class="boxbContentItem" v-for="t in sixTwo" :key="t.hpId">
+                            <img :src="'http://www.wgdo.net' + t.cover " alt="">
+                            <div class="dsc">{{t.title}}</div>
+                        </li>
+                    </ul>
+                </vue-seamless-scroll>
             </div>
         </div>
         <div class="boxc">
-            <div class="boxcTitle">{{$store.state.lang.homeTitle[11]?.classifyName}}</div>
+            <div class="boxcTitle">{{ $store.state.lang.homeTitle[11]?.classifyName }}</div>
             <div class="boxcLine"></div>
             <div class="boxcLogo">
                 <LogoPic :logoPicData="sixThree" />
             </div>
         </div>
         <div class="boxd">
-            <div class="boxdTitle">{{$store.state.lang.homeTitle[12]?.classifyName}}</div>
+            <div class="boxdTitle">{{ $store.state.lang.homeTitle[12]?.classifyName }}</div>
             <div class="boxdLine"></div>
             <div class="boxdLogo">
                 <LogoPic :logoPicData="sixFour" />
@@ -43,10 +44,11 @@
     import TopTitle from '@/components/TopTitle.vue'
     import LogoPic from '@/components/LogoPic.vue'
     import { getHomeData } from '@/api/request.js'
+    import vueSeamlessScroll from 'vue-seamless-scroll'
 
     export default {
         name: 'Six',
-        components: { TopTitle, LogoPic },
+        components: { TopTitle, LogoPic, vueSeamlessScroll },
         data() {
             let sixOne = []
             let sixTwo = []
@@ -58,7 +60,16 @@
                 sixTwo,
                 sixTwoLength,
                 sixThree,
-                sixFour
+                sixFour,
+                pagetitle: '合作伙伴',
+                classOption: {
+                    step: .3,
+                    limitMoveNum: 0,
+                    hoverStop: true,
+                    direction: 2,
+                    switchOffset: 10,
+                    switchSingleStep: 134
+                }
             }
         },
         mounted() {
@@ -93,6 +104,7 @@
             '$store.state.lang.isEn': {
                 handler() {
                     this.getSixData(this.$store.state.lang.version)
+                    this.pagetitle = this.$store.state.lang.isEn === 'en' ? 'Partners' : '合作伙伴';
                 }
             }
         }
@@ -121,8 +133,7 @@
     .boxa .dsc {
         margin-top: 6px;
         width: 297px;
-        height: 27px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 400;
         letter-spacing: 1px;
         line-height: 13.26px;
@@ -144,7 +155,6 @@
     }
 
     .boxb .boxbTitle {
-        width: 61px;
         height: 19px;
         font-size: 14px;
         font-weight: 600;
@@ -163,7 +173,7 @@
         border: 1px solid rgba(255, 255, 255, 1);
     }
 
-    .boxb .content {}
+    /* .boxb .content {}
 
     .boxb .content .myswipe {
         position: relative;
@@ -204,6 +214,55 @@
         line-height: 33.56px;
         color: rgba(255, 255, 255, 1);
         text-align: center;
+    } */
+
+    .boxb .content {
+        margin-top: 15px;
+        width: 100vw;
+        height: 199px;
+        overflow: hidden;
+    }
+
+    .boxb .content .ul-item {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        width: calc(285.04px * 5);
+    }
+
+    .boxb .content .boxbContentItem {
+        position: relative;
+        width: 305.04px;
+        height: 198.11px;
+        margin: 0 5px;
+    }
+
+    .boxb .content .boxbContentItem img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+    }
+
+    .boxb .content .boxbContentItem .dsc {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 45.42px;
+        font-size: 12px;
+        line-height: 45.42px;
+        text-align: center;
+        color: rgba(255, 255, 255, 1);
+        background: rgba(44, 43, 44, 0.7);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .boxb .content .boxbContentItem:hover .dsc {
+        background: rgba(166, 225, 99, 1);
     }
 
     .myswipe :deep(.van-swipe-item) {

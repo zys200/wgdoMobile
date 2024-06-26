@@ -25,10 +25,13 @@
             </div>
             <div class="greenDes">
                 <div class="top">
-                    <div class="gimg">
-                        <img src="@/static/imgs/greenDes.png">
+                    <div style="display: flex;">
+                        <div class="gimg">
+                            <img src="@/static/imgs/greenDes.png" alt="">
+                        </div>
+                        <div class="gtitle">{{ $store.state.lang.homeTitle[2]?.classifyName }}</div>
+
                     </div>
-                    <div class="gtitle">{{ $store.state.lang.homeTitle[2]?.classifyName }}</div>
                     <div class="gmore">
                         <router-link :to="toSencondDetAlls">
                             <More />
@@ -37,8 +40,11 @@
                 </div>
                 <div class="gline"></div>
                 <div class="content">
-                    <div class="contentItem" v-for="item in greenData" :key="item.hpId">
-                        <router-link to=""></router-link>
+                    <div class="contentItem" v-for="(item,index) in greenData" :key="item.hpId"
+                        @click="toSencondDerList(index)">
+                        <div class="contentItemTitle">{{item.title}}</div>
+                        <div class="contentItemDsc">{{item.intro}}</div>
+                        <div class="contentLine"></div>
                     </div>
                 </div>
             </div>
@@ -72,7 +78,6 @@
                 getHomeData({ 'moduleType': '2', 'status': '1', 'version': p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.greenData = res.data.rows.slice(0, 3)
-                        console.log(this.greenData);
                     }
                 })
             },
@@ -85,6 +90,18 @@
                         fromName: this.$route.name,
                         orders: Number(indexs),
                         datas: this.sedSwipeData
+                    }
+                })
+            },
+            toSencondDerList(indexs) {
+                this.$router.push({
+                    path: '/det',
+                    name: 'Det',
+                    params: {
+                        fromPath: this.$route.path,
+                        fromName: this.$route.name,
+                        orders: Number(indexs),
+                        datas: this.greenData
                     }
                 })
             }
@@ -189,6 +206,7 @@
     .container .containerTop .swipes .myswipe .swipeItem .swipeImgs img {
         display: block;
         width: 335px;
+        max-height: 183px !important;
     }
 
     .container .containerTop .swipes .myswipe .swipeItem .line {
