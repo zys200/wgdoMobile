@@ -29,13 +29,16 @@
             let detData = []
             let urlDatas = []
             let orders
+            let langs = ''
             return {
                 detData,
                 urlDatas,
-                orders
+                orders,
+                langs
             }
         },
         mounted() {
+            this.langs = sessionStorage.getItem('langs')
             if (typeof (this.$route.params.orders) === 'string') {
                 this.getSecondData()
             } else {
@@ -74,9 +77,9 @@
             "$store.state.lang.version": {
                 handler() {
                     if (this.orders > 9999) {
-                        this.getHomeData(this.$store.state.lang.version, '')
+                        this.getSecondData(this.$store.state.lang.version, '')
                     } else {
-                        this.getHomeData(this.$store.state.lang.version, this.orders)
+                        this.getSecondData(this.$store.state.lang.version, this.orders)
                     }
                     if (this.$store.state.lang.isEn !== 'en') {
                         this.urlDatas = []
@@ -91,7 +94,8 @@
                             { path: this.$route.path, name: 'Organizational dynamics' }
                         )
                     }
-                }
+                },
+                immediate: true
             }
         }
     }
@@ -119,7 +123,6 @@
     .cont .title {
         padding: 0 10vw;
         width: 100%;
-        height: 8px;
         font-size: 16px;
         font-weight: 700;
         letter-spacing: 0.36px;
@@ -161,7 +164,7 @@
     }
 
     .cont .lines {
-        margin-top: 12px;
+        /* margin-top: 6px; */
         margin-bottom: 20px;
     }
 
@@ -172,7 +175,7 @@
     }
 
     .cont .lines .line:first-child {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .cont .dsc {
@@ -188,9 +191,5 @@
     .cont .dsc p {
         display: block !important;
         margin: 20px 0 !important;
-    }
-
-    .box .footer {
-        background: rgba(166, 225, 99, 1) !important;
     }
 </style>

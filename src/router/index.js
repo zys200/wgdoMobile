@@ -294,13 +294,7 @@ const routes = [
                     isAuth: false,
                     toTop: true
                 }
-            },
-            // {
-            //     path: '/sedmore',
-            //     name: 'SedMore',
-            //     component: () => import('@/pages/Home/Second/components/MoreDet.vue'),
-            //     meta: { toTop: true }
-            // }
+            }
         ]
     },
     {

@@ -130,16 +130,17 @@
             "$store.state.lang.version": {
                 handler() {
                     if (this.types === 'fourAll' || this.types === 'fiveAll') {
-                        funs(this.getCurrentData(), this.$store.state.lang.version)
+                        this.getCurrentData(), this.$store.state.lang.version
                     } else {
-                        funs(this.getCurrentData(this.indexs), this.$store.state.lang.version)
+                        this.getCurrentData(this.indexs, this.$store.state.lang.version)
                     }
                     if (!isNaN(this.currentIndexSession)) {
-                        this.getCurrentData(this.currentIndexSession, this.$store.state.lang.version, sessionStorage.getItem('currentType'));
+                        this.getCurrentData(this.currentIndexSession, this.$store.state.lang.version, sessionStorage.getItem('currentType'))
                     }
                     if (this.$store.state.lang.isEn !== 'en') {
                         this.urlDatas = []
                         if (this.types === 'fourList' || this.types === 'fourAll') {
+                            console.log('sfdgetweewr');
                             this.urlDatas.push(
                                 {
                                     path: '/',
@@ -219,7 +220,6 @@
     }
 
     .cont .title {
-        /* height: 24px; */
         font-size: 16px;
         font-weight: 700;
         letter-spacing: 0.76px;
@@ -240,7 +240,7 @@
     }
 
     .cont .lines .line:first-child {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .cont .dsc {

@@ -171,7 +171,7 @@
     }
 
     .cont .lines .line:first-child {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .cont .dsc {
@@ -187,9 +187,5 @@
     .cont .dsc p {
         display: block !important;
         margin: 20px 0 !important;
-    }
-
-    .box .footer {
-        background: rgba(166, 225, 99, 1) !important;
     }
 </style>

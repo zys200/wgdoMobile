@@ -72,6 +72,7 @@
             getSecondDatas(p = this.$store.state.lang.version) {
                 getHomeData({ 'moduleType': '1', 'status': '1', 'version': p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        // console.log(res.data.rows);
                         this.sedSwipeData = res.data.rows
                     }
                 })
