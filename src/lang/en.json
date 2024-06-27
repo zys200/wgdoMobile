@@ -36,7 +36,11 @@
   },
   "login": {
     "welcome": "Welcome to the World Green Design Organization",
-    "forget":"Forgot password",
+    "forget": "Forgot password",
     "sign": "Sign in"
+  },
+  "add": {
+    "Partners": "Partners",
+    "Conferenc Activity": "Conferenc Activity"
   }
 }

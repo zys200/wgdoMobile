@@ -364,15 +364,15 @@
         font-size: 10px;
         font-weight: 400;
         letter-spacing: 1px;
-        line-height: 29px;
+        line-height: 24px;
         color: rgba(165, 214, 63, 1);
     }
 
     .boxe a span i {
         position: absolute;
-        top: -0.34px;
+        top: -0.24px;
         width: 4.37px;
-        height: 8.57px;
+        height: 18px;
         color: rgba(165, 214, 63, 1);
     }
 </style>

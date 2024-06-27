@@ -36,7 +36,11 @@
   },
   "login": {
     "welcome": "欢迎来到世界绿色设计组织",
-    "forget":"忘记密码",
+    "forget": "忘记密码",
     "sign": "登录"
+  },
+  "add": {
+    "Partners": "合作伙伴",
+    "Conferenc Activity": "会议活动"
   }
 }
