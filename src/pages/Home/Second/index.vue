@@ -205,8 +205,10 @@
 
     .container .containerTop .swipes .myswipe .swipeItem .swipeImgs img {
         display: block;
-        width: 100%;
-        height: 100%;
+        width: 335px;
+        height: 158px;
+        background-size: cover;
+        background-position: center;
     }
 
     .container .containerTop .swipes .myswipe .swipeItem .line {

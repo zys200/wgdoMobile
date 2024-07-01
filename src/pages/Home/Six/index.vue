@@ -224,7 +224,7 @@
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
-        width: calc(200px * 5);
+        width: calc(281px * 5);
         height: 115px;
     }
 

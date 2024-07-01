@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="boxe">
+        <div :class="$store.state.lang.isEn === 'en' ? 'boxeEn' : 'boxe' ">
             <a href="">
                 <span>{{ $t('five.seehistory') }}<i class="iconfont icon-youjiantou"></i></span>
             </a>
@@ -344,13 +344,27 @@
     /* boxe */
     .boxe {
         margin: 10px auto 0;
+        width: 145px;
+        height: 28px;
+        border-radius: 50px;
+        border: 1px solid rgba(62, 73, 56, 1);
+    }
+
+    .boxeEn {
+        margin: 10px auto 0;
         width: 190px;
         height: 28px;
         border-radius: 50px;
-        border: 1px solid rgba(165, 214, 63, 1);
+        border: 1px solid rgba(62, 73, 56, 1);
     }
 
     .boxe a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .boxeEn a {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -365,7 +379,18 @@
         font-weight: 400;
         letter-spacing: 1px;
         line-height: 24px;
-        color: rgba(165, 214, 63, 1);
+        color: rgba(56, 56, 56, 1);
+    }
+
+    .boxeEn a span {
+        position: relative;
+        top: 0;
+        height: 14px;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 24px;
+        color: rgba(56, 56, 56, 1);
     }
 
     .boxe a span i {
@@ -373,6 +398,14 @@
         top: -0.24px;
         width: 4.37px;
         height: 18px;
-        color: rgba(165, 214, 63, 1);
+        color: rgba(56, 56, 56, 1);
+    }
+
+    .boxeEn a span i {
+        position: absolute;
+        top: 1px;
+        width: 4.37px;
+        height: 18px;
+        color: rgba(56, 56, 56, 1);
     }
 </style>

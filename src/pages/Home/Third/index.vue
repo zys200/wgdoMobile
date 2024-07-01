@@ -12,11 +12,17 @@
             <div class="boxb">
                 <!-- :swipeStyle="swipeStyle" -->
                 <Swipe :swipeData="thirdswipeData" />
+                <div class="titles">
+                    <span>
+                        {{ $store.state.lang.homeTitle[3]?.classifyName.slice(5) }}
+                    </span>
+                </div>
             </div>
             <div class="boxc">
                 <div class="boxcTitle">
                     <div :class="$store.state.lang.isEn === 'en' ? 'boxctitleEn' : 'boxctitle'">
-                        {{ $store.state.lang.homeTitle[4]?.classifyName }}</div>
+                        {{ $store.state.lang.homeTitle[4]?.classifyName.slice(5) }}
+                    </div>
                     <a href="">
                         <More style="margin-right: 6px;" />
                     </a>
@@ -28,7 +34,6 @@
                             <div class="yue">{{ time[0]?.timer }}</div>
                             <div class="years">{{ time[0]?.year }}<span class="yearsZh">年</span></div>
                         </div>
-
                         <div class="right" style="border-top: 1px dashed rgba(182, 182, 182, 1);">
                             <div class="rightTitle">
                                 {{ thirdBottomData[0]?.title }}
@@ -129,7 +134,7 @@
             '$store.state.lang.isEn': {
                 handler() {
                     this.getThirdDatas(this.$store.state.lang.version)
-                    this.pageTitle = this.$store.state.lang.isEn === 'en' ? 'Conferenc Activity' : '会议活动';
+                    this.pageTitle = this.$store.state.lang.isEn === 'en' ? 'Conferenc Activity' : '会议活动'
                 }
             }
         }
@@ -172,6 +177,7 @@
 
     /* boxb */
     .container .boxb {
+        position: relative;
         margin-top: 12px;
         width: 100%;
         height: 218px;
@@ -195,6 +201,29 @@
 
     .container .boxb :deep(.van-swipe__indicators) {
         margin-bottom: 16px;
+    }
+
+    .container .boxb .titles {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 91px;
+        height: 29px;
+        background: rgba(165, 214, 63, 1);
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+        border-bottom-right-radius: 100px 100px;
+    }
+
+    .container .boxb .titles span {
+        display: block;
+        width: 91px;
+        height: 29px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 29px;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 1);
+        text-align: center;
     }
 
     /* boxc */
