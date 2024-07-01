@@ -2,11 +2,11 @@
     <div class="box">
         <div class="boxa">
             <div class="boxaTitle">
-                <TopTitle :title="$t('add.Partners')" />
+                <TopTitle :title="$t('add.Partners')" :titleColor="titleColor" />
             </div>
             <div class="dsc">{{ $t('six.dsc') }}</div>
             <div class="boxaLogo">
-                <LogoPic :logoPicData="sixOne" />
+                <LogoPic :logoPicData="sixOne" style="color: rgba(255, 255, 255, 1);" />
             </div>
         </div>
         <div class="boxb">
@@ -55,6 +55,7 @@
             let sixTwoLength = 0
             let sixThree = []
             let sixFour = []
+            let titleColor = `color: rgba(255, 255, 255, 1)`
             return {
                 sixOne,
                 sixTwo,
@@ -68,7 +69,8 @@
                     direction: 2,
                     switchOffset: 10,
                     switchSingleStep: 134
-                }
+                },
+                titleColor
             }
         },
         mounted() {
