@@ -6,21 +6,14 @@
             </div>
             <div class="dsc">{{ $t('six.dsc') }}</div>
             <div class="boxaLogo">
-                <LogoPic :logoPicData="sixOne" style="color: rgba(255, 255, 255, 1);" />
+                <LogoPic :logoPicData="sixOne" style="color: rgba(255, 255, 255, 1)" />
             </div>
         </div>
         <div class="boxb">
             <div class="boxbTitle">{{ $store.state.lang.homeTitle[10]?.classifyName }}</div>
             <div class="boxbLine"></div>
             <div class="content">
-                <vue-seamless-scroll :data="sixTwo" :class-option="classOption">
-                    <ul class="ul-item">
-                        <li class="boxbContentItem" v-for="t in sixTwo" :key="t.hpId">
-                            <img :src="'http://www.wgdo.net' + t.cover" alt="">
-                            <div class="dsc">{{ t.title }}</div>
-                        </li>
-                    </ul>
-                </vue-seamless-scroll>
+                <swp :sixTwo="sixTwo" />
             </div>
         </div>
         <div class="boxc">
@@ -45,10 +38,13 @@
     import LogoPic from '@/components/LogoPic.vue'
     import { getHomeData } from '@/api/request.js'
     import vueSeamlessScroll from 'vue-seamless-scroll'
+    import 'swiper/dist/css/swiper.css'
+    import { swiper, swiperSlide } from 'vue-awesome-swiper'
+    import swp from '@/pages/Home/Six/swp.vue'
 
     export default {
         name: 'Six',
-        components: { TopTitle, LogoPic, vueSeamlessScroll },
+        components: { TopTitle, LogoPic, vueSeamlessScroll, swiper, swiperSlide, swp },
         data() {
             let sixOne = []
             let sixTwo = []
@@ -62,20 +58,10 @@
                 sixTwoLength,
                 sixThree,
                 sixFour,
-                classOption: {
-                    step: .3,
-                    limitMoveNum: 0,
-                    hoverStop: true,
-                    direction: 2,
-                    switchOffset: 10,
-                    switchSingleStep: 134
-                },
-                titleColor
+                titleColor,
             }
         },
-        mounted() {
-            this.getSixData()
-        },
+        mounted() { this.getSixData() },
         methods: {
             getSixData(p = this.$store.state.lang.version) {
                 getHomeData({ "moduleType": "9", "status": "1", version: p }).then(res => {
@@ -222,7 +208,7 @@
         overflow: hidden;
     }
 
-    .boxb .content .ul-item {
+    /* .boxb .content .ul-item {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -289,11 +275,11 @@
 
     .myswipe :deep(.van-swipe__indicator--active) {
         background: rgba(166, 225, 99, 1);
-    }
+    } */
 
     /* boxc */
     .boxc {
-        margin-top: 40px;
+        margin-top: 20px;
         width: 100vw;
         display: flex;
         flex-direction: column;
