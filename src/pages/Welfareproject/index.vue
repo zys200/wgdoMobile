@@ -7,8 +7,11 @@
             <div class="topTitle">
                 <OrderTitle :title="title" />
             </div>
-            <div class="toListUse">
+            <!-- <div class="toListUse">
                 <newMultilayerModal :categoryData="categoryData" @gindex="gindex" @gindexChild="gindexChild" />
+            </div> -->
+            <div class="menus">
+                <Menus />
             </div>
             <div class="content">
                 <router-view></router-view>
@@ -22,10 +25,11 @@
     import OrderTitle from '@/components/OrderTitle.vue'
     import newMultilayerModal from '@/components/newMultilayerModal.vue'
     import { getTitle } from '@/api/request.js'
+    import Menus from '@/components/Menu.vue'
 
     export default {
         name: 'Mediacenter',
-        components: { Breadcrumb, OrderTitle, newMultilayerModal },
+        components: { Breadcrumb, OrderTitle, newMultilayerModal, Menus },
         data() {
             let urlData = []
             let titleData = []

@@ -1,9 +1,12 @@
 <template>
     <div class="box">
         <div class="logoPic">
-            <a :href=" $route.path !== '/' ? '/' : null">
-                <img src="
-                https://img.js.design/assets/img/6629bc9fbd5325ea5a5aa1c2.png#2e603a36cb0b5696b311e74b694d0ec0">
+            <a :href=" $route.path !== '/' ? '/' : null" v-if="$store.state.lang.isEn === 'en' ">
+                <img id="logoen" src="@/static/imgs/logoen.png">
+            </a>
+            <a :href=" $route.path !== '/' ? '/' : null" v-else>
+                <img
+                    src="https://img.js.design/assets/img/6629bc9fbd5325ea5a5aa1c2.png#2e603a36cb0b5696b311e74b694d0ec0">
             </a>
         </div>
     </div>
@@ -30,6 +33,14 @@
     }
 
     .logoPic img {
+        display: inline-block;
+        width: 145px;
+        height: 35px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    #logoen {
         display: inline-block;
         width: 145px;
         height: 35px;

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import 'vuetify/dist/vuetify.min.css';
 import '@/style.css'
 import '@/static/iconfonts/index.css'
 import 'amfe-flexible';
@@ -18,7 +19,6 @@ import {
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { vfmPlugin } from 'vue-final-modal'
-import '@/static/misans/misans.css'
 
 Vue.use(Swipe).use(SwipeItem).use(Tab).use(Tabs).use(Form).use(Field).use(Button)
 Vue.use(Breadcrumb).use(BreadcrumbItem).use(vfmPlugin).use(Checkbox).use(CheckboxGroup)

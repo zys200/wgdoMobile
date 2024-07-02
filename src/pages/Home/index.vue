@@ -41,7 +41,7 @@
                 getTitle({ "parentId": par }).then(res => {
                     let titles = res.data.rows[0].children
                     this.$store.commit('setHomeTitle', titles)
-                    console.log(titles);
+                    // console.log(titles);
                 })
             }
         },
