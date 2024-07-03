@@ -1,12 +1,12 @@
 <template>
     <div class="box">
         <div class="headerText">
-            <div ref="changeLangue" :class="$store.state.lang.isEn === 'en' ? 'catalogueEn' : 'catalogue'"
+            <div ref="changeLangue" :class="$store.state.lang.isEn === 'en' ? 'catalogueEn' : 'catalogue' "
                 @click="showCatalogue">
                 <i class="iconfont icon-caidan"></i>
                 <span>{{ $t('headertext.catalogue') }}</span>
             </div>
-            <div class="logo">
+            <div class="$store.state.lang.isEn === 'en' ? 'logoen' : 'logo'  ">
                 <Logo />
             </div>
             <div :class="$store.state.lang.isEn === 'en' ? 'langEn' : 'lang'" @click="changeLang">
@@ -77,6 +77,21 @@
                     this.$refs.changeLangue.classList.remove('catalogueEn');
                     this.$refs.changeLangue.classList.add('catalogue');
                 }
+            },
+            updateLogoStyles() {
+                const logoEn = document.querySelector('.logoen');
+                if (logoEn && this.$store.state.lang.isEn === 'en') {
+                    logoEn.style.justifySelf = 'right';
+                    logoEn.style.width = '145px';
+                    logoEn.style.height = '35px';
+                }
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.updateLogoStyles()
+                }
             }
         },
         beforeDestroy() {
@@ -94,7 +109,6 @@
         display: grid;
         grid-template-columns: 1.2fr 3.0fr .7fr .8fr;
         align-items: center;
-        /* margin: 10px 0; */
         padding-top: 18px;
         width: 100%;
         height: 35px;
@@ -110,9 +124,8 @@
         font-size: 14px;
         font-weight: 400;
         letter-spacing: 0px;
-        line-height: 22.4px;
+        line-height: 23px;
         color: rgba(255, 255, 255, 1);
-        /* border: 1px solid green; */
     }
 
     .catalogueEn {
@@ -125,7 +138,7 @@
         font-size: 14px;
         font-weight: 400;
         letter-spacing: 0px;
-        line-height: 22.4px;
+        line-height: 23px;
         color: rgba(255, 255, 255, 1);
     }
 
@@ -139,31 +152,37 @@
         position: absolute;
         top: .3px;
         left: 7px;
-        zoom: 1;
     }
 
     .logo {
         justify-self: center;
-        min-width: 145px;
-        min-height: 35px;
-        border: 1px solid hotpink;
+        width: 145px;
+        height: 35px;
+    }
+
+    .logoen {
+        justify-self: right;
+        width: 145px;
+        height: 35px;
     }
 
     .lang {
-        width: 30px;
-        /* height: 35px; */
+        width: 33px;
+        height: 35px;
         font-size: 14px;
-        line-height: 35px;
+        line-height: 36px;
         text-align: center;
         color: rgba(255, 255, 255, 1);
     }
 
     .langEn {
-        width: 30px;
+        width: 33px;
+        height: 35px;
         font-size: 14px;
-        line-height: 35px;
+        line-height: 36px;
         text-align: center;
         color: rgba(255, 255, 255, 1);
+        vertical-align: middle;
     }
 
     .login {
@@ -244,7 +263,6 @@
         color: rgba(150, 150, 150, 1);
         border-bottom: 1px solid rgba(219, 219, 219, 1);
         background: rgba(255, 255, 255, 1);
-
         justify-content: center;
         align-items: center;
         padding: 15px 0;

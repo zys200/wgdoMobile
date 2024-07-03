@@ -16,7 +16,7 @@
     export default { name: 'Logo' }
 </script>
 
-<style>
+<style scoped>
     .box {
         width: 145px;
         height: 35px;
@@ -42,9 +42,10 @@
 
     #logoen {
         display: inline-block;
-        width: 145px;
+        width: 155px;
         height: 35px;
-        background-size: cover;
-        background-position: center;
+        object-fit: contain;
+        transform: translateY(-3px);
+        zoom: 1.1;
     }
 </style>

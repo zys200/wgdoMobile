@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import 'vuetify/dist/vuetify.min.css';
 import '@/style.css'
 import '@/static/iconfonts/index.css'
 import 'amfe-flexible';
