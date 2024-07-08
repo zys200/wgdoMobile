@@ -42,5 +42,9 @@
   "add": {
     "Partners": "Partners",
     "Conferenc Activity": "Conferenc Activity"
+  },
+  "tip": {
+    "Number of views": "Number of views",
+    "Release time": "Release time"
   }
 }

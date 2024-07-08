@@ -42,5 +42,9 @@
   "add": {
     "Partners": "合作伙伴",
     "Conferenc Activity": "会议活动"
+  },
+  "tip": {
+    "Number of views": "浏览次数",
+    "Release time": "发布时间"
   }
 }

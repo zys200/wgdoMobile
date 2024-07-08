@@ -1,8 +1,14 @@
 import Vue from 'vue'
-import vueRouter from 'vue-router'
+import VueRouter from 'vue-router'
 import Layout from '@/pages/Layout/index.vue'
 
-Vue.use(vueRouter)
+Vue.use(VueRouter)
+
+const originalPush = VueRouter.prototype.push;
+
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+}
 
 const routes = [
     {
@@ -15,6 +21,10 @@ const routes = [
                 name: 'about',
                 component: () => import('@/pages/About/index.vue'),
                 children: [
+                    {
+                        path: '',
+                        redirect: 'introduce'
+                    },
                     {
                         path: 'introduce',
                         // name: '组织介绍',
@@ -304,7 +314,7 @@ const routes = [
     }
 ]
 
-const router = new vueRouter({
+const router = new VueRouter({
     mode: 'history',
     routes,
     ignoreDuplicate: true

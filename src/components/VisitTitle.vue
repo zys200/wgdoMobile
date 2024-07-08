@@ -3,8 +3,8 @@
         <h1>hhhh</h1>
         <div class="title">{{visitTitleData.title}}</div>
         <div class="dsc">
-            <span>浏览次数：{{visitTitleData.clickVolume}} </span>
-            <span>发布时间：{{visitTitleData.createTime}}</span>
+            <span>$t('tip.Number of views')：{{visitTitleData.clickVolume}} </span>
+            <span>$t('tip.Release time')：{{visitTitleData.createTime}}</span>
         </div>
         <div class="underline">
             <div></div>
