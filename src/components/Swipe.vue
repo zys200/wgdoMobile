@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <van-swipe class="my-swipe" :autoplay="3000" :style="swipeStyle" ref="swipe">
-            <van-swipe-item v-for="item in swipeData" :key="item.hpId">
+            <van-swipe-item v-for="(item,index) in swipeData" :key="item.hpId" @click="getIndexs(index)">
                 <img :src=" 'http://www.wgdo.net' + item.cover ">
             </van-swipe-item>
         </van-swipe>
@@ -11,7 +11,12 @@
 <script>
     export default {
         name: 'Swipe',
-        props: ['swipeStyle', 'swipeData']
+        props: ['swipeStyle', 'swipeData'],
+        methods: {
+            getIndexs(index) {
+                this.$emit('gindex', Number(index))
+            }
+        }
     }
 </script>
 

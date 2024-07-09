@@ -17,8 +17,96 @@ const routes = [
         component: Layout,
         children: [
             {
+                path: '/topmore',
+                name: 'TopMore',
+                component: () => import('@/pages/Home/Second/components/TopMore.vue'),
+                meta: { toTop: true },
+                children: [
+                    {
+                        path: 'topmoreinfo',
+                        name: 'TopMoreinfo',
+                        component: () => import('@/pages/Home/Second/components/TopMoreinfo.vue'),
+                        meta: { toTop: true }
+                    }
+                ]
+            },
+            {
+                path: '/sedmore',
+                name: 'SedMore',
+                component: () => import('@/pages/Home/Second/components/MoreDet.vue'),
+                meta: {
+                    toTop: true
+                },
+                children: [
+                    {
+                        path: 'sedmoreinfo',
+                        name: 'Sedmoreinfo',
+                        component: () => import('@/pages/Home/Second/components/sedmoreinfo.vue'),
+                        meta: {
+                            toTop: true
+                        },
+                    },
+                ]
+            },
+            {
+                path: '/thirdtopmore',
+                name: 'ThirdTopMore',
+                component: () => import('@/pages/Home/Third/components/ThirdTopMore.vue'),
+                meta: { toTop: true },
+                children: [
+                    {
+                        path: 'thirdtopmoreinfo',
+                        name: 'ThirdTopMoreinfo',
+                        component: () => import('@/pages/Home/Third/components/ThirdTopMoreinfo.vue'),
+                        meta: { toTop: true }
+                    }
+                ]
+            },
+            {
+                path: '/thirdmore',
+                name: 'ThirdMore',
+                component: () => import('@/pages/Home/Third/components/ThirdMore.vue'),
+                meta: { toTop: true },
+                children: [
+                    {
+                        path: 'thirdmoreinfo',
+                        name: 'ThirdMoreinfo',
+                        component: () => import('@/pages/Home/Third/components/ThirdMoreinfo.vue'),
+                        meta: { toTop: true }
+                    }
+                ]
+            },
+            {
+                path: '/fourmore',
+                name: 'FourMore',
+                component: () => import('@/pages/Home/Fourth/components/FourMore.vue'),
+                meta: { toTop: true },
+                children: [
+                    {
+                        path: 'fourmoreinfo',
+                        name: 'FourMoreinfo',
+                        component: () => import('@/pages/Home/Fourth/components/FourMoreinfo.vue'),
+                        meta: { toTop: true }
+                    }
+                ]
+            },
+            {
+                path: '/fivemore',
+                name: 'FiveMore',
+                component: () => import('@/pages/Home/Five/components/FiveMore.vue'),
+                meta: { toTop: true },
+                children: [
+                    {
+                        path: 'fivemoreinfo',
+                        name: 'FiveMoreinfo',
+                        component: () => import('@/pages/Home/Five/components/FiveMoreinfo.vue'),
+                        meta: { toTop: true }
+                    }
+                ]
+            },
+            {
                 path: 'about',
-                name: 'about',
+                name: 'About',
                 component: () => import('@/pages/About/index.vue'),
                 children: [
                     {
@@ -314,10 +402,18 @@ const routes = [
     }
 ]
 
+
 const router = new VueRouter({
     mode: 'history',
     routes,
     ignoreDuplicate: true
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.toTop) {
+        window.scrollTo(0, 300)
+    }
+    next();
+});
 
 export default router

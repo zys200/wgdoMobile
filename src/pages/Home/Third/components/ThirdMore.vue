@@ -3,7 +3,7 @@
         <div class="bread">
             <Hbreadcrumb :urlData="urlData" />
         </div>
-        <div v-if=" $route.path === '/sedmore' ">
+        <div v-if=" $route.path === '/thirdmore' ">
             <OrderTitle :title="title" />
             <div class="container">
                 <div @click="sedTiaoZhuan(index)" class="containerItem" v-for="(i,index) in moredetDatas"
@@ -24,7 +24,7 @@
     import OrderTitle from '@/components/OrderTitle.vue'
 
     export default {
-        name: "MoreDet",
+        name: "ThirdMore",
         components: { Hbreadcrumb, OrderTitle },
         data() {
             let moredetDatas = []
@@ -32,26 +32,26 @@
             return {
                 moredetDatas,
                 urlData,
-                title: 'Green design perspective'
-            };
+                title: 'Activity notice'
+            }
         },
         mounted() {
             this.getMoredetData()
             if (this.$store.state.lang.isEn !== 'en') {
                 this.urlData.push(
                     { path: '/', name: '首页' },
-                    { path: '/sedmore', name: '绿色设计观点' }
+                    { path: '/thirdmore', name: '活动预告' }
                 )
             } else {
                 this.urlData.push(
                     { path: '/', name: 'Home' },
-                    { path: '/sedmore', name: 'Green design perspective' }
+                    { path: '/thirdmore', name: 'Activity notice' }
                 )
             }
         },
         methods: {
             getMoredetData(p = this.$store.state.lang.version) {
-                getHomeData({ moduleType: '2', status: '1', version: p }).then(res => {
+                getHomeData({ 'moduleType': '4', 'status': '1', 'version': p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.moredetDatas = res.data.rows
                     }
@@ -59,7 +59,7 @@
             },
             sedTiaoZhuan(index) {
                 this.$router.push({
-                    path: '/sedmore/sedmoreinfo',
+                    path: '/thirdmore/thirdmoreinfo',
                     query: { index }
                 })
             },
@@ -73,18 +73,18 @@
                     if (this.$store.state.lang.isEn !== 'en') {
                         this.urlData.push(
                             { path: '/', name: '首页' },
-                            { path: '/sedmore', name: '绿色设计观点' }
+                            { path: '/thirdmore', name: '活动预告' }
                         )
                     } else {
                         this.urlData.push(
                             { path: '/', name: 'Home' },
-                            { path: '/sedmore', name: 'Green design perspective' }
+                            { path: '/thirdmore', name: 'Activity notice' }
                         )
                     }
                 }
             },
             '$route'() {
-                if (this.$route.path === '/sedmore' && this.urlData.length >= 2) {
+                if (this.$route.path === '/thirdmore' && this.urlData.length >= 2) {
                     this.urlData.pop()
                 }
             }

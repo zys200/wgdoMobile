@@ -5,16 +5,17 @@
                 <TopTitle :title="$store.state.lang.homeTitle[6]?.classifyName" />
             </div>
             <div class="boxaDsc">{{ $t('five.dsc') }}</div>
+            <router-link :to="toFiveDetAll">
+                <More />
+            </router-link>
         </div>
         <div class="boxb">
             <div class="boxbTop">
-                <router-link :to="detailsRoute">
-                    <img :src=" 'http://www.wgdo.net' + leftImg.cover" alt="">
-                </router-link>
+                <img :src=" 'http://www.wgdo.net' + leftImg.cover" alt="" @click="detailsRoute">
             </div>
             <div class="picList">
                 <div class="picListItem" v-for="(item,index) in rightImgLists" :key="index">
-                    <img :src=" 'http://www.wgdo.net' + item.cover" alt="" @click="getIndex(index)">
+                    <img :src=" 'http://www.wgdo.net' + item.cover" alt="" @click="detailsRouteall(index)">
                 </div>
             </div>
         </div>
@@ -58,10 +59,11 @@
 <script>
     import TopTitle from '@/components/TopTitle'
     import { getHomeData } from '@/api/request.js'
+    import More from '@/components/More.vue'
 
     export default {
         name: 'Five',
-        components: { TopTitle },
+        components: { TopTitle, More },
         data() {
             let leftImg = []
             let rightImgLists = []
@@ -75,9 +77,7 @@
                 pageTitle: 'sgd'
             }
         },
-        mounted() {
-            this.getFiveDatas()
-        },
+        mounted() { this.getFiveDatas() },
         methods: {
             getFiveDatas(p = this.$store.state.lang.version) {
                 getHomeData({ 'moduleType': '6', 'status': '1', 'version': p }).then(res => {
@@ -94,31 +94,26 @@
                     this.awardWinningOrganization = res.data.rows
                 })
             },
-            getIndex(i) {
+            detailsRoute() {
                 this.$router.push({
-                    path: '/details',
-                    name: 'Details',
-                    params: {
-                        datas: this.rightImgLists,
-                        fromPath: this.$route.path,
-                        fromName: this.$route.name,
-                        types: 'fiveList',
-                        orders: Number(i)
-                    }
+                    path: '/fivemore/fivemoreinfo',
+                    name: 'FiveMoreinfo',
+                    params: { orders: Number(0) }
+                })
+            },
+            detailsRouteall(index) {
+                this.$router.push({
+                    path: '/fivemore/fivemoreinfo',
+                    name: 'FiveMoreinfo',
+                    params: { orders: Number(index) }
                 })
             }
         },
         computed: {
-            detailsRoute() {
+            toFiveDetAll() {
                 return {
-                    path: '/details',
-                    name: 'Details',
-                    params: {
-                        datas: this.leftImg,
-                        fromPath: this.$route.path,
-                        fromName: this.$route.name,
-                        types: 'fiveAll'
-                    }
+                    path: '/fivemore',
+                    name: 'FiveMore',
                 }
             }
         },

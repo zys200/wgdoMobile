@@ -8,14 +8,19 @@
                 <div class="boxaDsc">
                     {{ $t('third.dsc') }}
                 </div>
+                <router-link to="thirdtopmore">
+                    <More />
+                </router-link>
             </div>
             <div class="boxb">
                 <!-- :swipeStyle="swipeStyle" -->
-                <Swipe :swipeData="thirdswipeData" />
+                <Swipe :swipeData="thirdswipeData" @gindex="gindex" />
                 <div class="titles">
-                    <span>
-                        {{ $store.state.lang.homeTitle[3]?.classifyName.slice(5) }}
-                    </span>
+                    <router-link to="thirdtopmore">
+                        <span>
+                            {{ $store.state.lang.homeTitle[3]?.classifyName.slice(5) }}
+                        </span>
+                    </router-link>
                 </div>
             </div>
             <div class="boxc">
@@ -23,12 +28,12 @@
                     <div :class="$store.state.lang.isEn === 'en' ? 'boxctitleEn' : 'boxctitle'">
                         {{ $store.state.lang.homeTitle[4]?.classifyName.slice(5) }}
                     </div>
-                    <a href="">
-                        <More style="margin-right: 6px;" />
-                    </a>
+                    <router-link to="thirdmore">
+                        <More style="margin-right: 6px" />
+                    </router-link>
                 </div>
                 <div class="boxcContent">
-                    <div class="boxcContentItem" v-if="thirdBottomData.length > 0">
+                    <div class="boxcContentItem" v-if="thirdBottomData.length > 0" @click="toThirdMoreinfo(0)">
                         <div class="left" style="
                             border-top: 1px dashed rgba(182, 182, 182, 1);">
                             <div class="yue">{{ time[0]?.timer }}</div>
@@ -43,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="boxcContentItem" v-if="thirdBottomData.length > 1">
+                    <div class="boxcContentItem" v-if="thirdBottomData.length > 1" @click="toThirdMoreinfo(1)">
                         <div class="left" style="background: rgba(165, 214, 63, 0.4)">
                             <div class="yue">{{ time[1]?.timer }}</div>
                             <div class="years">{{ time[1]?.year }}<span class="yearsZh">年</span></div>
@@ -57,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="boxcContentItem" v-if="thirdBottomData.length > 2">
+                    <div class="boxcContentItem" v-if="thirdBottomData.length > 2" @click="toThirdMoreinfo(2)">
                         <div class="left" style="background: rgba(165, 214, 63, 0.2)">
                             <div class="yue">{{ time[2]?.timer }}</div>
                             <div class="years">{{ time[2]?.year }}<span class="yearsZh">年</span></div>
@@ -120,14 +125,28 @@
                 })
             },
             getTime(t) {
-                const originalDate = new Date(t);
-                const year = originalDate.getFullYear();
+                const originalDate = new Date(t)
+                const year = originalDate.getFullYear()
                 const month = ('0' + (originalDate.getMonth() + 1)).slice(-2)
                 const day = ('0' + originalDate.getDate()).slice(-2)
                 return {
                     year: year,
                     timer: month + "-" + day,
                 };
+            },
+            toThirdMoreinfo(index) {
+                this.$router.push({
+                    path: '/thirdmore/thirdmoreinfo',
+                    name: 'ThirdMoreinfo',
+                    params: { orders: Number(index) }
+                })
+            },
+            gindex(i) {
+                this.$router.push({
+                    path: 'thirdtopmoreinfo',
+                    name: 'ThirdTopMoreinfo',
+                    params: { orders: i }
+                })
             }
         },
         watch: {

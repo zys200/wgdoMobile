@@ -2,7 +2,7 @@
     <div class="breadcrumb">
         <a href="/"><img src="@/static/imgs/home.png"></a>
         <el-breadcrumb class="ebc" separator-class="el-icon-arrow-left">
-            <el-breadcrumb-item v-for="item in urlData" :to="{ name: item.path }">
+            <el-breadcrumb-item v-for="item in urlData" :to=" item.path ">
                 <i class="icon-zuojiantou" id="lef"></i>
                 {{ item.name }}
             </el-breadcrumb-item>
@@ -12,7 +12,7 @@
 
 <script>
     export default {
-        name: 'Breadcrumb',
+        name: 'Hbreadcrumb',
         props: ['urlData'],
         data() { return { newUrlData: [] } }
     }
@@ -22,7 +22,6 @@
     .breadcrumb {
         display: inline-flex;
         align-items: center;
-        width: 335px;
         height: 15px;
         line-height: 15px;
         margin: 14px 20px 12px 20px;

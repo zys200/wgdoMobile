@@ -4,9 +4,6 @@
             <div class="containerTop">
                 <div class="title">
                     <span>ORGANIZATIONAL SYNAMICS</span>
-                </div>
-                <div class="titletwo">
-                    <span>{{ $store.state.lang.homeTitle[1]?.classifyName }}</span>
                     <router-link :to="toSencondDetAll">
                         <More />
                     </router-link>
@@ -72,7 +69,6 @@
             getSecondDatas(p = this.$store.state.lang.version) {
                 getHomeData({ 'moduleType': '1', 'status': '1', 'version': p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                        // console.log(res.data.rows);
                         this.sedSwipeData = res.data.rows
                     }
                 })
@@ -84,26 +80,16 @@
             },
             toSenconds(indexs) {
                 this.$router.push({
-                    path: '/det',
-                    name: 'Det',
-                    params: {
-                        fromPath: this.$route.path,
-                        fromName: this.$route.name,
-                        orders: Number(indexs),
-                        datas: this.sedSwipeData
-                    }
+                    path: '/topmoreinfo',
+                    name: 'TopMoreinfo',
+                    params: { orders: indexs }
                 })
             },
             toSencondDerList(indexs) {
                 this.$router.push({
-                    path: '/det',
-                    name: 'Det',
-                    params: {
-                        fromPath: this.$route.path,
-                        fromName: this.$route.name,
-                        orders: Number(indexs),
-                        datas: this.greenData
-                    }
+                    path: '/sedmore/sedmoreinfo',
+                    name: 'Sedmoreinfo',
+                    params: { orders: Number(indexs) }
                 })
             }
         },
@@ -117,26 +103,14 @@
         computed: {
             toSencondDetAll() {
                 return {
-                    path: '/det',
-                    name: 'Det',
-                    params: {
-                        fromPath: this.$route.path,
-                        fromName: this.$route.name,
-                        orders: 'seAll',
-                        datas: this.sedSwipeData
-                    }
+                    path: '/topmore',
+                    name: 'TopMore',
                 }
             },
             toSencondDetAlls() {
                 return {
-                    path: '/greendet',
-                    name: 'Greendet',
-                    params: {
-                        fromPath: this.$route.path,
-                        fromName: this.$route.name,
-                        orders: 'seAll',
-                        datas: this.greenData
-                    }
+                    path: '/sedmore',
+                    name: 'SedMore'
                 }
             }
         }
@@ -157,6 +131,12 @@
     }
 
     /* title */
+    .container .containerTop .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .container .containerTop .title span {
         height: 22px;
         font-size: 16px;

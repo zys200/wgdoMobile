@@ -49,8 +49,8 @@
             },
             detailsRoute(i) {
                 this.$router.push({
-                    path: '/details',
-                    name: 'Details',
+                    path: '/fourmoreinfo',
+                    name: 'FourMoreinfo',
                     params: {
                         datas: this.topDatas,
                         fromPath: this.$route.path,
@@ -64,12 +64,9 @@
         computed: {
             detailsRouteALL() {
                 return {
-                    path: '/details',
-                    name: 'Details',
+                    path: '/fourmore',
+                    name: 'FourMore',
                     params: {
-                        datas: this.fourSwipeData,
-                        fromPath: this.$route.path,
-                        fromName: this.$route.name,
                         types: 'fourAll',
                     }
                 }
