@@ -40,6 +40,5 @@
     .actions {
         padding-bottom: 20px;
         width: 100vw;
-        /* overflow: hidden; */
     }
 </style>

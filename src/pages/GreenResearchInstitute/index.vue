@@ -61,7 +61,7 @@
                         this.title = this.titleData.classifyName
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/greenresearchinstitute/organization', name: this.title },
+                            { path: 'organization', name: this.title },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
                     }
@@ -78,7 +78,7 @@
                     this.titleData.children.forEach((v, index) => {
                         if (index === newVal) {
                             this.urlData.push(
-                                { path: '/greenresearchinstitute/organization', name: 'WGDO绿研院' },
+                                { path: 'organization', name: 'WGDO绿研院' },
                                 { path: v.urls, name: v.classifyName }
                             )
                         }

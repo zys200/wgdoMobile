@@ -26,11 +26,11 @@
 </template>
 
 <script>
-    // import { VRow, VCol, VCard, VCardTitle, VSpacer, VMenu, VBtn, VList, VListItem } from 'vuetify/lib'
+    import { VRow, VCol, VCard, VCardTitle, VSpacer, VMenu, VBtn, VList, VListItem } from 'vuetify/lib'
 
     export default {
         name: 'Menus',
-        // components: { VRow, VCol, VCard, VCardTitle, VSpacer, VMenu, VBtn, VList, VListItem }
+        components: { VRow, VCol, VCard, VCardTitle, VSpacer, VMenu, VBtn, VList, VListItem }
     }
 </script>
 

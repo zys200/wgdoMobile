@@ -22,14 +22,12 @@
 
     .title {
         margin-left: 20px;
-        height: 22px;
+        width: 335px;
         font-size: 16px;
         font-weight: 700;
         letter-spacing: 1px;
         line-height: 21.22px;
         color: rgba(51, 51, 51, 1);
-        text-align: left;
-        vertical-align: top;
     }
 
     .underline {

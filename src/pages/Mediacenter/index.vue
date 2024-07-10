@@ -61,7 +61,7 @@
                         this.title = this.titleData.classifyName
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/mediacenter/dynamic', name: this.title },
+                            { path: 'dynamic', name: this.title },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
                         // sessionStorage.setItem('chirdData', JSON.stringify(this.categoryData))
@@ -77,7 +77,7 @@
                     this.titleData.children.forEach((v, index) => {
                         if (index === newVal) {
                             this.urlData.push(
-                                { path: '/mediacenter/dynamic', name: '媒体中心' },
+                                { path: 'dynamic', name: '媒体中心' },
                                 { path: v.urls, name: v.classifyName }
                             )
                         }

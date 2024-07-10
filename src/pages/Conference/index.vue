@@ -59,7 +59,7 @@
                         this.title = this.titleData.classifyName
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/conference/foretell', name: this.title },
+                            { path: 'foretell', name: this.title },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
                         // sessionStorage.setItem('chirdData', JSON.stringify(this.categoryData))
@@ -77,7 +77,7 @@
                     this.titleData.children.forEach((v, index) => {
                         if (index === newVal) {
                             this.urlData.push(
-                                { path: '/conference/foretell', name: '会议活动' },
+                                { path: 'foretell', name: '会议活动' },
                                 { path: v.urls, name: v.classifyName }
                             )
                         }

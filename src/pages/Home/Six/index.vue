@@ -102,7 +102,7 @@
         padding-bottom: 40px;
         width: 100%;
         height: auto;
-        background: url(https://img.js.design/assets/img/653d080a48f711670ecb020f.png#5a63ef9f1eb110944c2c96c39ea84e7b), rgba(62, 73, 56, 1);
+        background: url(https://img.js.design/assets/img/653d080a48f711670ecb020f.png#5a63ef9f1eb110944c2c96c39ea84e7b), rgba(62, 73, 56, .9);
         object-fit: cover;
         overflow: hidden;
     }

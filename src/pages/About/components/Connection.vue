@@ -76,6 +76,7 @@
         opacity: 1;
         background: rgba(62, 73, 56, 1);
         overflow: hidden;
+        margin-bottom: 0;
     }
 
     .toconnection .title {
@@ -119,7 +120,6 @@
         align-items: center;
         width: 60px;
         height: 25px;
-        opacity: 1;
         border-radius: 2px;
         background: rgba(165, 214, 63, 1);
     }

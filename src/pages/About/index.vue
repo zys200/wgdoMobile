@@ -52,7 +52,7 @@
             getAboutData(par) {
                 getTitle({ 'parentId': par }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                        console.log(res.data.rows, 'abouts');
+                        // console.log(res.data.rows, 'abouts');
                         this.titleData = res.data.rows[0]
                         this.categoryData = this.titleData.children
                         let Mapping = ['introduce', 'architecture', 'character', 'connection']
@@ -79,7 +79,7 @@
                     this.titleData.children.forEach((v, index) => {
                         if (index === newVal) {
                             this.urlData.push(
-                                { path: '/about/introduce', name: '关于我们' },
+                                { path: 'introduce', name: '关于我们' },
                                 { path: v.urls, name: v.classifyName }
                             )
                         }

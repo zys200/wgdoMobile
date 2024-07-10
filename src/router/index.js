@@ -34,17 +34,13 @@ const routes = [
                 path: '/sedmore',
                 name: 'SedMore',
                 component: () => import('@/pages/Home/Second/components/MoreDet.vue'),
-                meta: {
-                    toTop: true
-                },
+                meta: { toTop: true },
                 children: [
                     {
                         path: 'sedmoreinfo',
                         name: 'Sedmoreinfo',
                         component: () => import('@/pages/Home/Second/components/sedmoreinfo.vue'),
-                        meta: {
-                            toTop: true
-                        },
+                        meta: { toTop: true }
                     },
                 ]
             },
@@ -106,7 +102,7 @@ const routes = [
             },
             {
                 path: 'about',
-                name: 'About',
+                name: 'about',
                 component: () => import('@/pages/About/index.vue'),
                 children: [
                     {
@@ -366,33 +362,33 @@ const routes = [
                     }
                 ]
             },
-            {
-                path: '/details',
-                name: 'Details',
-                component: () => import('@/components/Details.vue'),
-                meta: {
-                    isAuth: false,
-                    toTop: true
-                }
-            },
-            {
-                path: '/det',
-                name: 'Det',
-                component: () => import('@/components/Det.vue'),
-                meta: {
-                    isAuth: false,
-                    toTop: true
-                }
-            },
-            {
-                path: '/greendet',
-                name: 'Greendet',
-                component: () => import('@/components/Greendet.vue'),
-                meta: {
-                    isAuth: false,
-                    toTop: true
-                }
-            }
+            // {
+            //     path: '/details',
+            //     name: 'Details',
+            //     component: () => import('@/components/Details.vue'),
+            //     meta: {
+            //         isAuth: false,
+            //         toTop: true
+            //     }
+            // },
+            // {
+            //     path: '/det',
+            //     name: 'Det',
+            //     component: () => import('@/components/Det.vue'),
+            //     meta: {
+            //         isAuth: false,
+            //         toTop: true
+            //     }
+            // },
+            // {
+            //     path: '/greendet',
+            //     name: 'Greendet',
+            //     component: () => import('@/components/Greendet.vue'),
+            //     meta: {
+            //         isAuth: false,
+            //         toTop: true
+            //     }
+            // }
         ]
     },
     {

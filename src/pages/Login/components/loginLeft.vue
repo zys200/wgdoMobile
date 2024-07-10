@@ -7,7 +7,7 @@
                 <!-- :rules="[{ required: true, message: '请输入短信验证码' }]" -->
                 <template #button class="verfityButton">
                     <van-button size="small" @click="getVerfity($event)">
-                        <span>{{ verfityButtonValue }}</span>
+                        <span>{{ $t('login.Send verification code') }}</span>
                     </van-button>
                 </template>
             </van-field>

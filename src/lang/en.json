@@ -39,7 +39,10 @@
   "login": {
     "welcome": "Welcome to the World Green Design Organization",
     "forget": "Forgot password",
-    "sign": "Sign in"
+    "sign": "Sign in",
+    "Quick login": "Quick login",
+    "Account login": "Account login",
+    "Send verification code": "Send verification code"
   },
   "add": {
     "Partners": "Partners",

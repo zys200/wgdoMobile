@@ -70,7 +70,7 @@
                         this.addUrls(this.categoryData)
                         //面包屑地址名称
                         this.urlData.push({
-                            path: '/greenaward/contribution',
+                            path: 'contribution',
                             name: this.titleData[0].classifyName
                         })
                         this.titleData[0].children.forEach((v, index) => {
@@ -127,7 +127,7 @@
                 handler(newVal) {
                     this.urlData = []
                     this.urlData.push({
-                        path: '/greenaward/contribution',
+                        path: 'contribution',
                         name: this.titleData[0].classifyName
                     })
                     this.titleData[0].children.forEach((v, index) => {

@@ -7,11 +7,11 @@
             <div class="topTitle">
                 <OrderTitle :title="title" />
             </div>
-            <!-- <div class="toListUse">
+            <div class="toListUse">
                 <newMultilayerModal :categoryData="categoryData" @gindex="gindex" @gindexChild="gindexChild" />
-            </div> -->
+            </div>
             <div class="menus">
-                <Menus />
+                <newMultilayerModal />
             </div>
             <div class="content">
                 <router-view></router-view>
@@ -25,11 +25,10 @@
     import OrderTitle from '@/components/OrderTitle.vue'
     import newMultilayerModal from '@/components/newMultilayerModal.vue'
     import { getTitle } from '@/api/request.js'
-    import Menus from '@/components/Menu.vue'
 
     export default {
         name: 'Mediacenter',
-        components: { Breadcrumb, OrderTitle, newMultilayerModal, Menus },
+        components: { Breadcrumb, OrderTitle, newMultilayerModal, newMultilayerModal },
         data() {
             let urlData = []
             let titleData = []
@@ -73,7 +72,7 @@
                         this.addUrls(this.categoryData)
                         //面包屑地址名称
                         this.urlData.push({
-                            path: '/welfareproject/greenleaf',
+                            path: 'greenleaf',
                             name: this.titleData[0].classifyName
                         })
                         this.titleData[0].children.forEach((v, index) => {
@@ -135,7 +134,7 @@
                     this.titleData[0].children.forEach((v, index) => {
                         if (index === newVal) {
                             this.urlData.push({
-                                path: '/welfareproject/greenleaf',
+                                path: 'greenleaf',
                                 name: this.titleData[0].classifyName
                             })
                         }

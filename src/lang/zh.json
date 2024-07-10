@@ -39,7 +39,10 @@
   "login": {
     "welcome": "欢迎来到世界绿色设计组织",
     "forget": "忘记密码",
-    "sign": "登录"
+    "sign": "登录",
+    "Quick login": "快速登录",
+    "Account login": "账号登录",
+    "Send verification code": "发送验证码"
   },
   "add": {
     "Partners": "合作伙伴",

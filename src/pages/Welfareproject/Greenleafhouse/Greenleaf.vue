@@ -59,7 +59,7 @@
 
 <style scoped>
     .greenleaf {
-        padding: 0 20px;
+        padding: 0 20px 30px;
         overflow: hidden;
     }
 

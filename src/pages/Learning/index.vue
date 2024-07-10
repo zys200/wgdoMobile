@@ -70,7 +70,7 @@
                         this.title = this.titleData.classifyName
                         this.urlData = []
                         this.urlData.push(
-                            { path: '/learning/designreport', name: this.title },
+                            { path: 'designreport', name: this.title },
                             { path: this.titleData.children[0].urls, name: this.titleData.children[0].classifyName }
                         )
                         // sessionStorage.setItem('chirdData', JSON.stringify(this.categoryData))
@@ -93,7 +93,7 @@
                     this.titleData.children.forEach((v, index) => {
                         if (index === newVal) {
                             this.urlData.push(
-                                { path: '/learning/designreport', name: '学术研究' },
+                                { path: 'designreport', name: '学术研究' },
                                 { path: v.urls, name: v.classifyName }
                             )
                         }

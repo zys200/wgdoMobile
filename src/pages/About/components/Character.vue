@@ -15,102 +15,102 @@
 </template>
 
 <script>
-import { getAboutContent } from '@/api/request.js'
+    import { getAboutContent } from '@/api/request.js'
 
-export default {
-    name: 'Introduce',
-    data() {
-        let aboutDatas = []
-        return {
-            aboutDatas
-        }
-    },
-    mounted() {
-        this.getAboutData()
-    },
-    methods: {
-        getAboutData(p = this.$store.state.lang.version) {
-            getAboutContent({ 'moduleType': '3', 'status': '1', 'version': p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.aboutDatas = res.data.rows
-                    console.log(res.data.rows, 'content');
+    export default {
+        name: 'Introduce',
+        data() {
+            let aboutDatas = []
+            return {
+                aboutDatas
+            }
+        },
+        mounted() {
+            this.getAboutData()
+        },
+        methods: {
+            getAboutData(p = this.$store.state.lang.version) {
+                getAboutContent({ 'moduleType': '3', 'status': '1', 'version': p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        this.aboutDatas = res.data.rows
+                        // console.log(res.data.rows, 'content');
+                    }
+                })
+            }
+        },
+        watch: {
+            '$store.state.lang.isEn': {
+                handler() {
+                    this.getAboutData()
                 }
-            })
-        }
-    },
-    watch: {
-        '$store.state.lang.isEn': {
-            handler() {
-                this.getAboutData()
             }
         }
     }
-}
 </script>
 
 <style scoped>
-.character {
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-}
+    .character {
+        padding: 0 20px 30px;
+        display: flex;
+        flex-direction: column;
+    }
 
-/* characterItem */
-.characterItem {
-    margin-bottom: 12px;
-    display: flex;
-}
+    /* characterItem */
+    .characterItem {
+        margin-bottom: 12px;
+        display: flex;
+    }
 
-.characterItem .pic {
-    margin-right: 20px;
-    width: 80px;
-    height: 100px;
-}
+    .characterItem .pic {
+        margin-right: 20px;
+        width: 80px;
+        height: 100px;
+    }
 
-.characterItem .pic img {
-    display: block;
-    width: 80px;
-    height: 100px;
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
-}
+    .characterItem .pic img {
+        display: block;
+        width: 80px;
+        height: 100px;
+        background-size: cover;
+        background-position: center;
+        object-fit: cover;
+    }
 
-/* right */
-.characterItem .right {
-    width: 235px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    /* right */
+    .characterItem .right {
+        width: 235px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
-.characterItem .right .title {
-    opacity: 1;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    line-height: 18.56px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+    .characterItem .right .title {
+        opacity: 1;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 18.56px;
+        color: rgba(51, 51, 51, 1);
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
-.characterItem .right .dec {
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 18px;
-    color: rgba(102, 102, 102, 1);
-    word-break: break-all;
-    text-align: justify;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    white-space: pre-line;
-}
+    .characterItem .right .dec {
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0px;
+        line-height: 18px;
+        color: rgba(102, 102, 102, 1);
+        word-break: break-all;
+        text-align: justify;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        white-space: pre-line;
+    }
 </style>
