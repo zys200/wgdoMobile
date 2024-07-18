@@ -1,34 +1,35 @@
 <template>
     <div class="welfareproject">
         <div class="bread">
-            <Breadcrumb :urlData="urlData" />
+            <newBreadcrumb :urlData="urlData" :key="breadcrumbKey" />
         </div>
         <div class="container">
-            <div class="topTitle">
+            <div class="topTitle" v-if=" $route.path === '/welfareproject/greenleaf' ">
                 <OrderTitle :title="title" />
+                <Greenleaf />
+            </div>
+            <div class="topTitle" v-else>
+                <OrderTitle :title="title" />
+                <TheGreenRibbon />
             </div>
             <div class="toListUse">
                 <newMultilayerModal :categoryData="categoryData" @gindex="gindex" @gindexChild="gindexChild" />
-            </div>
-            <div class="menus">
-                <newMultilayerModal />
-            </div>
-            <div class="content">
-                <router-view></router-view>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import Breadcrumb from '@/components/Breadcrumb.vue'
+    import newBreadcrumb from '@/components/newBreadcrumb.vue'
     import OrderTitle from '@/components/OrderTitle.vue'
     import newMultilayerModal from '@/components/newMultilayerModal.vue'
     import { getTitle } from '@/api/request.js'
+    import Greenleaf from '@/pages/Welfareproject/Greenleafhouse/Greenleaf.vue'
+    import TheGreenRibbon from '@/pages/Welfareproject/TheGreenRibbon/index.vue'
 
     export default {
         name: 'Mediacenter',
-        components: { Breadcrumb, OrderTitle, newMultilayerModal, newMultilayerModal },
+        components: { newBreadcrumb, OrderTitle, newMultilayerModal, Greenleaf, TheGreenRibbon },
         data() {
             let urlData = []
             let titleData = []
@@ -46,7 +47,8 @@
                 categoryData,
                 breadData,
                 title,
-                names
+                names,
+                breadcrumbKey: 0
             }
         },
         mounted() {
@@ -80,24 +82,24 @@
                                 this.urlData.push({ path: v.urls, name: v.classifyName })
                             }
                         })
-                        if (this.$route.matched.length > 3) {
-                            let currentPaths = this.$route.matched[2].path
-                            let aaa = this.getEntries(this.breadData, currentPaths, 1)
-                            this.urlData.push(aaa[0])
-                        }
+                        // if (this.$route.matched.length > 3) {
+                        //     let currentPaths = this.$route.matched[2].path
+                        //     let aaa = this.getEntries(this.breadData, currentPaths, 1)
+                        //     this.urlData.push(aaa[0])
+                        // }
                     }
                 })
             },
             getEntries(data1, baseAddress, gindex = 0) {
-                let result = [];
+                let result = []
                 function processEntry(entry, baseUrl) {
-                    let newPath = baseUrl + (entry.urls ? `/${entry.urls}` : '');
+                    let newPath = baseUrl + (entry.urls ? `/${entry.urls}` : '')
                     if (entry.children && entry.children.length > 0) {
                         processEntry(entry.children[gindex], newPath);
                     } else { result.push({ name: entry.classifyName, path: newPath }) }
                 }
-                processEntry(data1[gindex], baseAddress);
-                return result;
+                processEntry(data1[gindex], baseAddress)
+                return result
             },
             childrenUrl() {
                 this.categoryData[1].children.forEach((v, index) => {
@@ -153,7 +155,6 @@
                 handler(newVal) {
                     this.titleData[0].children[this.gindexs].children.forEach((v, index) => {
                         if (index === newVal) {
-                            // this.urlData.splice(this.urlData.length - 1, 1)
                             this.urlData.push({
                                 path: v.urls, name: v.classifyName
                             })
@@ -168,6 +169,34 @@
                     } else {
                         this.getMediaCenterData('6')
                     }
+                    if (this.$route.fullPath === '/welfareproject/greenleaf') {
+                        this.urlData[1] = {
+                            path: 'greenleaf',
+                            name: this.titleData[0].children[0].classifyName
+                        }
+                    } else {
+                        this.urlData[1] = {
+                            path: 'thegreenribbon',
+                            name: this.titleData[0].children[1].classifyName
+                        }
+                    }
+                    this.breadcrumbKey += 1
+                }
+            },
+            "$route": {
+                handler() {
+                    if (this.$route.fullPath === '/welfareproject/greenleaf') {
+                        this.urlData[1] = {
+                            path: 'greenleaf',
+                            name: this.titleData[0].children[0].classifyName
+                        }
+                    } else {
+                        this.urlData[1] = {
+                            path: 'thegreenribbon',
+                            name: this.titleData[0].children[1].classifyName
+                        }
+                    }
+                    this.breadcrumbKey += 1;
                 }
             }
         }

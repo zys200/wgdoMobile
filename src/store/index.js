@@ -7,14 +7,22 @@ Vue.use(Vuex)
 
 const state = {
     login: { username: '', password: '' },
+    // lang: {
+    //     isEn: 'en',
+    //     version: '2',
+    //     isText1Visible: true,
+    //     langs: '中文',
+    //     homeTitle: [],
+    // },
     lang: {
-        isEn: 'en',
-        version: '2',
-        isText1Visible: true,
-        langs: '中文',
-        homeTitle: []
+        isEn: 'zh',
+        version: '1',
+        isText1Visible: false,
+        langs: 'En',
+        homeTitle: [],
     },
     isMore: false,
+    urlDatas: []
 }
 
 const action = {}
@@ -43,12 +51,28 @@ const mutations = {
             }
         }
     },
-    setHomeTitle({ lang }, datas) {
-        lang.homeTitle = datas
+    setHomeTitle({ lang }, datas) { lang.homeTitle = datas },
+    changeIsMore(state) { state.isMore = !state.isMore },
+    updateUrlDataAction({ commit, state }, newPath) {
+        const currentIndex = state.urlDatas.findIndex(item => item === newPath)
+        if (currentIndex === -1) {
+            commit('pushUrlData', newPath)
+            console.log(state.urlDatas, 'nesss')
+        } else {
+            commit('popUrlData', currentIndex)
+        }
     },
-    changeIsMore(state) {
-        state.isMore = !state.isMore
-    }
+    pushUrlData(state, newPath) {
+        if (state.urlDatas.length === 0) {
+            state.urlDatas = newPath
+        } else {
+            state.urlDatas.push(newPath)
+        }
+    },
+    popUrlData(state, endIndex) {
+        state.urlDatas.splice(endIndex + 1)
+    },
+    clearUrlDatas(state) { state.urlDatas = [] }
 }
 
 const store = new Vuex.Store({
@@ -61,6 +85,15 @@ const store = new Vuex.Store({
             key: "langs",
             reducer(state) {
                 return state.lang.isEn;
+            }
+        }),
+        createPersistedState({
+            storage: window.sessionStorage,
+            key: "urlDatasState",
+            reducer(state) {
+                return {
+                    urlDatas: state.urlDatas
+                }
             }
         })
     ]

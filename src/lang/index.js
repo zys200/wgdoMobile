@@ -6,7 +6,7 @@ import en from '@/lang/en.json'
 Vue.use(VueI18n)
 
 const localeLang = sessionStorage.getItem('langs')
-const currentlLocale = localeLang ? localeLang.replace(/^"(.*)"$/, '$1') : 'en'
+const currentlLocale = localeLang ? localeLang.replace(/^"(.*)"$/, '$1') : 'zh'
 
 const i18n = new VueI18n({
     locale: currentlLocale,
@@ -14,7 +14,7 @@ const i18n = new VueI18n({
         zh,
         en
     },
-    silentFallbackWarn: true,
+    silentFallbackWarn: true
 })
 
 export default i18n

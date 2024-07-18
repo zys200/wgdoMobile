@@ -6,8 +6,7 @@
                 <template v-for="(i, index) in categoryData">
                     <el-submenu v-if="i.children && i.children.length > 1" :index="i.urls" :key="i.classifyId">
                         <template v-slot:title>
-                            <!-- <router-link :to="{ name: i.urls }"></router-link> -->
-                            <span>{{i.classifyName}}</span>
+                            <router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link>
                         </template>
                         <el-menu-item-group>
                             <el-menu-item v-for="(t, tt) in i.children" :key="t.classifyId"
@@ -17,8 +16,7 @@
                         </el-menu-item-group>
                     </el-submenu>
                     <el-menu-item v-else :index="i.urls" :key="i.classifyId">
-                        <!-- <router-link :to="{ name: i.urls }"></router-link> -->
-                        {{i.classifyName}}
+                        <router-link :to="{ name: i.urls }">{{i.classifyName}}</router-link>
                     </el-menu-item>
                 </template>
             </el-menu>
@@ -35,7 +33,8 @@
         props: ['categoryData'],
         data() { return { isShow: false } },
         mounted() {
-            if (this.categoryData.length !== 0) {
+            let hasCategoryData = JSON.parse(sessionStorage.getItem('localcategorydata'))
+            if (!hasCategoryData || hasCategoryData.length < 1) {
                 sessionStorage.setItem('localcategorydata', JSON.stringify(this.categoryData))
             }
             window.addEventListener('scroll', function () {
@@ -66,15 +65,17 @@
             //点击确定二级分类的res
             handleSubcategoryClick(firstCategoryId, secondCategoryId) {
                 let localcategorydata = JSON.parse(sessionStorage.getItem('localcategorydata'))
-                localcategorydata.forEach(v => {
-                    if (firstCategoryId === v.classifyId) {
-                        v.children.forEach((k, kk) => {
-                            if (secondCategoryId === k.classifyId) {
-                                this.$router.push({ name: k.urls });
-                            }
-                        })
-                    }
-                })
+                if (localcategorydata) {
+                    localcategorydata.forEach(v => {
+                        if (firstCategoryId === v.classifyId) {
+                            v.children.forEach((k, kk) => {
+                                if (secondCategoryId === k.classifyId) {
+                                    this.$router.push({ name: k.urls })
+                                }
+                            })
+                        }
+                    })
+                }
             }
         },
         beforeRouteLeave(to, from, next) {

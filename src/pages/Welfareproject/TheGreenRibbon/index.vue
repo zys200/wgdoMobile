@@ -1,7 +1,7 @@
 <template>
     <div class="thegreenribbon">
-        <span style="font-size: 22px" v-if="this.$route.path === '/welfareproject/thegreenribbon' ">
-            The Green Ribbon绿叶标
+        <span style="font-size: 22px" v-if=" $route.path === '/welfareproject/thegreenribbon' ">
+            <span v-for="i in thegreenribbonData" :key="i.benefitId" v-html="i.contentDetails"></span>
         </span>
         <router-view v-else></router-view>
     </div>
@@ -22,7 +22,7 @@
         methods: {
             getThegreenribbonData(p = this.$store.state.lang.version) {
                 getWelfareproject({ 'moduleType': '2', "status": '1', 'version': p }).then(res => {
-                    console.log(res.data.rows), 'lvye';
+                    this.thegreenribbonData = res.data.rows
                 })
             }
         }

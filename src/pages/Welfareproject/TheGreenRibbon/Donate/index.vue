@@ -1,8 +1,7 @@
 <template>
     <div class="donate">
-        <div>donate</div>
-        <Single :singles="wflfareData" v-if="this.$route.path === '/welfareproject/thegreenribbon/donate' " />
-        <router-view></router-view>
+        <Single :singles="wflfareData" v-if=" $route.path === '/welfareproject/thegreenribbon/donate' " />
+        <router-view v-else></router-view>
     </div>
 </template>
 
@@ -15,12 +14,13 @@
         components: { Single },
         data() {
             let wflfareData = []
-            return {
-                wflfareData
-            }
+            return { wflfareData }
         },
         mounted() {
             this.getwflfareDataData()
+            if (this.$route.matched.length > 3) {
+                this.$store.commit('updateUrlDataAction', { name: '捐赠公示', path: 'donate' })
+            }
         },
         methods: {
             getwflfareDataData(p = this.$store.state.lang.version) {
@@ -35,8 +35,13 @@
         },
         watch: {
             '$store.state.lang.isEn': {
+                handler() { this.getwflfareDataData() }
+            },
+            "$route": {
                 handler() {
-                    this.getwflfareDataData()
+                    if (this.$route.fullPath === 'welfareproject/thegreenribbon/donate') {
+                        this.$store.commit('updateUrlDataAction', { name: '捐赠公式', path: 'donate' })
+                    }
                 }
             }
         }

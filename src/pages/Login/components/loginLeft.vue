@@ -1,9 +1,10 @@
 <template>
     <div class="loginLeft">
         <van-form @submit="onSubmit">
-            <van-field v-model="username" name="用户名" placeholder="用户名" type="number" />
+            <van-field v-model="username" name="用户名" :placeholder="$t('login.username')" type="number" />
             <!-- :rules="[{ required: true, message: '请填写用户名'}]" -->
-            <van-field v-model="password" type="password" name="密码" placeholder="短信验证码" class="loginLeftVerfity">
+            <van-field v-model="password" type="password" name="密码" :placeholder="$t('login.SMS verification code')"
+                class="loginLeftVerfity">
                 <!-- :rules="[{ required: true, message: '请输入短信验证码' }]" -->
                 <template #button class="verfityButton">
                     <van-button size="small" @click="getVerfity($event)">
@@ -81,13 +82,13 @@
 
     .loginLeft .loginLeftVerfity :deep(.van-field__control) {
         display: inline-block;
-        width: 100px;
+        width: 170px;
         line-height: 48px;
     }
 
     /* 验证码按钮 */
     .loginLeft :deep(.van-field__button) {
-        margin-left: 64px;
+        margin-left: -6px;
         width: 114px;
         height: 36px;
         border-radius: 50px;

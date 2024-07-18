@@ -1,6 +1,5 @@
 <template>
     <div class="greenleaf">
-        <div>greenleaf</div>
         <div v-for="i in welfareproject" :key="i.benefitId">
             <span style="font-size: 12px;
             font-weight: 400;
@@ -19,10 +18,7 @@
     export default {
         name: 'Greenleaf',
         data() {
-            let welfareproject = []
-            return {
-                welfareproject
-            }
+            return { welfareproject: [] }
         },
         mounted() {
             this.getWelfareprojectData()
@@ -39,19 +35,13 @@
             addImageStyles() {
                 const style = document.createElement('style');
                 style.type = 'text/css';
-                style.innerHTML = `
-                .content img {
-                    width: 100%;
-                }
-            `;
+                style.innerHTML = `.content img { width: 100%; } `;
                 document.head.appendChild(style);
             }
         },
         watch: {
             '$store.state.lang.isEn': {
-                handler() {
-                    this.getWelfareprojectData()
-                }
+                handler() { this.getWelfareprojectData() }
             }
         }
     }

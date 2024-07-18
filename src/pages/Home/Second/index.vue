@@ -3,7 +3,7 @@
         <div class="container">
             <div class="containerTop">
                 <div class="title">
-                    <span>ORGANIZATIONAL SYNAMICS</span>
+                    <span>{{$t('second.Organizational Dynamics')}}</span>
                     <router-link :to="toSencondDetAll">
                         <More />
                     </router-link>

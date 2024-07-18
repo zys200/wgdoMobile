@@ -1,9 +1,10 @@
 <template>
     <div class="loginRight">
         <van-form @submit="onSubmit">
-            <van-field v-model="username" name="用户名" placeholder="用户名" />
+            <van-field v-model="username" name="用户名" :placeholder="$t('login.username')" />
             <!-- :rules="[{ required: true, message: '请填写用户名' }]"  -->
-            <van-field v-model="password" :type="passwordType" name="密码" placeholder="密码"></van-field>
+            <van-field v-model="password" :type="passwordType" name="密码"
+                :placeholder="$t('login.password')"></van-field>
             <!-- :rules="[{ required: true, message: '请填写密码' }]" -->
             <div class="icons" @click="showPassword">
                 <i class="iconfont icon-xianshimima"></i>

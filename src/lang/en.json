@@ -12,7 +12,7 @@
     "Greenleaflabel": "Green leaf label"
   },
   "second": {
-    "Organizational dynamics": "Organizational dynamics",
+    "Organizational Dynamics": "Organizational Dynamics",
     "more": "More",
     "Green design perspective": "Green design perspective"
   },
@@ -42,7 +42,10 @@
     "sign": "Sign in",
     "Quick login": "Quick login",
     "Account login": "Account login",
-    "Send verification code": "Send verification code"
+    "Send verification code": "Send verification code",
+    "username": "username",
+    "password": "password",
+    "SMS verification code": "SMS verification code"
   },
   "add": {
     "Partners": "Partners",

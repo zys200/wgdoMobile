@@ -12,7 +12,7 @@
     "Greenleaflabel": "绿叶标"
   },
   "second": {
-    "Organizational dynamics": "组织动态",
+    "Organizational Dynamics": "组织动态",
     "more": "查看更多",
     "Green design perspective": "绿色设计观点"
   },
@@ -42,7 +42,10 @@
     "sign": "登录",
     "Quick login": "快速登录",
     "Account login": "账号登录",
-    "Send verification code": "发送验证码"
+    "Send verification code": "发送验证码",
+    "username": "用户名",
+    "password": "密码",
+    "SMS verification code": "短信验证码"
   },
   "add": {
     "Partners": "合作伙伴",

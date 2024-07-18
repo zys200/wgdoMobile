@@ -1,6 +1,6 @@
 <template>
     <div class="epidemic">
-        <div>epidemic</div>
+        <div>epidemic抗疫宣传</div>
         <Single :singles="wflfareData" />
         <router-view />
     </div>

@@ -84,7 +84,7 @@
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         let [leftImg, ...rightImgLists] = res.data.rows
                         this.leftImg = leftImg
-                        this.rightImgLists = rightImgLists
+                        this.rightImgLists = rightImgLists.slice(0, 4)
                     }
                 })
                 getHomeData({ "moduleType": "7", "status": "1", version: p }).then(res => {

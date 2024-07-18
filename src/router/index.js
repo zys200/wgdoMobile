@@ -274,9 +274,6 @@ const routes = [
                                         // name: '中欧抗疫绿丝带行动',
                                         name: 'actions',
                                         component: () => import('@/pages/Welfareproject/TheGreenRibbon/Propagate/Actions.vue'),
-                                        meta: {
-                                            title: '中欧抗疫绿丝带行动'
-                                        }
                                     }
                                 ]
                             },
@@ -285,6 +282,31 @@ const routes = [
                                 // name: '清单',
                                 name: 'lists',
                                 component: () => import('@/pages/Welfareproject/TheGreenRibbon/Lists/index.vue')
+                            },
+                            //orders
+                            {
+                                path: 'epidemic',
+                                // name: '抗疫需求',
+                                name: 'epidemic',
+                                component: () => import('@/pages/Welfareproject/Orders/epidemic.vue')
+                            },
+                            {
+                                path: 'submit',
+                                // name: '需求填报',
+                                name: 'submit',
+                                component: () => import('@/pages/Welfareproject/Orders/submit.vue')
+                            },
+                            {
+                                path: 'news',
+                                // name: '新闻中心',
+                                name: 'news',
+                                component: () => import('@/pages/Welfareproject/Orders/news.vue')
+                            },
+                            {
+                                path: 'cooperation',
+                                //name:'合作单位'
+                                name: 'cooperation',
+                                component: () => import('@/pages/Welfareproject/Orders/cooperation.vue')
                             }
                         ]
                     }
@@ -361,34 +383,7 @@ const routes = [
                         component: () => import('@/pages/GreenResearchInstitute/components/Policy.vue')
                     }
                 ]
-            },
-            // {
-            //     path: '/details',
-            //     name: 'Details',
-            //     component: () => import('@/components/Details.vue'),
-            //     meta: {
-            //         isAuth: false,
-            //         toTop: true
-            //     }
-            // },
-            // {
-            //     path: '/det',
-            //     name: 'Det',
-            //     component: () => import('@/components/Det.vue'),
-            //     meta: {
-            //         isAuth: false,
-            //         toTop: true
-            //     }
-            // },
-            // {
-            //     path: '/greendet',
-            //     name: 'Greendet',
-            //     component: () => import('@/components/Greendet.vue'),
-            //     meta: {
-            //         isAuth: false,
-            //         toTop: true
-            //     }
-            // }
+            }
         ]
     },
     {
@@ -410,6 +405,6 @@ router.beforeEach((to, from, next) => {
         window.scrollTo(0, 300)
     }
     next();
-});
+})
 
 export default router
